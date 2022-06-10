@@ -1,4 +1,4 @@
-import * as actions from './phoneListTypes';
+import * as actions from './productListTypes';
 
 export function getPhones(): actions.GetPhonesAction {
   return {

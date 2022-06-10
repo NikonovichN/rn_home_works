@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 
-import phoneListReducer from './phoneListReducer';
+import productListReducer from './productListReducer';
 
-const rootReducer = combineReducers({phoneList: phoneListReducer});
+const rootReducer = combineReducers({productList: productListReducer});
 
 export type AppState = ReturnType<typeof rootReducer>;
 
