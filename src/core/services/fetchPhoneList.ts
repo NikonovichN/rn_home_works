@@ -1,5 +1,9 @@
 import axios from 'axios';
 
-export async function fetchPhoneList(): Promise<String> {
-  return axios.get(``);
+import {EndPoints} from '../endpoints/EndPoints';
+
+export async function fetchPhoneList(): Promise<object> {
+  let serverData = await axios.get(`${EndPoints.baseUrl}${EndPoints.products}`);
+
+  return serverData['data'];
 }
