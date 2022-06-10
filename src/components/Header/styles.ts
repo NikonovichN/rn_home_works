@@ -5,9 +5,10 @@ import Colors from '../../core/styles/ColorTokens';
 export default StyleSheet.create({
   container: {
     height: 55,
+    padding: 16,
     backgroundColor: Colors.primary,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   title: {
