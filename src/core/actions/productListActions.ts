@@ -1,13 +1,32 @@
 import * as actions from './productListTypes';
+import {ProductList} from '../entities/ProductList';
 
-export function getPhones(): actions.GetPhonesAction {
+export function getProducts(): actions.GetProductsAction {
   return {
-    type: actions.GET_PHONES,
+    type: actions.GET_PRODUCTS,
   };
 }
 
-export function getPhonesRequest(): actions.GetPhonesRequestAction {
+export function getProductsRequest(): actions.GetProductsRequestAction {
   return {
-    type: actions.GET_PHONES_REQUEST,
+    type: actions.GET_PRODUCTS_REQUEST,
+  };
+}
+
+export function getProductsSuccess(
+  products: ProductList,
+): actions.GetProductsSuccessAction {
+  return {
+    type: actions.GET_PRODUCTS_SUCCESS,
+    productList: products,
+  };
+}
+
+export function getProductsFailure(
+  error: Error | string,
+): actions.GetProductsFailureAction {
+  return {
+    type: actions.GET_PRODUCTS_FAILURE,
+    error: error,
   };
 }
