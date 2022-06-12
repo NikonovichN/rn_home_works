@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import Colors from '../../core/styles/ColorTokens';
+import {Colors, CommonStyles} from '../../core/styles/styles';
 
 export default StyleSheet.create({
   container: {
@@ -10,6 +10,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    ...CommonStyles.shadow,
   },
   title: {
     color: Colors.text.onSurfacePrimary,

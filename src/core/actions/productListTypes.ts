@@ -13,7 +13,7 @@ export interface GetProductsRequestAction {
 export const GET_PRODUCTS_SUCCESS = 'product_list/GET_PRODUCTS_SUCCESS';
 export interface GetProductsSuccessAction {
   type: typeof GET_PRODUCTS_SUCCESS;
-  productList: ProductList;
+  data: ProductList;
 }
 
 export const GET_PRODUCTS_FAILURE = 'product_list/GET_PRODUCTS_FAILURE';

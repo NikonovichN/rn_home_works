@@ -1,17 +1,35 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {FlatList} from 'react-native';
+
+import {
+  Header,
+  Loading,
+  ProductCard,
+  SearchBar,
+} from '../../components/components';
 
 import {PropsFromRedux} from './MainScreenComponent';
-
-import {Header, Loading} from '../../components/components';
+import styles from './styles';
 
 const MainScreen: React.FC<PropsFromRedux> = props => {
-  const {isLoading} = props;
+  const {isLoading, products} = props;
+
+  console.log('products', products);
 
   return (
     <>
       <Header title="Ecommerce Store" />
-      {isLoading ? <Loading /> : <Text>Dummy page</Text>}
+      <SearchBar />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <FlatList
+          data={products}
+          numColumns={2}
+          style={styles.flatList}
+          renderItem={({item}) => <ProductCard product={item} />}
+        />
+      )}
     </>
   );
 };

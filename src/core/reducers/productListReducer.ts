@@ -1,9 +1,9 @@
 import * as actions from '../actions/productListTypes';
 
-import {ProductList} from '../entities/ProductList';
+import {Product} from '../entities/ProductList';
 
 export interface ProductsListState {
-  products: ProductList | [];
+  products: Product[];
   isLoading: Boolean;
   error: Error | string | null;
 }
@@ -26,7 +26,7 @@ export default function productListReducer(
       };
     case actions.GET_PRODUCTS_SUCCESS:
       return {
-        products: action.productList,
+        products: action.data.productList,
         isLoading: false,
         error: null,
       };

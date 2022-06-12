@@ -18,7 +18,7 @@ export function getProductsSuccess(
 ): actions.GetProductsSuccessAction {
   return {
     type: actions.GET_PRODUCTS_SUCCESS,
-    productList: products,
+    data: products,
   };
 }
 
