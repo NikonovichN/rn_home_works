@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 
 import {
   Header,
@@ -13,8 +13,6 @@ import styles from './styles';
 
 const MainScreen: React.FC<PropsFromRedux> = props => {
   const {isLoading, products} = props;
-
-  console.log('products', products);
 
   return (
     <>
