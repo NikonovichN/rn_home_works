@@ -9,6 +9,7 @@ import {
   ProductCard,
   SearchBar,
 } from '../../components/components';
+import {Colors} from '../../core/styles/styles';
 
 import {PropsFromRedux} from './MainScreenComponent';
 import styles from './styles';
@@ -29,7 +30,11 @@ const MainScreen: React.FC<PropsFromRedux> = props => {
           numColumns={2}
           style={styles.flatList}
           refreshControl={
-            <RefreshControl refreshing={false} onRefresh={onRefresh} />
+            <RefreshControl
+              refreshing={false}
+              onRefresh={onRefresh}
+              tintColor={Colors.primary}
+            />
           }
           contentContainerStyle={{
             paddingBottom: insets.bottom,

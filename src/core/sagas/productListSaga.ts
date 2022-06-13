@@ -25,6 +25,8 @@ function* onLoadProductList() {
         serverData.data.length.toString(),
       );
       products = Convertor.toProductList(serverData.data, images.data);
+    } else {
+      throw new Error('Something went wrong!');
     }
 
     yield put(actions.getProductsSuccess(products!));

@@ -27,6 +27,6 @@ export function getProductsFailure(
 ): actions.GetProductsFailureAction {
   return {
     type: actions.GET_PRODUCTS_FAILURE,
-    error: error,
+    error,
   };
 }

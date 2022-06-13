@@ -5,8 +5,8 @@ import type {ReactElement} from 'react';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 import shopStore from './src/core/store/store';
-import MainScreenComponent from './src/pages/main_screen/MainScreenComponent';
 import Colors from './src/core/styles/ColorTokens';
+import {ProductDetailsComponent} from './src/pages/pages';
 
 const store = shopStore();
 
@@ -14,7 +14,8 @@ const App: () => ReactElement = () => (
   <Provider store={store}>
     <SafeAreaProvider>
       <SafeAreaView style={{flex: 1, backgroundColor: Colors.primary}}>
-        <MainScreenComponent />
+        {/* <MainScreenComponent /> */}
+        <ProductDetailsComponent productId="1" />
       </SafeAreaView>
     </SafeAreaProvider>
   </Provider>
