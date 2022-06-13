@@ -7,6 +7,7 @@ export default StyleSheet.create({
     padding: 20,
     backgroundColor: Colors.white,
     ...CommonStyles.shadow,
+    zIndex: 999, // this is needed to display shadow.
   },
   containerBar: {
     justifyContent: 'center',

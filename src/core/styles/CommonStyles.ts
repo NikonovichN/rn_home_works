@@ -7,9 +7,9 @@ const CommonStyles = StyleSheet.create({
     shadowColor: Colors.shadow.primary,
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 5,
     },
-    shadowRadius: 5,
+    shadowRadius: 3,
     shadowOpacity: 1,
     elevation: 4,
   },

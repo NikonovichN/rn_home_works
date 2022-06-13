@@ -12,8 +12,10 @@ interface Props {
 const ProductCard: React.FC<Props> = props => {
   const {product} = props;
 
+  if (isNaN(product.id)) return <View style={styles.commonContainerStyles} />;
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.commonContainerStyles, styles.container]}>
       <Text>{product.name}</Text>
       <Text>{product.displayPrice}</Text>
     </View>

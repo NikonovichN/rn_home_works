@@ -11,6 +11,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     ...CommonStyles.shadow,
+    zIndex: 1999, // this is needed to display shadow.
   },
   title: {
     color: Colors.text.onSurfacePrimary,

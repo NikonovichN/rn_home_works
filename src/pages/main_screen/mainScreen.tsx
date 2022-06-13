@@ -1,5 +1,7 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList} from 'react-native';
+
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {
   Header,
@@ -13,6 +15,7 @@ import styles from './styles';
 
 const MainScreen: React.FC<PropsFromRedux> = props => {
   const {isLoading, products} = props;
+  const insets = useSafeAreaInsets();
 
   return (
     <>
@@ -25,6 +28,9 @@ const MainScreen: React.FC<PropsFromRedux> = props => {
           data={products}
           numColumns={2}
           style={styles.flatList}
+          contentContainerStyle={{
+            paddingBottom: insets.bottom,
+          }}
           renderItem={({item}) => <ProductCard product={item} />}
         />
       )}
