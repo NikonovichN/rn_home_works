@@ -2,19 +2,32 @@ import {all, call, fork, put, takeEvery} from 'redux-saga/effects';
 
 import {Convertor} from '../convertor/Convertor';
 import {ProductList} from '../entities/ProductList';
-import {fetchProductList} from '../services/fetchProductList';
+import {fetchImagesLink, fetchProductList} from '../services/services';
 
 import * as actions from '../actions/productListActions';
 import * as actionTypes from '../actions/productListTypes';
+
+interface Data extends Object {
+  data: [];
+}
 
 function* onLoadProductList() {
   try {
     yield put(actions.getProductsRequest());
 
-    const data: object = yield call(fetchProductList);
-    let products: ProductList = Convertor.toProductList(data);
+    let products: ProductList;
 
-    yield put(actions.getProductsSuccess(products));
+    const serverData: Data = yield call(fetchProductList);
+
+    if (serverData.hasOwnProperty('data')) {
+      let images: Data = yield call(
+        fetchImagesLink,
+        serverData.data.length.toString(),
+      );
+      products = Convertor.toProductList(serverData.data, images.data);
+    }
+
+    yield put(actions.getProductsSuccess(products!));
   } catch (error) {
     yield put(actions.getProductsFailure(`${error}`));
   }

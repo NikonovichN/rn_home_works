@@ -1,8 +1,10 @@
 import {StyleSheet} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default StyleSheet.create({
   container: {
-    height: '50%',
-    justifyContent: 'flex-end',
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: Colors.white,
   },
 });

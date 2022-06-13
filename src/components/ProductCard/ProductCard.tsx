@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Image} from 'react-native';
 
 import {Product} from '../../core/entities/ProductList';
 
@@ -16,8 +16,17 @@ const ProductCard: React.FC<Props> = props => {
 
   return (
     <View style={[styles.commonContainerStyles, styles.container]}>
-      <Text>{product.name}</Text>
-      <Text>{product.displayPrice}</Text>
+      <Image
+        resizeMode="cover"
+        style={styles.image}
+        source={{
+          uri: product.imageUrl,
+        }}
+      />
+      <View style={styles.descriptionContainer}>
+        <Text style={styles.title}>{product.name}</Text>
+        <Text style={styles.price}>{product.displayPrice}</Text>
+      </View>
     </View>
   );
 };

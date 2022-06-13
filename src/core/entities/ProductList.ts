@@ -4,11 +4,12 @@ export interface ProductList {
 
 export interface Product {
   id: number;
-  name: String;
-  displayPrice: String;
-  wasPrice?: String;
-  discount?: String;
-  description: String;
+  name: string;
+  imageUrl: string;
+  displayPrice: string;
+  wasPrice?: string;
+  discount?: string;
+  description: string;
   properties: ProductProperty[];
 }
 
