@@ -1,9 +1,16 @@
 import React from 'react';
-import {ScrollView, Image, Text, View, TouchableOpacity} from 'react-native';
+import {
+  ScrollView,
+  Image,
+  Text,
+  View,
+  TouchableOpacity,
+  RefreshControl,
+} from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Header, Loading, SelectProperty} from '../../components/components';
-import {ButtonStyles, TextStyles} from '../../core/styles/styles';
+import {ButtonStyles, Colors, TextStyles} from '../../core/styles/styles';
 
 import {PropsFromRedux} from './ProductDetailsComponent';
 import styles from './styles';
@@ -19,7 +26,15 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
         <Loading />
       ) : (
         <>
-          <ScrollView style={styles.scrollViewContainer}>
+          <ScrollView
+            style={styles.scrollViewContainer}
+            refreshControl={
+              <RefreshControl
+                refreshing={false}
+                onRefresh={onRefresh}
+                tintColor={Colors.primary}
+              />
+            }>
             <Image style={styles.image} source={{uri: product.imageUrl}} />
             <Text style={TextStyles.regular}>{product.name}</Text>
             <Text style={[TextStyles.regularBold, styles.marginTop15]}>
@@ -46,7 +61,7 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
                 {'Add to cart'.toUpperCase()}
               </Text>
             </TouchableOpacity>
-            <View style={{height: insets.bottom}}/>
+            <View style={{height: insets.bottom}} />
           </ScrollView>
         </>
       )}

@@ -20,7 +20,10 @@ export default function productDetailsReducer(
 ): ProductDetailsState {
   switch (action.type) {
     case actions.GET_PRODUCT: {
-      return state;
+      return {
+        ...state,
+        isLoading: true,
+      };
     }
     case actions.GET_PRODUCT_SUCCESS: {
       return {
