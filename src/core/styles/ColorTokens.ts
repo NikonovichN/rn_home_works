@@ -15,4 +15,9 @@ export default class Colors {
   static border = {
     primary: '#8F8F8F',
   };
+
+  static buttons = {
+    selectClear: '#F7F7F7',
+    primary: '#008ACE',
+  };
 }

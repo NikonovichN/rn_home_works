@@ -12,9 +12,9 @@ interface ProductDetailsProps {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  isLoading: state.productList.isLoading,
-  error: state.productList.error,
-  products: state.productList.products,
+  isLoading: state.productDetails.isLoading,
+  error: state.productDetails.error,
+  product: state.productDetails.productDetails,
 });
 
 function mapDispatchToProps(

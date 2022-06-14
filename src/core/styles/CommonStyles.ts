@@ -15,4 +15,40 @@ const CommonStyles = StyleSheet.create({
   },
 });
 
-export default CommonStyles;
+const TextStyles = StyleSheet.create({
+  regular: {
+    fontSize: 15,
+    fontWeight: '400',
+    color: Colors.text.primary,
+  },
+  regularBold: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: Colors.text.primary,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: Colors.text.primary,
+  },
+  buttonRegular: {
+    fontSize: 15,
+    fontWeight: '500',
+    letterSpacing: 1.25,
+    color: Colors.text.onSurfacePrimary,
+  },
+});
+
+const ButtonStyles = StyleSheet.create({
+  primary: {
+    width: '100%',
+    height: 40,
+    borderRadius: 4,
+    backgroundColor: Colors.buttons.primary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...TextStyles.buttonRegular,
+  },
+});
+
+export {CommonStyles, TextStyles, ButtonStyles};

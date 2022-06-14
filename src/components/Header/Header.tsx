@@ -1,22 +1,38 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, TouchableWithoutFeedback, View} from 'react-native';
 
-import {MenuIcon, BasketIcon} from '../icons/icons';
+import {MenuIcon, BasketIcon, ArrowBack, HeartIcon} from '../icons/icons';
 
 import styles from './styles';
 
 interface Props {
   title: string;
+  isMainPage?: boolean;
 }
 
 const Header: React.FC<Props> = props => {
-  const {title} = props;
+  const {title, isMainPage = false} = props;
 
   return (
     <View style={styles.container}>
-      <MenuIcon />
+      {isMainPage ? (
+        <MenuIcon />
+      ) : (
+        <View style={styles.endIcons}>
+          <TouchableWithoutFeedback onPress={() => {}}>
+            <ArrowBack />
+          </TouchableWithoutFeedback>
+        </View>
+      )}
       <Text style={styles.title}>{title}</Text>
-      <BasketIcon />
+      {isMainPage ? (
+        <BasketIcon />
+      ) : (
+        <View style={styles.endIcons}>
+          <HeartIcon />
+          <BasketIcon />
+        </View>
+      )}
     </View>
   );
 };

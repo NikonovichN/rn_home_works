@@ -20,4 +20,9 @@ export default StyleSheet.create({
     letterSpacing: 0.15,
     lineHeight: 24,
   },
+  endIcons: {
+    width: 75,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
