@@ -20,7 +20,7 @@ const MainScreen: React.FC<PropsFromRedux> = props => {
 
   return (
     <>
-      <Header title="Ecommerce Store" />
+      <Header isMainPage title="Ecommerce Store" />
       <SearchBar />
       {isLoading ? (
         <Loading />

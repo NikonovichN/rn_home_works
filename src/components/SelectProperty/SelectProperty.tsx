@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import { TextStyles } from '../../core/styles/CommonStyles';
+import {TextStyles} from '../../core/styles/CommonStyles';
 
 import styles from './styles';
 
@@ -13,7 +13,7 @@ const SelectProperty: React.FC<Props> = props => {
   return (
     <View style={styles.container}>
       {properties.map(property => (
-        <View style={styles.property}>
+        <View key={property} style={styles.property}>
           <Text style={TextStyles.regular}>{property}</Text>
         </View>
       ))}
