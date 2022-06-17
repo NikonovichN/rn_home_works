@@ -1,15 +1,13 @@
 import {connect, ConnectedProps} from 'react-redux';
 import {Dispatch} from 'redux';
-
-import ProductDetails from './ProductDetails';
+import {RouteProp} from '@react-navigation/native';
 
 import {ProductDetails as ProductDetailsTypes} from '../../core/actions/productDetailsTypes';
 import {getProductDetails} from '../../core/actions/productDetailsActions';
 import {AppState} from '../../core/reducers/rootReducer';
 
-interface ProductDetailsProps {
-  productId: string;
-}
+import ProductDetails from './ProductDetails';
+import {RootStackParamList} from '../../../App';
 
 const mapStateToProps = (state: AppState) => ({
   isLoading: state.productDetails.isLoading,
@@ -19,9 +17,10 @@ const mapStateToProps = (state: AppState) => ({
 
 function mapDispatchToProps(
   dispatch: Dispatch<ProductDetailsTypes>,
-  props: ProductDetailsProps,
+  props: {route: RouteProp<RootStackParamList, 'ProductDetails'>},
 ) {
-  const getProduct = () => dispatch(getProductDetails(props.productId));
+  const getProduct = () =>
+    dispatch(getProductDetails(props.route.params.productId));
 
   getProduct();
 

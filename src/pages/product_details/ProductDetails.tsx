@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Header, Loading, SelectProperty} from '../../components/components';
+import {Loading, SelectProperty} from '../../components/components';
 import {ButtonStyles, Colors, TextStyles} from '../../core/styles/styles';
 
 import {PropsFromRedux} from './ProductDetailsComponent';
@@ -21,7 +21,6 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
 
   return (
     <>
-      <Header title={product.name} />
       {isLoading ? (
         <Loading />
       ) : (

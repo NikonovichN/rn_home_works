@@ -3,24 +3,18 @@ import {FlatList, RefreshControl} from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {
-  Header,
-  Loading,
-  ProductCard,
-  SearchBar,
-} from '../../components/components';
+import {Loading, ProductCard, SearchBar} from '../../components/components';
 import {Colors} from '../../core/styles/styles';
 
 import {PropsFromRedux} from './MainScreenComponent';
 import styles from './styles';
 
 const MainScreen: React.FC<PropsFromRedux> = props => {
-  const {isLoading, products, onRefresh} = props;
+  const {isLoading, products, navigation, onRefresh} = props;
   const insets = useSafeAreaInsets();
 
   return (
     <>
-      <Header isMainPage title="Ecommerce Store" />
       <SearchBar />
       {isLoading ? (
         <Loading />
@@ -39,7 +33,14 @@ const MainScreen: React.FC<PropsFromRedux> = props => {
           contentContainerStyle={{
             paddingBottom: insets.bottom,
           }}
-          renderItem={({item}) => <ProductCard product={item} />}
+          renderItem={({item}) => (
+            <ProductCard
+              product={item}
+              onPress={() =>
+                navigation.push('ProductDetails', {productId: item.id})
+              }
+            />
+          )}
         />
       )}
     </>

@@ -1,11 +1,17 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 import {Colors, CommonStyles} from '../../core/styles/styles';
 
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const NUMBER_OF_COLUMN = 2;
+const MARGiN_CARD = 10;
+const MARGIN_SPACE = 2 * NUMBER_OF_COLUMN * MARGiN_CARD;
+const CONTAINER_PADDING = 20;
+
 export default StyleSheet.create({
   commonContainerStyles: {
-    flex: 1,
-    margin: 10,
+    width: (SCREEN_WIDTH - MARGIN_SPACE - CONTAINER_PADDING) / NUMBER_OF_COLUMN,
+    margin: MARGiN_CARD,
     padding: 5,
   },
   container: {
@@ -19,7 +25,6 @@ export default StyleSheet.create({
     marginHorizontal: 30,
   },
   descriptionContainer: {
-    flex: 1,
     justifyContent: 'space-between',
   },
   title: {
