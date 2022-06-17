@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button, Text, TouchableWithoutFeedback, View} from 'react-native';
-import {ParamListBase} from '@react-navigation/native';
+import {Text, TouchableWithoutFeedback, View} from 'react-native';
+import {DrawerActions, ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
 import {MenuIcon, BasketIcon, ArrowBack, HeartIcon} from '../icons/icons';
@@ -19,17 +19,17 @@ const Header: React.FC<Props> = props => {
   return (
     <View style={styles.container}>
       {isMainPage ? (
-        <TouchableWithoutFeedback onPress={() => {}}>
-          <MenuIcon />
+        <TouchableWithoutFeedback
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+          {/* This View is needed for correct work of touchable component */}
+          <View>
+            <MenuIcon />
+          </View>
         </TouchableWithoutFeedback>
       ) : (
         <View style={styles.endIcons}>
-          <TouchableWithoutFeedback
-            onPress={function () {
-              console.log('back');
-              navigation.pop();
-            }}>
-            {/* This view is needed for correct work of touchable component */}
+          <TouchableWithoutFeedback onPress={() => navigation.pop()}>
+            {/* This View is needed for correct work of touchable component */}
             <View>
               <ArrowBack />
             </View>
