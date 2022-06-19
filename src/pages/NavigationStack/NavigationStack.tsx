@@ -8,12 +8,13 @@ import {
   MainScreenComponent,
   ProductDetailsComponent,
 } from '../pages';
-import {headerWrapper} from '../../components/components';
+import {headerWrapper, ModalWindow} from '../../components/components';
 
 export type RootStackParamList = {
   MainScreen: undefined;
   ProductDetails: {productId: string};
   DummyPage: undefined;
+  ModalWindow: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -47,6 +48,9 @@ const MainStackNavigator: React.FC = () => (
           }),
       })}
     />
+    <Stack.Group screenOptions={{presentation: 'modal'}}>
+      <Stack.Screen name="ModalWindow" component={ModalWindow} />
+    </Stack.Group>
   </Stack.Navigator>
 );
 
