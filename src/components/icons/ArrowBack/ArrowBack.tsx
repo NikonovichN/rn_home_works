@@ -1,7 +1,9 @@
 import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-function ArrowBack(props: any) {
+import iconWrapper from '../iconWrapper/iconWrapper';
+
+function Icon(props: any) {
   return (
     <Svg
       width={25}
@@ -20,4 +22,4 @@ function ArrowBack(props: any) {
   );
 }
 
-export default ArrowBack;
+export default iconWrapper(Icon);

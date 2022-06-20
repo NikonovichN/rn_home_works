@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
+import iconWrapper from '../iconWrapper/iconWrapper';
+
 const SearchIcon = (props: any) => (
   <Svg
     width={25}
@@ -15,4 +17,4 @@ const SearchIcon = (props: any) => (
   </Svg>
 );
 
-export default SearchIcon;
+export default iconWrapper(SearchIcon);

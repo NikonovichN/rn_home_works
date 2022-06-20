@@ -21,18 +21,12 @@ const Header: React.FC<Props> = props => {
       {isMainPage ? (
         <TouchableWithoutFeedback
           onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-          {/* This View is needed for correct work of touchable component */}
-          <View>
-            <MenuIcon />
-          </View>
+          <MenuIcon />
         </TouchableWithoutFeedback>
       ) : (
         <View style={styles.endIcons}>
           <TouchableWithoutFeedback onPress={() => navigation.pop()}>
-            {/* This View is needed for correct work of touchable component */}
-            <View>
-              <ArrowBack />
-            </View>
+            <ArrowBack />
           </TouchableWithoutFeedback>
         </View>
       )}
