@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {Colors, TextStyles} from '../../core/styles/styles';
+import {Colors} from '../../core/styles/styles';
 
 export default StyleSheet.create({
   modalContainer: {
@@ -18,5 +18,9 @@ export default StyleSheet.create({
     paddingHorizontal: 35,
   },
   description: {marginTop: 10},
-  actions: {marginTop: 25},
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 25,
+  },
 });

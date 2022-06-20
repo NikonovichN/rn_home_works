@@ -13,6 +13,8 @@ export default StyleSheet.create({
     marginRight: 5,
     marginTop: 10,
     backgroundColor: Colors.buttons.selectClear,
-    ...TextStyles.regular,
+  },
+  activeProperty: {
+    backgroundColor: Colors.buttons.selectedClear,
   },
 });

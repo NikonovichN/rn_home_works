@@ -51,4 +51,8 @@ const ButtonStyles = StyleSheet.create({
   },
 });
 
-export {CommonStyles, TextStyles, ButtonStyles};
+class Opacity {
+  static regularButton = 0.9;
+}
+
+export {CommonStyles, TextStyles, ButtonStyles, Opacity};

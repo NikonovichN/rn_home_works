@@ -21,12 +21,16 @@ const Header: React.FC<Props> = props => {
       {isMainPage ? (
         <TouchableWithoutFeedback
           onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-          <MenuIcon />
+          <View>
+            <MenuIcon />
+          </View>
         </TouchableWithoutFeedback>
       ) : (
         <View style={styles.endIcons}>
           <TouchableWithoutFeedback onPress={() => navigation.pop()}>
-            <ArrowBack />
+            <View>
+              <ArrowBack />
+            </View>
           </TouchableWithoutFeedback>
         </View>
       )}

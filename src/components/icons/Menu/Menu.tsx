@@ -1,9 +1,7 @@
 import React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-import iconWrapper from '../iconWrapper/iconWrapper';
-
-const MenuIcon = (props: any) => (
+const MenuIcon: React.FC = (props: any) => (
   <Svg
     width={25}
     height={25}
@@ -17,4 +15,4 @@ const MenuIcon = (props: any) => (
   </Svg>
 );
 
-export default iconWrapper(MenuIcon);
+export default MenuIcon;

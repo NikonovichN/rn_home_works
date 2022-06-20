@@ -1,4 +1,4 @@
-import {CommonStyles, TextStyles, ButtonStyles} from './CommonStyles';
+import {CommonStyles, TextStyles, ButtonStyles, Opacity} from './CommonStyles';
 import Colors from './ColorTokens';
 
-export {CommonStyles, TextStyles, ButtonStyles, Colors};
+export {CommonStyles, TextStyles, ButtonStyles, Colors, Opacity};

@@ -1,9 +1,7 @@
 import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-import iconWrapper from '../iconWrapper/iconWrapper';
-
-const HeartIcon = (props: any) => (
+const HeartIcon: React.FC = (props: any) => (
   <Svg
     width={25}
     height={25}
@@ -18,4 +16,4 @@ const HeartIcon = (props: any) => (
   </Svg>
 );
 
-export default iconWrapper(HeartIcon);
+export default HeartIcon;

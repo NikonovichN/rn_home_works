@@ -1,9 +1,7 @@
 import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-import iconWrapper from '../iconWrapper/iconWrapper';
-
-const BasketIcon = (props: any) => (
+const BasketIcon: React.FC = (props: any) => (
   <Svg
     width={25}
     height={25}
@@ -17,4 +15,4 @@ const BasketIcon = (props: any) => (
   </Svg>
 );
 
-export default iconWrapper(BasketIcon);
+export default BasketIcon;

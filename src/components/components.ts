@@ -5,6 +5,7 @@ import SearchBar from './SearchBar/SearchBar';
 import ProductCard from './ProductCard/ProductCard';
 import SelectProperty from './SelectProperty/SelectProperty';
 import ModalWindow from './ModalWindow/ModalWindow';
+import PrimaryButton from './PrimaryButton/PrimaryButton';
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   SelectProperty,
   headerWrapper,
   ModalWindow,
+  PrimaryButton,
 };

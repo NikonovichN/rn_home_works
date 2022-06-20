@@ -1,23 +1,22 @@
-import React from 'react';
-import {
-  ScrollView,
-  Image,
-  Text,
-  View,
-  TouchableOpacity,
-  RefreshControl,
-} from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, Image, Text, View, RefreshControl} from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Loading, SelectProperty} from '../../components/components';
-import {ButtonStyles, Colors, TextStyles} from '../../core/styles/styles';
+import {
+  Loading,
+  PrimaryButton,
+  SelectProperty,
+} from '../../components/components';
+import {Colors, TextStyles} from '../../core/styles/styles';
+import {navigateToSelectProperty} from '../ModalWindows/ModalWindows';
 
 import {PropsFromRedux} from './ProductDetailsComponent';
 import styles from './styles';
 
 const ProductDetails: React.FC<PropsFromRedux> = props => {
-  const {isLoading, product, onRefresh} = props;
+  const {isLoading, product, onRefresh, navigation} = props;
   const insets = useSafeAreaInsets();
+  const [activeProperty, setActiveProperty] = useState<string | null>(null);
 
   return (
     <>
@@ -45,6 +44,8 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
             </Text>
             <SelectProperty
               properties={product.properties.map(value => value.id.toString())}
+              activeProperty={activeProperty}
+              onPress={setActiveProperty}
             />
             <View style={styles.divider} />
             <Text style={[TextStyles.sectionTitle, styles.marginTop15]}>
@@ -53,13 +54,16 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
             <Text style={[TextStyles.regular, styles.marginTop10]}>
               {product.description}
             </Text>
-            <TouchableOpacity
-              style={[ButtonStyles.primary, styles.marginTop15]}
-              activeOpacity={0.9}>
-              <Text style={TextStyles.buttonRegular}>
-                {'Add to cart'.toUpperCase()}
-              </Text>
-            </TouchableOpacity>
+            <View style={styles.marginTop15}>
+              <PrimaryButton
+                content="Add to cart"
+                onPress={() => {
+                  if (activeProperty == null) {
+                    navigateToSelectProperty({navigation});
+                  }
+                }}
+              />
+            </View>
             <View style={{height: insets.bottom}} />
           </ScrollView>
         </>

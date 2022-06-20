@@ -7,12 +7,23 @@ import {getProductDetails} from '../../core/actions/productDetailsActions';
 import {AppState} from '../../core/reducers/rootReducer';
 
 import ProductDetails from './ProductDetails';
-import {RootStackParamList} from '../../../App';
+import {RootStackParamList} from '../../pages/NavigationStack/types';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack/lib/typescript/src/types';
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (
+  state: AppState,
+  props: {
+    navigation: NativeStackNavigationProp<any, any>;
+    route: RouteProp<RootStackParamList, 'ProductDetails'>;
+  },
+) => ({
   isLoading: state.productDetails.isLoading,
   error: state.productDetails.error,
   product: state.productDetails.productDetails,
+  navigation: props.navigation,
 });
 
 function mapDispatchToProps(

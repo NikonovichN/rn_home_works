@@ -22,6 +22,7 @@ export default class Colors {
 
   static buttons = {
     selectClear: '#F7F7F7',
+    selectedClear: '#5C5346',
     primary: '#008ACE',
   };
 }

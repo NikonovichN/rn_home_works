@@ -9,17 +9,7 @@ import {
   ProductDetailsComponent,
 } from '../pages';
 import {headerWrapper, ModalWindow} from '../../components/components';
-
-export type RootStackParamList = {
-  MainScreen: undefined;
-  ProductDetails: {productId: string};
-  DummyPage: undefined;
-  ModalWindow: {
-    title: React.ReactNode;
-    description?: React.ReactNode;
-    actions: React.ReactNode;
-  };
-};
+import {RootStackParamList} from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

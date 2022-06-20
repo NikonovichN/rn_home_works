@@ -1,9 +1,7 @@
 import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-import iconWrapper from '../iconWrapper/iconWrapper';
-
-function SvgComponent(props: any) {
+const Warning: React.FC = (props: any) => {
   return (
     <Svg
       width={65}
@@ -18,6 +16,6 @@ function SvgComponent(props: any) {
       />
     </Svg>
   );
-}
+};
 
-export default iconWrapper(SvgComponent);
+export default Warning;
