@@ -14,7 +14,11 @@ export type RootStackParamList = {
   MainScreen: undefined;
   ProductDetails: {productId: string};
   DummyPage: undefined;
-  ModalWindow: undefined;
+  ModalWindow: {
+    title: React.ReactNode;
+    description?: React.ReactNode;
+    actions: React.ReactNode;
+  };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -48,7 +52,8 @@ const MainStackNavigator: React.FC = () => (
           }),
       })}
     />
-    <Stack.Group screenOptions={{presentation: 'modal'}}>
+    <Stack.Group
+      screenOptions={{presentation: 'transparentModal', header: clearHeader}}>
       <Stack.Screen name="ModalWindow" component={ModalWindow} />
     </Stack.Group>
   </Stack.Navigator>
