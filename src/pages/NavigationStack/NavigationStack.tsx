@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
   DummyPage,
+  LogIn,
   MainScreenComponent,
   ProductDetailsComponent,
 } from '../pages';
@@ -18,7 +19,7 @@ const Drawer = createDrawerNavigator();
 const clearHeader = () => null;
 
 const MainStackNavigator: React.FC = () => (
-  <Stack.Navigator initialRouteName="MainScreen">
+  <Stack.Navigator initialRouteName="LogIn">
     <Stack.Screen
       name="MainScreen"
       component={MainScreenComponent}
@@ -41,6 +42,11 @@ const MainStackNavigator: React.FC = () => (
             title: 'Product Details',
           }),
       })}
+    />
+    <Stack.Screen
+      name="LogIn"
+      component={LogIn}
+      options={() => ({header: clearHeader})}
     />
     <Stack.Group
       screenOptions={{presentation: 'transparentModal', header: clearHeader}}>

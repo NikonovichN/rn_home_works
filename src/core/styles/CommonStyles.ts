@@ -16,6 +16,11 @@ const CommonStyles = StyleSheet.create({
 });
 
 const TextStyles = StyleSheet.create({
+  small: {
+    fontSize: 12,
+    fontWeight: '400',
+    color: Colors.text.primary,
+  },
   regular: {
     fontSize: 15,
     fontWeight: '400',
@@ -36,6 +41,12 @@ const TextStyles = StyleSheet.create({
     fontWeight: '500',
     letterSpacing: 1.25,
     color: Colors.text.onSurfacePrimary,
+  },
+  heading: {
+    fontSize: 40,
+    fontWeight: '700',
+    lineHeight: 50,
+    color: Colors.text.accent,
   },
 });
 

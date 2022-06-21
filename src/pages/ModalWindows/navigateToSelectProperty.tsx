@@ -5,6 +5,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/type
 
 import styles from './styles';
 import {PrimaryButton} from '../../components/components';
+import {Decline} from '../../components/icons/icons';
 
 interface Params {
   navigation: NativeStackNavigationProp<any, any>;
@@ -12,10 +13,11 @@ interface Params {
 
 const navigateToSelectProperty = ({navigation}: Params) => {
   navigation.navigate('ModalWindow', {
+    icon: <Decline />,
     title: <Text style={styles.modalTitle}>Select property</Text>,
     description: (
       <Text style={styles.modalDescription}>
-        Please select your color to add this item in your cart
+        Please select your property to add this item in your cart
       </Text>
     ),
     actions: (

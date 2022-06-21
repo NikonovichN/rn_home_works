@@ -21,7 +21,7 @@ interface Props {
 const ModalWindow: React.FC<Props> = props => {
   const {
     route: {
-      params: {title, description, actions},
+      params: {icon, title, description, actions},
     },
   } = props;
 
@@ -29,6 +29,7 @@ const ModalWindow: React.FC<Props> = props => {
     <View style={styles.modalContainer}>
       <TouchableWithoutFeedback>
         <View style={styles.contentContainer}>
+          {icon}
           {title}
           {description !== null ? <View>{description}</View> : null}
           <View style={styles.actions}>{actions}</View>

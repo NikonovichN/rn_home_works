@@ -8,10 +8,7 @@ import {AppState} from '../../core/reducers/rootReducer';
 
 import ProductDetails from './ProductDetails';
 import {RootStackParamList} from '../../pages/NavigationStack/types';
-import {
-  NativeStackNavigationProp,
-  NativeStackScreenProps,
-} from '@react-navigation/native-stack/lib/typescript/src/types';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
 const mapStateToProps = (
   state: AppState,

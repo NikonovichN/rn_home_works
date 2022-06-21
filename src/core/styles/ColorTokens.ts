@@ -14,6 +14,7 @@ export default class Colors {
     primary: '#4A4A4A',
     onSurfacePrimary: '#FFFFFF',
     secondary: Colors.grey,
+    accent: '#00A8F3',
   };
 
   static border = {

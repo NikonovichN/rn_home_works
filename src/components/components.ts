@@ -6,6 +6,7 @@ import ProductCard from './ProductCard/ProductCard';
 import SelectProperty from './SelectProperty/SelectProperty';
 import ModalWindow from './ModalWindow/ModalWindow';
 import PrimaryButton from './PrimaryButton/PrimaryButton';
+import TextInputStore from './TextInputStore/TextInputStore';
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   headerWrapper,
   ModalWindow,
   PrimaryButton,
+  TextInputStore,
 };

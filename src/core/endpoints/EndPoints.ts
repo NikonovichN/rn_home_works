@@ -5,6 +5,16 @@ export class EndPoints {
     return `/api/v2/storefront/products/${productId}`;
   }
 
+  static mockBaseUrl: string =
+    'https://stoplight.io/mocks/spark-solutions/api-v2/3124958';
+  static token: string = '/spree_oauth/token';
+
+  static mockBaseUserUrl: string =
+    'https://stoplight.io/mocks/spark-solutions/api-v2/8739189';
+  static user(userId: string): string {
+    return `/api/v2/platform/users/${userId}`;
+  }
+
   static baseImagesUrl: string = 'https://api.thecatapi.com';
   static imagesUrl: string = '/v1/images/search';
 }
