@@ -6,6 +6,8 @@ import ArrowBack from './ArrowBack/ArrowBack';
 import Decline from './Decline/Decline';
 import Success from './Success/Success';
 import Warning from './Warning/Warning';
+import Avatar from './Avatar/Avatar';
+import BigBox from './BigBox/BigBox';
 
 export {
   BasketIcon,
@@ -16,4 +18,6 @@ export {
   Decline,
   Success,
   Warning,
+  Avatar,
+  BigBox,
 };
