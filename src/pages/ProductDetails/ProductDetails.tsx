@@ -14,7 +14,7 @@ import {PropsFromRedux} from './ProductDetailsComponent';
 import styles from './styles';
 
 const ProductDetails: React.FC<PropsFromRedux> = props => {
-  const {isLoading, product, onRefresh, navigation} = props;
+  const {isLoading, product, onRefresh, navigation, addToCart} = props;
   const insets = useSafeAreaInsets();
   const [activeProperty, setActiveProperty] = useState<string | null>(null);
 
@@ -60,6 +60,8 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
                 onPress={() => {
                   if (activeProperty == null) {
                     navigateToSelectProperty({navigation});
+                  } else {
+                    addToCart(activeProperty);
                   }
                 }}
               />

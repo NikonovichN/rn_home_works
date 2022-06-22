@@ -15,6 +15,10 @@ export class EndPoints {
     return `/api/v2/platform/users/${userId}`;
   }
 
+  static mockBaseAddCartUrl: string =
+    'https://stoplight.io/mocks/spark-solutions/api-v2/3124960';
+  static addToCart: string = '/api/v2/storefront/cart/add_item';
+
   static baseImagesUrl: string = 'https://api.thecatapi.com';
   static imagesUrl: string = '/v1/images/search';
 }

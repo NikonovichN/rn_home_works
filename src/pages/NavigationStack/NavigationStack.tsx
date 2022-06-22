@@ -19,7 +19,7 @@ const Drawer = createDrawerNavigator();
 const clearHeader = () => null;
 
 const MainStackNavigator: React.FC = () => (
-  <Stack.Navigator initialRouteName="LogIn">
+  <Stack.Navigator initialRouteName="MainScreen">
     <Stack.Screen
       name="MainScreen"
       component={MainScreenComponent}

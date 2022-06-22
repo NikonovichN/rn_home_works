@@ -17,6 +17,10 @@ export default StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 35,
   },
+  iconView: {
+    alignItems: 'center',
+    paddingBottom: 15,
+  },
   description: {marginTop: 10},
   actions: {
     flexDirection: 'row',

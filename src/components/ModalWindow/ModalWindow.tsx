@@ -29,9 +29,11 @@ const ModalWindow: React.FC<Props> = props => {
     <View style={styles.modalContainer}>
       <TouchableWithoutFeedback>
         <View style={styles.contentContainer}>
-          {icon}
+          <View style={styles.iconView}>{icon}</View>
           {title}
-          {description !== null ? <View>{description}</View> : null}
+          {description !== null ? (
+            <View style={styles.description}>{description}</View>
+          ) : null}
           <View style={styles.actions}>{actions}</View>
         </View>
       </TouchableWithoutFeedback>
