@@ -2,7 +2,6 @@ import {RouteProp} from '@react-navigation/core/lib/typescript/src/types';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 import {connect, ConnectedProps} from 'react-redux';
 import {Dispatch} from 'redux';
-import {AnyActionTypes} from '../../core/actions/AnyActionTypes';
 
 import {userLogIn} from '../../core/actions/userActions';
 import {UserLoginTypes} from '../../core/actions/userTypes';

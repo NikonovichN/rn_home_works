@@ -8,6 +8,7 @@ export type RootStackParamList = {
   LogIn: {
     action?: AnyActionTypes;
   };
+  Cart: any;
   ModalWindow: {
     icon: ReactNode;
     title: ReactNode;

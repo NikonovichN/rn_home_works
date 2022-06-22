@@ -4,6 +4,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
+  Cart,
   DummyPage,
   LogIn,
   MainScreenComponent,
@@ -11,6 +12,11 @@ import {
 } from '../pages';
 import {headerWrapper, ModalWindow} from '../../components/components';
 import {RootStackParamList} from './types';
+import {
+  CartHeader,
+  MainHeader,
+  ProductHeader,
+} from '../../components/Headers/Headers';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,9 +32,9 @@ const MainStackNavigator: React.FC = () => (
       options={() => ({
         header: ({navigation}) =>
           headerWrapper({
+            Component: MainHeader,
             navigation,
             title: 'Ecommerce Store',
-            isMainPage: true,
           }),
       })}
     />
@@ -38,6 +44,7 @@ const MainStackNavigator: React.FC = () => (
       options={() => ({
         header: ({navigation}) =>
           headerWrapper({
+            Component: ProductHeader,
             navigation,
             title: 'Product Details',
           }),
@@ -47,6 +54,18 @@ const MainStackNavigator: React.FC = () => (
       name="LogIn"
       component={LogIn}
       options={() => ({header: clearHeader})}
+    />
+    <Stack.Screen
+      name="Cart"
+      component={Cart}
+      options={() => ({
+        header: ({navigation}) =>
+          headerWrapper({
+            Component: CartHeader,
+            navigation,
+            title: 'My Cart',
+          }),
+      })}
     />
     <Stack.Group
       screenOptions={{presentation: 'transparentModal', header: clearHeader}}>
@@ -63,9 +82,9 @@ const DummyStackNavigatorOne: React.FC = () => (
       options={() => ({
         header: ({navigation}) =>
           headerWrapper({
+            Component: MainHeader,
             navigation,
             title: 'Dummy Page Stack 2',
-            isMainPage: true,
           }),
       })}
     />
@@ -80,9 +99,9 @@ const DummyStackNavigatorTwo: React.FC = () => (
       options={() => ({
         header: ({navigation}) =>
           headerWrapper({
+            Component: MainHeader,
             navigation,
             title: 'Dummy Page Stack 2',
-            isMainPage: true,
           }),
       })}
     />

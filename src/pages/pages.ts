@@ -3,6 +3,7 @@ import ProductDetailsComponent from './ProductDetails/ProductDetailsComponent';
 import DummyPage from './DummyPage/DummyPage';
 import DrawerNavigator from './NavigationStack/NavigationStack';
 import LogIn from './LogIn/LogInComponent';
+import Cart from './Cart/CartComponent';
 
 export {
   MainScreenComponent,
@@ -10,4 +11,5 @@ export {
   DummyPage,
   DrawerNavigator,
   LogIn,
+  Cart,
 };
