@@ -26,6 +26,11 @@ const TextStyles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.text.primary,
   },
+  regularSecondary: {
+    fontSize: 15,
+    fontWeight: '400',
+    color: Colors.text.secondary,
+  },
   regularBold: {
     fontSize: 15,
     fontWeight: '700',
@@ -35,6 +40,11 @@ const TextStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     color: Colors.text.primary,
+  },
+  secondaryTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: Colors.grey,
   },
   buttonRegular: {
     fontSize: 15,
@@ -47,6 +57,12 @@ const TextStyles = StyleSheet.create({
     fontWeight: '700',
     lineHeight: 50,
     color: Colors.text.accent,
+  },
+  smallSuccess: {
+    fontSize: 12,
+    lineHeight: 12,
+    fontWeight: '400',
+    color: Colors.text.accentGreen,
   },
 });
 

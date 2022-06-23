@@ -15,10 +15,12 @@ export default class Colors {
     onSurfacePrimary: '#FFFFFF',
     secondary: Colors.grey,
     accent: '#00A8F3',
+    accentGreen: '#A5DC86',
   };
 
   static border = {
     primary: Colors.grey,
+    light: '#D3D3D3',
   };
 
   static buttons = {

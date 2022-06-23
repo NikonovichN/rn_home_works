@@ -1,14 +1,22 @@
 import React from 'react';
-import {View} from 'react-native';
 
 import {FirstLogin} from '../../components/components';
 
 import {PropsFromRedux} from './CartComponent';
+import {ContentCart, EmptyCart} from './components/components';
 
 const Cart: React.FC<PropsFromRedux> = props => {
-  const {isLogged} = props;
+  const {isLogged, navigation, cartData} = props;
 
-  return isLogged ? <View></View> : <FirstLogin onPressLogIn={() => {}} />;
+  if (!isLogged) {
+    return <FirstLogin onPressLogIn={() => navigation.navigate('LogIn')} />;
+  }
+
+  return cartData ? (
+    <ContentCart data={cartData.attributes} />
+  ) : (
+    <EmptyCart shopNow={() => navigation.navigate('MainScreen')} />
+  );
 };
 
 export default Cart;

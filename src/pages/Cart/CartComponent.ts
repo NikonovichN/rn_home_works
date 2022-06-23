@@ -13,6 +13,7 @@ interface Props {
 function mapStateToProps(state: AppState, props: Props) {
   return {
     isLogged: state.profile.isLogged,
+    cartData: state.cart.data,
     navigation: props.navigation,
   };
 }

@@ -27,7 +27,7 @@ function mapStateToProps(state: AppState, props: Props) {
 function mapDispatchToProps(dispatch: Dispatch<UserLoginTypes>, props: Props) {
   return {
     logIn: (credentials: UserCredentials) =>
-      dispatch(userLogIn(credentials, props.route.params.action)),
+      dispatch(userLogIn(credentials, props.route.params?.action)),
   };
 }
 
