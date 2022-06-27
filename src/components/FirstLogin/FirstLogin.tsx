@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import {PrimaryButton} from '../PrimaryButton';
-import {Colors, TextStyles} from '../../core/styles';
+import {Colors, TextStyles} from '@styles';
 import {Avatar} from '../icons/icons';
 
 type Props = {

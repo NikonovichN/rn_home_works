@@ -16,7 +16,7 @@ import {
   MainHeader,
   ProductHeader,
   CartHeader,
-} from '../../components';
+} from '@components';
 import {RootStackParamList} from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

@@ -3,8 +3,8 @@ import {FlatList, RefreshControl, StyleSheet} from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {Loading, ProductCard, SearchBar} from '../../components';
-import {Colors} from '../../core/styles';
+import {Loading, ProductCard, SearchBar} from '@components';
+import {Colors} from '@styles';
 
 import {PropsFromRedux} from './MainScreenComponent';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, TextInputProps, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 
-import {Colors, TextStyles} from '../../core/styles';
+import {Colors, TextStyles} from '@styles';
 
 type Props = {
   label: string;

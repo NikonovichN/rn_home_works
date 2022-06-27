@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 
-import {ButtonStyles, Opacity, TextStyles} from '../../core/styles';
+import {ButtonStyles, Opacity, TextStyles} from '@styles';
 
 type Props = {
   width?: number;

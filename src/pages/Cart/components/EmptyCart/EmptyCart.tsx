@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import {PrimaryButton} from '../../../../components';
-import {BigBox} from '../../../../components/icons/icons';
-import {Colors, TextStyles} from '../../../../core/styles';
+import {PrimaryButton} from '@components';
+import {BigBox} from '@components/icons/icons';
+import {Colors, TextStyles} from '@styles';
 
 type Props = {
   shopNow(): void;

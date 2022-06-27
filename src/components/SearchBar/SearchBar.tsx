@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 
-import {Colors, CommonStyles} from '../../core/styles';
+import {Colors, CommonStyles} from '@styles';
 import {SearchIcon} from '../icons/icons';
 
 const SearchBar: React.FC = () => {

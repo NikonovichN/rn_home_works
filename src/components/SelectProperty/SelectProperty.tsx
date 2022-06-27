@@ -2,8 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-import {Colors} from '../../core/styles';
-import {Opacity, TextStyles} from '../../core/styles/CommonStyles';
+import {Colors, Opacity, TextStyles} from '@styles';
 
 type Props = {
   properties: string[];

@@ -3,7 +3,7 @@ import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import {RouteProp} from '@react-navigation/core/lib/typescript/src/types';
 
 import {RootStackParamList} from '../../pages/NavigationStack/types';
-import {Colors} from '../../core/styles';
+import {Colors} from '@styles';
 
 type Props = {
   route: RouteProp<RootStackParamList, 'ModalWindow'>;

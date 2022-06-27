@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import {Product} from '../../core/entities/ProductList';
-import {CommonStyles, Colors} from '../../core/styles';
+import {CommonStyles, Colors} from '@styles';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const NUMBER_OF_COLUMN = 2;

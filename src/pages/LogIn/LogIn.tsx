@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import {Loading, PrimaryButton, TextInputStore} from '../../components';
-import {Colors, TextStyles} from '../../core/styles';
+import {Loading, PrimaryButton, TextInputStore} from '@components';
+import {Colors, TextStyles} from '@styles';
 
 import {PropsFromRedux} from './LogInComponent';
 

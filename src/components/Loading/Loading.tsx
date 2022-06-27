@@ -1,7 +1,7 @@
 import React from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
-import {Colors} from '../../core/styles';
+import {Colors} from '@styles';
 
 const Loading: React.FC = () => {
   return (

@@ -2,10 +2,10 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {noop} from 'lodash';
 
-import {PrimaryButton} from '../../../../components';
-import {SafeGuard} from '../../../../components/icons/icons';
+import {PrimaryButton} from '@components';
+import {SafeGuard} from '@components/icons/icons';
 import {CartAttributes} from '../../../../core/entities';
-import {CommonStyles, TextStyles, Colors} from '../../../../core/styles';
+import {CommonStyles, TextStyles, Colors} from '@styles';
 
 interface ContentCartProps {
   data: CartAttributes;

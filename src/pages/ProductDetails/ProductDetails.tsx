@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Loading, PrimaryButton, SelectProperty} from '../../components';
-import {ButtonStyles, Colors, TextStyles} from '../../core/styles';
+import {Loading, PrimaryButton, SelectProperty} from '@components';
+import {ButtonStyles, Colors, TextStyles} from '@styles';
 import {navigateToSelectProperty} from '../ModalWindows';
 
 import {PropsFromRedux} from './ProductDetailsComponent';

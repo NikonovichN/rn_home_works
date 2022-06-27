@@ -12,8 +12,13 @@
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "paths": {
+      "@styles": ["./src/core/styles/index"],
+      "@components": ["./src/components/index"]
+    }
   },
+  "include": ["./src/**/*"],
   "exclude": [
     "node_modules",
     "babel.config.js",
