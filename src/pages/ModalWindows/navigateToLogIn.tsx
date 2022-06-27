@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
 import styles from './styles';
 import {PrimaryButton} from '@components';
-import {Warning} from '../../components/icons/icons';
+import {WarningIcon} from '@icons';
 import {AnyActionTypes} from '../../core/actions/AnyActionTypes';
 
 type Params = {
@@ -15,7 +15,7 @@ type Params = {
 
 const navigateToLogIn = ({navigation, action}: Params) => {
   navigation.navigate('ModalWindow', {
-    icon: <Warning />,
+    icon: <WarningIcon />,
     title: <Text style={styles.modalTitle}>Login To Continue</Text>,
     description: (
       <Text style={styles.modalDescription}>

@@ -5,7 +5,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/type
 
 import styles from './styles';
 import {PrimaryButton} from '@components';
-import {Decline} from '../../components/icons/icons';
+import {DeclineIcon} from '@icons';
 
 type Params = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -13,7 +13,7 @@ type Params = {
 
 const navigateToSelectProperty = ({navigation}: Params) => {
   navigation.navigate('ModalWindow', {
-    icon: <Decline />,
+    icon: <DeclineIcon />,
     title: <Text style={styles.modalTitle}>Select property</Text>,
     description: (
       <Text style={styles.modalDescription}>

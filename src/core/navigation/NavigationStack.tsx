@@ -9,7 +9,7 @@ import {
   LoginComponent,
   MainScreenComponent,
   ProductDetailsComponent,
-} from '../pages';
+} from '@pages';
 import {
   headerWrapper,
   ModalWindow,
@@ -129,4 +129,4 @@ const DrawerNavigator: React.FC = () => (
   </Drawer.Navigator>
 );
 
-export default DrawerNavigator;
+export {DrawerNavigator};

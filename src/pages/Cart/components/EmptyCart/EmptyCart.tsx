@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 import {PrimaryButton} from '@components';
-import {BigBox} from '@components/icons/icons';
+import {BigBoxIcon} from '@icons';
 import {Colors, TextStyles} from '@styles';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 const EmptyCart: React.FC<Props> = props => {
   return (
     <View style={styles.container}>
-      <BigBox />
+      <BigBoxIcon />
       <Text style={styles.title}>Your Cart is Empty!</Text>
       <Text style={TextStyles.regularSecondary}>
         Add product in your cart now

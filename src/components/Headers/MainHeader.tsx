@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, TouchableWithoutFeedback, View} from 'react-native';
 import {DrawerActions} from '@react-navigation/native';
 
-import {MenuIcon, BasketIcon} from '../icons/icons';
+import {MenuIcon, BasketIcon} from '@icons';
 
 import {styles} from './styles';
 import {HeaderProps} from './headerTypes';

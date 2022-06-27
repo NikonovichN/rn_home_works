@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableWithoutFeedback, View} from 'react-native';
 
-import {BasketIcon, ArrowBack, HeartIcon} from '../icons/icons';
+import {BasketIcon, ArrowBackIcon, HeartIcon} from '@icons';
 
 import {styles} from './styles';
 import {HeaderProps} from './headerTypes';
@@ -14,7 +14,7 @@ const ProductHeader: React.FC<HeaderProps> = props => {
       <View style={styles.endIcons}>
         <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
           <View>
-            <ArrowBack />
+            <ArrowBackIcon />
           </View>
         </TouchableWithoutFeedback>
       </View>

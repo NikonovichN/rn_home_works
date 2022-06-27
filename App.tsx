@@ -7,7 +7,7 @@ import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 import shopStore from './src/core/store/store';
 import {Colors} from './src/core/styles';
-import {DrawerNavigator} from './src/pages/pages';
+import {DrawerNavigator} from './src/core/navigation';
 
 const store = shopStore();
 

@@ -3,7 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 
 import {PrimaryButton} from '../PrimaryButton';
 import {Colors, TextStyles} from '@styles';
-import {Avatar} from '../icons/icons';
+import {AvatarIcon} from '@icons';
 
 type Props = {
   onPressLogIn(): void;
@@ -12,7 +12,7 @@ type Props = {
 const FirstLogin: React.FC<Props> = props => {
   return (
     <View style={styles.container}>
-      <Avatar />
+      <AvatarIcon />
       <Text style={styles.title}>First Login</Text>
       <Text style={TextStyles.regularSecondary}>
         Login first to view your cart

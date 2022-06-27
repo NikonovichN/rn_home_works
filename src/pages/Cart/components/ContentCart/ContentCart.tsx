@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {noop} from 'lodash';
 
 import {PrimaryButton} from '@components';
-import {SafeGuard} from '@components/icons/icons';
+import {SafeGuardIcon} from '@icons';
 import {CartAttributes} from '../../../../core/entities';
 import {CommonStyles, TextStyles, Colors} from '@styles';
 
@@ -47,7 +47,7 @@ const ContentCart: React.FC<ContentCartProps> = props => {
           </View>
         </View>
         <View style={styles.safeInfoContainer}>
-          <SafeGuard />
+          <SafeGuardIcon />
           <Text style={[TextStyles.smallSuccess, styles.safeGuardText]}>
             Safe and Secure Payments 100% Authentic Products
           </Text>

@@ -15,7 +15,9 @@
     "target": "esnext",
     "paths": {
       "@styles": ["./src/core/styles/index"],
-      "@components": ["./src/components/index"]
+      "@components": ["./src/components/index"],
+      "@icons": ["./src/assets/icons/index"],
+      "@pages": ["./src/pages/index"],
     }
   },
   "include": ["./src/**/*"],

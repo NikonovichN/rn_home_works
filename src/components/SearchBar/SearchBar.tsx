@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 
 import {Colors, CommonStyles} from '@styles';
-import {SearchIcon} from '../icons/icons';
+import {SearchIcon} from '@icons';
 
 const SearchBar: React.FC = () => {
   return (

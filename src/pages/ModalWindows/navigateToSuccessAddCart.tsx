@@ -5,7 +5,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/type
 
 import styles from './styles';
 import {PrimaryButton} from '@components';
-import {Success} from '../../components/icons/icons';
+import {SuccessIcon} from '@icons';
 
 type Params = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -13,7 +13,7 @@ type Params = {
 
 const navigateToSuccessAddCart = ({navigation}: Params) => {
   navigation.navigate('ModalWindow', {
-    icon: <Success />,
+    icon: <SuccessIcon />,
     title: <Text style={styles.modalTitle}>Product added to your cart</Text>,
     description: null,
     actions: (
