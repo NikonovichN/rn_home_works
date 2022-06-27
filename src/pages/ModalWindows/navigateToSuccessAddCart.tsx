@@ -5,7 +5,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/type
 
 import styles from './styles';
 import {PrimaryButton} from '../../components/components';
-import {Decline, Success} from '../../components/icons/icons';
+import {Success} from '../../components/icons/icons';
 
 type Params = {
   navigation: NativeStackNavigationProp<any, any>;

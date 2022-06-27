@@ -1,10 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import {noop} from 'lodash';
+
 import {PrimaryButton} from '../../../../components/components';
 import {SafeGuard} from '../../../../components/icons/icons';
-
 import {CartAttributes} from '../../../../core/entities/Cart';
 import {TextStyles} from '../../../../core/styles/CommonStyles';
+
 import styles from './styles';
 
 interface ContentCartProps {
@@ -53,7 +55,7 @@ const ContentCart: React.FC<ContentCartProps> = props => {
           </Text>
         </View>
       </View>
-      <PrimaryButton onPress={() => {}} content="proceed to payment" />
+      <PrimaryButton onPress={noop} content="proceed to payment" />
     </View>
   );
 };
