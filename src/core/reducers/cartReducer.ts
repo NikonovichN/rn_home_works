@@ -3,8 +3,8 @@ import {
   createCartTypes,
   deleteCartTypes,
   getCartTypes,
-} from '../actions/cart/cart';
-import {Cart} from '../entities/Cart';
+} from '../actions/cart';
+import {Cart} from '../entities';
 
 export interface CartState {
   data: Cart | null;

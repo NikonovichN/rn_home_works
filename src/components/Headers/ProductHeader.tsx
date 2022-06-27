@@ -3,7 +3,7 @@ import {Text, TouchableWithoutFeedback, View} from 'react-native';
 
 import {BasketIcon, ArrowBack, HeartIcon} from '../icons/icons';
 
-import styles from './styles';
+import {styles} from './styles';
 import {HeaderProps} from './headerTypes';
 
 const ProductHeader: React.FC<HeaderProps> = props => {
@@ -31,4 +31,4 @@ const ProductHeader: React.FC<HeaderProps> = props => {
   );
 };
 
-export default ProductHeader;
+export {ProductHeader};

@@ -4,7 +4,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/type
 
 import {AppState} from '../../core/reducers/rootReducer';
 
-import Cart from './Cart';
+import {Cart} from './Cart';
 
 type Props = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -22,4 +22,4 @@ const connector = connect(mapStateToProps, () => ({}));
 
 export type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export default connector(Cart);
+export const CartComponent = connector(Cart);

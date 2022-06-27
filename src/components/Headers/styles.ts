@@ -1,8 +1,8 @@
 import {StyleSheet} from 'react-native';
 
-import {Colors, CommonStyles} from '../../core/styles/styles';
+import {Colors, CommonStyles} from '../../core/styles';
 
-export default StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     height: 55,
     padding: 16,

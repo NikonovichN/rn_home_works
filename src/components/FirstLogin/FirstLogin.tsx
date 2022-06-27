@@ -1,10 +1,9 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {TextStyles} from '../../core/styles/styles';
-import {PrimaryButton} from '../components';
+import {View, Text, StyleSheet} from 'react-native';
 
+import {PrimaryButton} from '../PrimaryButton';
+import {Colors, TextStyles} from '../../core/styles';
 import {Avatar} from '../icons/icons';
-import styles from './styles';
 
 type Props = {
   onPressLogIn(): void;
@@ -25,4 +24,23 @@ const FirstLogin: React.FC<Props> = props => {
   );
 };
 
-export default FirstLogin;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.white,
+  },
+  title: {
+    ...TextStyles.secondaryTitle,
+    marginTop: 15,
+    marginBottom: 5,
+  },
+  buttonContainer: {
+    width: '100%',
+    marginTop: 35,
+  },
+});
+
+export {FirstLogin};

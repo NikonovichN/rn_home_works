@@ -3,7 +3,7 @@ import {Text, TouchableWithoutFeedback, View} from 'react-native';
 
 import {ArrowBack} from '../icons/icons';
 
-import styles from './styles';
+import {styles} from './styles';
 import {HeaderProps} from './headerTypes';
 
 const CartHeader: React.FC<HeaderProps> = props => {
@@ -24,4 +24,4 @@ const CartHeader: React.FC<HeaderProps> = props => {
   );
 };
 
-export default CartHeader;
+export {CartHeader};

@@ -3,8 +3,8 @@ import {call, put, takeEvery} from 'redux-saga/effects';
 import * as actions from '../actions/userActions';
 import * as actionTypes from '../actions/userTypes';
 
-import {UserConverter} from '../convertor/UserConverter';
-import {createOrRefreshToken, fetchUser} from '../services/services';
+import {UserConverter} from '../converters/UserConverter';
+import {createOrRefreshToken, fetchUser} from '../services';
 
 interface Data {
   data: {};

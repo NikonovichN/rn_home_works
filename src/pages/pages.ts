@@ -1,15 +1,16 @@
-import MainScreenComponent from './MainScreen/MainScreenComponent';
-import ProductDetailsComponent from './ProductDetails/ProductDetailsComponent';
-import DummyPage from './DummyPage/DummyPage';
+import {MainScreenComponent} from './MainScreen';
+import {ProductDetailsComponent} from './ProductDetails';
+import {DummyPage} from './DummyPage/DummyPage';
+import {LoginComponent} from './LogIn';
+import {CartComponent} from './Cart';
+
 import DrawerNavigator from './NavigationStack/NavigationStack';
-import LogIn from './LogIn/LogInComponent';
-import Cart from './Cart/CartComponent';
 
 export {
   MainScreenComponent,
   ProductDetailsComponent,
   DummyPage,
   DrawerNavigator,
-  LogIn,
-  Cart,
+  LoginComponent,
+  CartComponent,
 };

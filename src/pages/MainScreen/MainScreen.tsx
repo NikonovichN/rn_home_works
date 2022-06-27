@@ -1,13 +1,12 @@
 import React from 'react';
-import {FlatList, RefreshControl} from 'react-native';
+import {FlatList, RefreshControl, StyleSheet} from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {Loading, ProductCard, SearchBar} from '../../components/components';
-import {Colors} from '../../core/styles/styles';
+import {Loading, ProductCard, SearchBar} from '../../components';
+import {Colors} from '../../core/styles';
 
 import {PropsFromRedux} from './MainScreenComponent';
-import styles from './styles';
 
 const MainScreen: React.FC<PropsFromRedux> = props => {
   const {isLoading, products, navigation, onRefresh} = props;
@@ -47,4 +46,11 @@ const MainScreen: React.FC<PropsFromRedux> = props => {
   );
 };
 
-export default MainScreen;
+const styles = StyleSheet.create({
+  flatList: {
+    padding: 10,
+    backgroundColor: Colors.white,
+  },
+});
+
+export {MainScreen};

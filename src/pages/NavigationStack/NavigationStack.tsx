@@ -4,19 +4,20 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
-  Cart,
+  CartComponent,
   DummyPage,
-  LogIn,
+  LoginComponent,
   MainScreenComponent,
   ProductDetailsComponent,
 } from '../pages';
-import {headerWrapper, ModalWindow} from '../../components/components';
-import {RootStackParamList} from './types';
 import {
-  CartHeader,
+  headerWrapper,
+  ModalWindow,
   MainHeader,
   ProductHeader,
-} from '../../components/Headers/Headers';
+  CartHeader,
+} from '../../components';
+import {RootStackParamList} from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -52,12 +53,12 @@ const MainStackNavigator: React.FC = () => (
     />
     <Stack.Screen
       name="LogIn"
-      component={LogIn}
+      component={LoginComponent}
       options={() => ({header: clearHeader})}
     />
     <Stack.Screen
       name="Cart"
-      component={Cart}
+      component={CartComponent}
       options={() => ({
         header: ({navigation}) =>
           headerWrapper({

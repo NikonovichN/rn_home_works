@@ -1,11 +1,9 @@
 import {all, call, fork, put, takeEvery} from 'redux-saga/effects';
 
-import {Convertor} from '../convertor/Convertor';
-import {ProductList} from '../entities/ProductList';
-import {fetchImagesLink, fetchProductList} from '../services/services';
-
-import * as actions from '../actions/productListActions';
-import * as actionTypes from '../actions/productListTypes';
+import {productListActions, productListTypes} from '../actions';
+import {ProductListConverter} from '../converters';
+import {ProductList} from '../entities';
+import {fetchImagesLink, fetchProductList} from '../services';
 
 interface Data extends Object {
   data: [];
@@ -13,7 +11,7 @@ interface Data extends Object {
 
 function* onLoadProductList() {
   try {
-    yield put(actions.getProductsRequest());
+    yield put(productListActions.getProductsRequest());
 
     let products: ProductList;
 
@@ -24,14 +22,17 @@ function* onLoadProductList() {
         fetchImagesLink,
         serverData.data.length.toString(),
       );
-      products = Convertor.toProductList(serverData.data, images.data);
+      products = ProductListConverter.toProductList(
+        serverData.data,
+        images.data,
+      );
     } else {
       throw new Error('Something went wrong!');
     }
 
-    yield put(actions.getProductsSuccess(products!));
+    yield put(productListActions.getProductsSuccess(products!));
   } catch (error) {
-    yield put(actions.getProductsFailure(`${error}`));
+    yield put(productListActions.getProductsFailure(`${error}`));
   }
 }
 
@@ -39,7 +40,7 @@ function* watchOnLoadProductList() {
   // fetch data on first load
   yield call(onLoadProductList);
 
-  yield takeEvery(actionTypes.GET_PRODUCTS, onLoadProductList);
+  yield takeEvery(productListTypes.GET_PRODUCTS, onLoadProductList);
 }
 
 export default function* productListSaga() {

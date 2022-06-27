@@ -1,5 +1,5 @@
-import * as actionTypes from '../actions/userTypes';
-import {UserData, Authentication} from '../entities/User';
+import {userTypes} from '../actions';
+import {UserData, Authentication} from '../entities';
 
 export interface UserState {
   isLogged: boolean;
@@ -17,12 +17,12 @@ const initialState: UserState = {
 
 export default function userReducer(
   state: UserState = initialState,
-  actions: actionTypes.UserLoginTypes,
+  actions: userTypes.UserLoginTypes,
 ): UserState {
   switch (actions.type) {
-    case actionTypes.USER_LOGIN:
+    case userTypes.USER_LOGIN:
       return {...state, loading: true};
-    case actionTypes.USER_LOGIN_SUCCESS:
+    case userTypes.USER_LOGIN_SUCCESS:
       return {
         ...state,
         isLogged: true,
@@ -31,7 +31,7 @@ export default function userReducer(
           data: actions.user,
         },
       };
-    case actionTypes.USER_LOGIN_FAILURE:
+    case userTypes.USER_LOGIN_FAILURE:
       return {
         isLogged: false,
         loading: false,

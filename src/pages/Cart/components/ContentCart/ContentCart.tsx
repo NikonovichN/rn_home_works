@@ -1,13 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {noop} from 'lodash';
 
-import {PrimaryButton} from '../../../../components/components';
+import {PrimaryButton} from '../../../../components';
 import {SafeGuard} from '../../../../components/icons/icons';
-import {CartAttributes} from '../../../../core/entities/Cart';
-import {TextStyles} from '../../../../core/styles/CommonStyles';
-
-import styles from './styles';
+import {CartAttributes} from '../../../../core/entities';
+import {CommonStyles, TextStyles, Colors} from '../../../../core/styles';
 
 interface ContentCartProps {
   data: CartAttributes;
@@ -69,4 +67,45 @@ const RowInfo: React.FC<RowProps> = props => {
   );
 };
 
-export default ContentCart;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingVertical: 36,
+    justifyContent: 'space-between',
+    backgroundColor: Colors.white,
+  },
+  cartDetails: {
+    width: '100%',
+    backgroundColor: Colors.white,
+    borderRadius: 4,
+    padding: 5,
+    ...CommonStyles.shadow,
+  },
+  infoContainer: {
+    marginTop: 5,
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border.light,
+  },
+  rowContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+  lastRow: {
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  safeInfoContainer: {
+    width: 174,
+    marginTop: 15,
+    flexDirection: 'row',
+    alignSelf: 'center',
+  },
+  safeGuardText: {
+    marginLeft: 10,
+  },
+});
+
+export {ContentCart};

@@ -7,7 +7,7 @@ import {getProductDetails} from '../../core/actions/productDetailsActions';
 import {addToCart as addToCartAction} from '../../core/actions/cart/addToCartActions';
 import {AppState} from '../../core/reducers/rootReducer';
 
-import ProductDetails from './ProductDetails';
+import {ProductDetails} from './ProductDetails';
 import {RootStackParamList} from '../../pages/NavigationStack/types';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 import {AddToCartTypes} from '../../core/actions/cart/addToCartTypes';
@@ -42,4 +42,4 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export default connector(ProductDetails);
+export const ProductDetailsComponent = connector(ProductDetails);

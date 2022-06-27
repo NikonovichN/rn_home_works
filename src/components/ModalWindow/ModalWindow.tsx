@@ -1,9 +1,9 @@
 import React from 'react';
-import {TouchableWithoutFeedback, View} from 'react-native';
-
-import styles from './styles';
+import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import {RouteProp} from '@react-navigation/core/lib/typescript/src/types';
+
 import {RootStackParamList} from '../../pages/NavigationStack/types';
+import {Colors} from '../../core/styles';
 
 type Props = {
   route: RouteProp<RootStackParamList, 'ModalWindow'>;
@@ -32,4 +32,31 @@ const ModalWindow: React.FC<Props> = props => {
   );
 };
 
-export default ModalWindow;
+const styles = StyleSheet.create({
+  modalContainer: {
+    flex: 1,
+    backgroundColor: Colors.blackoutOpacity,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  contentContainer: {
+    width: '90%',
+    backgroundColor: Colors.white,
+    paddingTop: 25,
+    paddingBottom: 30,
+    borderRadius: 5,
+    paddingHorizontal: 35,
+  },
+  iconView: {
+    alignItems: 'center',
+    paddingBottom: 15,
+  },
+  description: {marginTop: 10},
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 25,
+  },
+});
+
+export {ModalWindow};

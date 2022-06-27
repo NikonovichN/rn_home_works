@@ -1,11 +1,9 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
-import {PrimaryButton} from '../../../../components/components';
+import {PrimaryButton} from '../../../../components';
 import {BigBox} from '../../../../components/icons/icons';
-import {TextStyles} from '../../../../core/styles/styles';
-
-import styles from './styles';
+import {Colors, TextStyles} from '../../../../core/styles';
 
 type Props = {
   shopNow(): void;
@@ -26,4 +24,23 @@ const EmptyCart: React.FC<Props> = props => {
   );
 };
 
-export default EmptyCart;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.white,
+  },
+  title: {
+    ...TextStyles.secondaryTitle,
+    marginTop: 15,
+    marginBottom: 5,
+  },
+  buttonContainer: {
+    width: '100%',
+    marginTop: 35,
+  },
+});
+
+export {EmptyCart};

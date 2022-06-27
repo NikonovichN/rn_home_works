@@ -4,7 +4,7 @@ import {Text, View} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
 import styles from './styles';
-import {PrimaryButton} from '../../components/components';
+import {PrimaryButton} from '../../components';
 import {Warning} from '../../components/icons/icons';
 import {AnyActionTypes} from '../../core/actions/AnyActionTypes';
 

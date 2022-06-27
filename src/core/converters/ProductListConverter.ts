@@ -11,11 +11,11 @@ export const emptyProduct: Product = {
   discount: '',
 };
 
-export class Convertor {
-  static toProductList(data: [], images: []): ProductList {
+export class ProductListConverter {
+  static toProductList(data: [], images: any[]): ProductList {
     let products: Product[] = data.map(
       (product, index): Product =>
-        Convertor.toProduct(product, images[index]['url']),
+        ProductListConverter.toProduct(product, images[index].url),
     );
 
     return {
@@ -26,15 +26,15 @@ export class Convertor {
 
   static toProduct(product: any, image: any | string): Product {
     return {
-      id: product['id'],
-      name: product['attributes']['name'],
-      imageUrl: typeof image === 'string' ? image : image[0]['url'],
-      displayPrice: product['attributes']['display_price'],
+      id: product.id,
+      name: product.attributes.name,
+      imageUrl: typeof image === 'string' ? image : image[0].url,
+      displayPrice: product.attributes.display_price,
       wasPrice: '',
       discount: '',
-      description: product['attributes']['description'],
-      properties: Convertor.toProductProperty(
-        product['relationships']['product_properties']['data'],
+      description: product.attributes.description,
+      properties: ProductListConverter.toProductProperty(
+        product.relationships.product_properties.data,
       ),
     };
   }
@@ -42,8 +42,8 @@ export class Convertor {
   static toProductProperty(variants: any[]): ProductProperty[] {
     return variants.map(
       (property): ProductProperty => ({
-        id: property['id'],
-        type: property['type'],
+        id: property.id,
+        type: property.type,
       }),
     );
   }

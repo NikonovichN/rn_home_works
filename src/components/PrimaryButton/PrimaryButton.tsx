@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 
-import {ButtonStyles, Opacity, TextStyles} from '../../core/styles/styles';
+import {ButtonStyles, Opacity, TextStyles} from '../../core/styles';
 
 type Props = {
   width?: number;
@@ -25,4 +25,4 @@ const PrimaryButton: React.FC<Props> = props => {
   );
 };
 
-export default PrimaryButton;
+export {PrimaryButton};

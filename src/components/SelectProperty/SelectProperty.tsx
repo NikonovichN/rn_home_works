@@ -1,11 +1,9 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-import Colors from '../../core/styles/ColorTokens';
+import {Colors} from '../../core/styles';
 import {Opacity, TextStyles} from '../../core/styles/CommonStyles';
-
-import styles from './styles';
 
 type Props = {
   properties: string[];
@@ -42,4 +40,21 @@ const SelectProperty: React.FC<Props> = props => {
   );
 };
 
-export default SelectProperty;
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  property: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginRight: 5,
+    marginTop: 10,
+    backgroundColor: Colors.buttons.selectClear,
+  },
+  activeProperty: {
+    backgroundColor: Colors.buttons.selectedClear,
+  },
+});
+
+export {SelectProperty};

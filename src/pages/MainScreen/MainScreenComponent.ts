@@ -3,7 +3,7 @@ import {Dispatch} from 'redux';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import MainScreen from './MainScreen';
+import {MainScreen} from './MainScreen';
 
 import {ListProducts} from '../../core/actions/productListTypes';
 import {getProducts} from '../../core/actions/productListActions';
@@ -27,4 +27,4 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export default connector(MainScreen);
+export const MainScreenComponent = connector(MainScreen);

@@ -1,6 +1,5 @@
-import * as actions from '../actions/productListTypes';
-
-import {Product} from '../entities/ProductList';
+import {productListTypes} from '../actions';
+import {Product} from '../entities';
 
 export interface ProductsListState {
   products: Product[];
@@ -16,21 +15,21 @@ const initialState: ProductsListState = {
 
 export default function productListReducer(
   state: ProductsListState = initialState,
-  action: actions.ListProducts,
+  action: productListTypes.ListProducts,
 ): ProductsListState {
   switch (action.type) {
-    case actions.GET_PRODUCTS:
+    case productListTypes.GET_PRODUCTS:
       return {
         ...state,
         isLoading: true,
       };
-    case actions.GET_PRODUCTS_SUCCESS:
+    case productListTypes.GET_PRODUCTS_SUCCESS:
       return {
         products: action.data.productList,
         isLoading: false,
         error: null,
       };
-    case actions.GET_PRODUCTS_FAILURE:
+    case productListTypes.GET_PRODUCTS_FAILURE:
       return {
         products: [],
         isLoading: false,

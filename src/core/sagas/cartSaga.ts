@@ -2,12 +2,12 @@ import {call, put, select, takeEvery} from 'redux-saga/effects';
 import {
   navigateToLogIn,
   navigateToSuccessAddCart,
-} from '../../pages/ModalWindows/ModalWindows';
+} from '../../pages/ModalWindows';
 
-import {addToCartTypes, addToCartActions} from '../actions/cart/cart';
-import {CartConvertor} from '../convertor/CartConvertor';
-import {Cart} from '../entities/Cart';
-import {addToCartService, stateSelectors} from '../services/services';
+import {addToCartTypes, addToCartActions} from '../actions';
+import {CartConverter} from '../converters';
+import {Cart} from '../entities';
+import {addToCartService, isLoggedSelector} from '../services';
 
 interface Data {
   data: {};
@@ -15,7 +15,7 @@ interface Data {
 
 function* addToCart(action: addToCartTypes.AddToCart) {
   try {
-    const userIsLogged: boolean = yield select(stateSelectors.isLogged);
+    const userIsLogged: boolean = yield select(isLoggedSelector);
 
     if (!userIsLogged) {
       navigateToLogIn({navigation: action.navigation, action});
@@ -23,7 +23,7 @@ function* addToCart(action: addToCartTypes.AddToCart) {
       yield put(addToCartActions.addToCartRequest());
 
       let cartData: Data = yield call(addToCartService, action.variantId);
-      let cart: Cart = CartConvertor.convertToCart(cartData.data);
+      let cart: Cart = CartConverter.convertToCart(cartData.data);
 
       yield put(addToCartActions.addToCartSuccess(cart));
       navigateToSuccessAddCart({navigation: action.navigation});

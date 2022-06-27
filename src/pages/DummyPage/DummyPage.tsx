@@ -7,4 +7,4 @@ const DummyPage: React.FC = () => (
   </View>
 );
 
-export default DummyPage;
+export {DummyPage};

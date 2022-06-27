@@ -1,9 +1,8 @@
 import React from 'react';
-import {TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 
+import {Colors, CommonStyles} from '../../core/styles';
 import {SearchIcon} from '../icons/icons';
-
-import styles from './styles';
 
 const SearchBar: React.FC = () => {
   return (
@@ -22,4 +21,29 @@ const SearchBar: React.FC = () => {
   );
 };
 
-export default SearchBar;
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    backgroundColor: Colors.white,
+    ...CommonStyles.shadow,
+    zIndex: 999, // this is needed to display shadow.
+  },
+  containerBar: {
+    justifyContent: 'center',
+  },
+  icon: {
+    position: 'absolute',
+    paddingLeft: 10,
+  },
+  input: {
+    height: 40,
+    paddingLeft: 40,
+    borderWidth: 1,
+    borderColor: Colors.border.primary,
+    borderRadius: 4,
+    lineHeight: 0,
+    fontSize: 15,
+  },
+});
+
+export {SearchBar};

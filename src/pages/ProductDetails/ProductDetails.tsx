@@ -1,17 +1,19 @@
 import React, {useState} from 'react';
-import {ScrollView, Image, Text, View, RefreshControl} from 'react-native';
+import {
+  ScrollView,
+  Image,
+  Text,
+  View,
+  RefreshControl,
+  StyleSheet,
+} from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {
-  Loading,
-  PrimaryButton,
-  SelectProperty,
-} from '../../components/components';
-import {Colors, TextStyles} from '../../core/styles/styles';
-import {navigateToSelectProperty} from '../ModalWindows/ModalWindows';
+import {Loading, PrimaryButton, SelectProperty} from '../../components';
+import {ButtonStyles, Colors, TextStyles} from '../../core/styles';
+import {navigateToSelectProperty} from '../ModalWindows';
 
 import {PropsFromRedux} from './ProductDetailsComponent';
-import styles from './styles';
 
 const ProductDetails: React.FC<PropsFromRedux> = props => {
   const {isLoading, product, onRefresh, navigation, addToCart} = props;
@@ -74,4 +76,44 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
   );
 };
 
-export default ProductDetails;
+const styles = StyleSheet.create({
+  scrollViewContainer: {
+    paddingTop: 10,
+    paddingBottom: 60,
+    paddingHorizontal: 20,
+    backgroundColor: Colors.white,
+  },
+  image: {
+    marginVertical: 44,
+    marginHorizontal: 64,
+    height: 250,
+  },
+  marginTop10: {
+    marginTop: 10,
+  },
+  marginTop15: {
+    marginTop: 15,
+  },
+  divider: {
+    marginTop: 20,
+    borderBottomColor: Colors.border.primary,
+    borderBottomWidth: 1,
+  },
+  modalTitle: {
+    ...TextStyles.sectionTitle,
+    color: Colors.text.secondary,
+    textAlign: 'center',
+  },
+  modalDescription: {
+    ...TextStyles.regular,
+    color: Colors.text.secondary,
+    textAlign: 'center',
+  },
+  modalButton: {
+    ...ButtonStyles.primary,
+    width: 125,
+    alignSelf: 'center',
+  },
+});
+
+export {ProductDetails};

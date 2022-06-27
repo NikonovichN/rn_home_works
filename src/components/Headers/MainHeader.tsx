@@ -4,7 +4,7 @@ import {DrawerActions} from '@react-navigation/native';
 
 import {MenuIcon, BasketIcon} from '../icons/icons';
 
-import styles from './styles';
+import {styles} from './styles';
 import {HeaderProps} from './headerTypes';
 
 const MainHeader: React.FC<HeaderProps> = props => {
@@ -29,4 +29,4 @@ const MainHeader: React.FC<HeaderProps> = props => {
   );
 };
 
-export default MainHeader;
+export {MainHeader};

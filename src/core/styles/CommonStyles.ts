@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
-
-import Colors from './ColorTokens';
+import {Colors} from './ColorTokens';
 
 const CommonStyles = StyleSheet.create({
   shadow: {

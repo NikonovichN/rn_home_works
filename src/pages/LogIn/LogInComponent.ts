@@ -9,7 +9,7 @@ import {UserCredentials} from '../../core/entities/UserCredentials';
 import {AppState} from '../../core/reducers/rootReducer';
 import {RootStackParamList} from '../NavigationStack/types';
 
-import LogIn from './LogIn';
+import {LogIn} from './LogIn';
 
 type Props = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -35,4 +35,4 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export default connector(LogIn);
+export const LoginComponent = connector(LogIn);

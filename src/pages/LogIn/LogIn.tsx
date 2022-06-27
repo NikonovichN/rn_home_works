@@ -1,15 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
-import {
-  Loading,
-  PrimaryButton,
-  TextInputStore,
-} from '../../components/components';
-import {TextStyles} from '../../core/styles/styles';
+import {Loading, PrimaryButton, TextInputStore} from '../../components';
+import {Colors, TextStyles} from '../../core/styles';
 
 import {PropsFromRedux} from './LogInComponent';
-import styles from './styles';
 
 const LogIn: React.FC<PropsFromRedux> = props => {
   const {logIn, isLogging, isLogged} = props;
@@ -20,7 +15,7 @@ const LogIn: React.FC<PropsFromRedux> = props => {
     if (isLogged) {
       props.navigation.goBack();
     }
-  }, [isLogged]);
+  }, [isLogged, props.navigation]);
 
   return (
     <>
@@ -55,4 +50,22 @@ const LogIn: React.FC<PropsFromRedux> = props => {
   );
 };
 
-export default LogIn;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 21,
+    backgroundColor: Colors.white,
+  },
+  headerContainer: {
+    alignItems: 'center',
+  },
+  textInputContainer: {
+    marginTop: 90,
+    marginBottom: 50,
+    height: 110,
+    justifyContent: 'space-between',
+  },
+});
+
+export {LogIn};

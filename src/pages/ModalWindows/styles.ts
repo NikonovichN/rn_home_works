@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {ButtonStyles, Colors, TextStyles} from '../../core/styles/styles';
+import {ButtonStyles, Colors, TextStyles} from '../../core/styles';
 
 export default StyleSheet.create({
   modalTitle: {
