@@ -7,9 +7,9 @@ import styles from './styles';
 import {PrimaryButton} from '../../components/components';
 import {Decline} from '../../components/icons/icons';
 
-interface Params {
+type Params = {
   navigation: NativeStackNavigationProp<any, any>;
-}
+};
 
 const navigateToSelectProperty = ({navigation}: Params) => {
   navigation.navigate('ModalWindow', {

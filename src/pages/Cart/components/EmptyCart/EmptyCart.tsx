@@ -7,9 +7,9 @@ import {TextStyles} from '../../../../core/styles/styles';
 
 import styles from './styles';
 
-interface Props {
+type Props = {
   shopNow(): void;
-}
+};
 
 const EmptyCart: React.FC<Props> = props => {
   return (

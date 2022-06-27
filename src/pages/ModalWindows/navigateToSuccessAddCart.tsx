@@ -7,9 +7,9 @@ import styles from './styles';
 import {PrimaryButton} from '../../components/components';
 import {Decline, Success} from '../../components/icons/icons';
 
-interface Params {
+type Params = {
   navigation: NativeStackNavigationProp<any, any>;
-}
+};
 
 const navigateToSuccessAddCart = ({navigation}: Params) => {
   navigation.navigate('ModalWindow', {

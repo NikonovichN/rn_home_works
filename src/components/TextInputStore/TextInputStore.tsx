@@ -3,9 +3,9 @@ import {Text, TextInputProps, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import styles from './styles';
 
-interface Props {
+type Props = {
   label: string;
-}
+};
 
 const TextInputStore: React.FC<TextInputProps & Props> = props => {
   return (

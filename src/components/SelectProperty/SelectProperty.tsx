@@ -7,11 +7,11 @@ import {Opacity, TextStyles} from '../../core/styles/CommonStyles';
 
 import styles from './styles';
 
-interface Props {
+type Props = {
   properties: string[];
   activeProperty: string | null;
   onPress(selectedProperty: string): void;
-}
+};
 
 const SelectProperty: React.FC<Props> = props => {
   const {properties, activeProperty, onPress} = props;

@@ -1,22 +1,13 @@
-import React, {ReactNode} from 'react';
-import {
-  Button,
-  Modal,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import React from 'react';
+import {TouchableWithoutFeedback, View} from 'react-native';
 
-import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {ParamListBase} from '@react-navigation/routers/lib/typescript/src/types';
 import styles from './styles';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {RouteProp} from '@react-navigation/core/lib/typescript/src/types';
 import {RootStackParamList} from '../../pages/NavigationStack/types';
 
-interface Props {
+type Props = {
   route: RouteProp<RootStackParamList, 'ModalWindow'>;
-}
+};
 
 const ModalWindow: React.FC<Props> = props => {
   const {

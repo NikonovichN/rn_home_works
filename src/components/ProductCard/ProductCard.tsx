@@ -5,10 +5,10 @@ import {Product} from '../../core/entities/ProductList';
 
 import styles from './styles';
 
-interface Props {
+type Props = {
   product: Product;
   onPress(): void;
-}
+};
 
 const ProductCard: React.FC<Props> = props => {
   const {product, onPress} = props;

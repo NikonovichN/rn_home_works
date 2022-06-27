@@ -3,12 +3,12 @@ import {Text, TouchableOpacity} from 'react-native';
 
 import {ButtonStyles, Opacity, TextStyles} from '../../core/styles/styles';
 
-interface Props {
+type Props = {
   width?: number;
   content: string;
   toUppercase?: boolean;
   onPress(): void;
-}
+};
 
 const PrimaryButton: React.FC<Props> = props => {
   const {width, content, toUppercase = true, onPress} = props;

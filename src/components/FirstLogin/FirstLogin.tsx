@@ -6,9 +6,9 @@ import {PrimaryButton} from '../components';
 import {Avatar} from '../icons/icons';
 import styles from './styles';
 
-interface Props {
+type Props = {
   onPressLogIn(): void;
-}
+};
 
 const FirstLogin: React.FC<Props> = props => {
   return (

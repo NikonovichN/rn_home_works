@@ -11,10 +11,10 @@ import {RootStackParamList} from '../NavigationStack/types';
 
 import LogIn from './LogIn';
 
-interface Props {
+type Props = {
   navigation: NativeStackNavigationProp<any, any>;
   route: RouteProp<RootStackParamList, 'LogIn'>;
-}
+};
 
 function mapStateToProps(state: AppState, props: Props) {
   return {

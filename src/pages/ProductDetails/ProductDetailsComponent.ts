@@ -12,10 +12,10 @@ import {RootStackParamList} from '../../pages/NavigationStack/types';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 import {AddToCartTypes} from '../../core/actions/cart/addToCartTypes';
 
-interface Props {
+type Props = {
   navigation: NativeStackNavigationProp<any, any>;
   route: RouteProp<RootStackParamList, 'ProductDetails'>;
-}
+};
 
 const mapStateToProps = (state: AppState, props: Props) => ({
   isLoading: state.productDetails.isLoading,

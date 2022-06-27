@@ -6,9 +6,9 @@ import {AppState} from '../../core/reducers/rootReducer';
 
 import Cart from './Cart';
 
-interface Props {
+type Props = {
   navigation: NativeStackNavigationProp<any, any>;
-}
+};
 
 function mapStateToProps(state: AppState, props: Props) {
   return {

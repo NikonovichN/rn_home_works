@@ -8,10 +8,10 @@ import {PrimaryButton} from '../../components/components';
 import {Warning} from '../../components/icons/icons';
 import {AnyActionTypes} from '../../core/actions/AnyActionTypes';
 
-interface Params {
+type Params = {
   navigation: NativeStackNavigationProp<any, any>;
   action: AnyActionTypes;
-}
+};
 
 const navigateToLogIn = ({navigation, action}: Params) => {
   navigation.navigate('ModalWindow', {
