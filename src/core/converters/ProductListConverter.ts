@@ -19,8 +19,7 @@ export class ProductListConverter {
     );
 
     return {
-      productList:
-        products.length % 2 === 0 ? products : products.concat(emptyProduct),
+      productList: addEmptyProduct(products),
     };
   }
 
@@ -47,4 +46,8 @@ export class ProductListConverter {
       }),
     );
   }
+}
+
+function addEmptyProduct(products: Product[]): Product[] {
+  return products.length % 2 === 0 ? products : products.concat(emptyProduct);
 }
