@@ -17,7 +17,7 @@ function* onLoadProductList() {
 
     const serverData: Data = yield call(fetchProductList);
 
-    if (serverData.hasOwnProperty('data')) {
+    if (serverData?.data) {
       let images: Data = yield call(
         fetchImagesLink,
         serverData.data.length.toString(),

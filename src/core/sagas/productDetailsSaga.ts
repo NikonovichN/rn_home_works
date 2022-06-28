@@ -18,7 +18,7 @@ function* onLoadProductDetails(action: productDetailsTypes.GetProductAction) {
 
     const serverData: Data = yield call(fetchProductDetails, action.productId);
 
-    if (serverData.hasOwnProperty('data')) {
+    if (serverData?.data) {
       let image: Data = yield call(fetchImagesLink, '1');
       product = ProductListConverter.toProduct(serverData.data, image.data);
     } else {
