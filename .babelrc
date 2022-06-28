@@ -19,7 +19,11 @@
           "@styles": "./src/core/styles",
           "@components": "./src/components",
           "@icons": "./src/assets/icons",
-          "@pages": "./src/pages"
+          "@pages": "./src/pages",
+          "@selectors": "./src/core/selectors",
+          "@hooks": "./src/core/hooks",
+          "@actions": "./src/core/actions",
+          "@navigation/types": "./src/core/navigation/types"
         }
       }
     ]

@@ -1,1 +1,1 @@
-export * from './ProductDetailsComponent';
+export * from './ProductDetailsPage';

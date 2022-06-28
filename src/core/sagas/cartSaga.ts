@@ -7,7 +7,8 @@ import {
 import {addToCartTypes, addToCartActions} from '../actions';
 import {CartConverter} from '../converters';
 import {Cart} from '../entities';
-import {addToCartService, isLoggedSelector} from '../services';
+import {isLoggedSelector} from '@selectors';
+import {addToCartService} from '../services';
 
 interface Data {
   data: {};

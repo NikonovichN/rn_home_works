@@ -8,7 +8,7 @@ import {
   DummyPage,
   LoginComponent,
   MainScreenComponent,
-  ProductDetailsComponent,
+  ProductDetailsPage,
 } from '@pages';
 import {
   headerWrapper,
@@ -41,7 +41,7 @@ const MainStackNavigator: React.FC = () => (
     />
     <Stack.Screen
       name="ProductDetails"
-      component={ProductDetailsComponent}
+      component={ProductDetailsPage}
       options={() => ({
         header: ({navigation}) =>
           headerWrapper({

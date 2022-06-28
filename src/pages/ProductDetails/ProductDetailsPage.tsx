@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   ScrollView,
   Image,
@@ -7,18 +7,57 @@ import {
   RefreshControl,
   StyleSheet,
 } from 'react-native';
-
+import {useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
+import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
+import {RouteProp} from '@react-navigation/native';
+
+import {useShallowEqualSelector} from '@hooks';
 import {Loading, PrimaryButton, SelectProperty} from '@components';
+import {productDetailsSelector} from '@selectors';
 import {ButtonStyles, Colors, TextStyles} from '@styles';
+import {productDetailsActions, addToCartActions} from '@actions';
+import {RootStackParamList} from '@navigation/types';
+
 import {navigateToSelectProperty} from '../ModalWindows';
 
-import {PropsFromRedux} from './ProductDetailsComponent';
+type Props = {
+  navigation: NativeStackNavigationProp<any, any>;
+  route: RouteProp<RootStackParamList, 'ProductDetails'>;
+};
 
-const ProductDetails: React.FC<PropsFromRedux> = props => {
-  const {isLoading, product, onRefresh, navigation, addToCart} = props;
+const ProductDetailsPage: React.FC<Props> = props => {
+  const {
+    isLoading,
+    productDetails: {imageUrl, name, displayPrice, properties, description},
+  } = useShallowEqualSelector(productDetailsSelector);
+  const {
+    navigation,
+    route: {
+      params: {productId},
+    },
+  } = props;
+
+  const dispatch = useDispatch();
   const insets = useSafeAreaInsets();
+
   const [activeProperty, setActiveProperty] = useState<string | null>(null);
+  const getProduct = useCallback(
+    () => dispatch(productDetailsActions.getProductDetails(productId)),
+    [productId, dispatch],
+  );
+  const onPressButton = useCallback(() => {
+    if (activeProperty == null) {
+      navigateToSelectProperty({navigation});
+    } else {
+      dispatch(addToCartActions.addToCart(activeProperty, navigation));
+    }
+  }, [activeProperty, dispatch, navigation]);
+
+  useEffect(() => {
+    getProduct();
+  }, [getProduct]);
 
   return (
     <>
@@ -31,21 +70,21 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
             refreshControl={
               <RefreshControl
                 refreshing={false}
-                onRefresh={onRefresh}
+                onRefresh={getProduct}
                 tintColor={Colors.primary}
               />
             }>
-            <Image style={styles.image} source={{uri: product.imageUrl}} />
-            <Text style={TextStyles.regular}>{product.name}</Text>
+            <Image style={styles.image} source={{uri: imageUrl}} />
+            <Text style={TextStyles.regular}>{name}</Text>
             <Text style={[TextStyles.regularBold, styles.marginTop15]}>
-              {product.displayPrice}
+              {displayPrice}
             </Text>
             <View style={styles.divider} />
             <Text style={[TextStyles.sectionTitle, styles.marginTop15]}>
               Select Property
             </Text>
             <SelectProperty
-              properties={product.properties.map(value => value.id.toString())}
+              properties={properties.map(value => value.id.toString())}
               activeProperty={activeProperty}
               onPress={setActiveProperty}
             />
@@ -54,19 +93,10 @@ const ProductDetails: React.FC<PropsFromRedux> = props => {
               Description
             </Text>
             <Text style={[TextStyles.regular, styles.marginTop10]}>
-              {product.description}
+              {description}
             </Text>
             <View style={styles.marginTop15}>
-              <PrimaryButton
-                content="Add to cart"
-                onPress={() => {
-                  if (activeProperty == null) {
-                    navigateToSelectProperty({navigation});
-                  } else {
-                    addToCart(activeProperty);
-                  }
-                }}
-              />
+              <PrimaryButton content="Add to cart" onPress={onPressButton} />
             </View>
             <View style={{height: insets.bottom}} />
           </ScrollView>
@@ -116,4 +146,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {ProductDetails};
+export {ProductDetailsPage};
