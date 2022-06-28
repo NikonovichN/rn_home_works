@@ -1,8 +1,8 @@
-import axios from 'axios';
-import {EndPoints} from '../endpoints/EndPoints';
+import {axiosAPI} from './api';
+import {EndPoints} from '../endpoints';
 
 export async function addToCartService(variantId: string) {
-  let cartData = await axios.post(
+  let cartData = await axiosAPI.post(
     `${EndPoints.mockBaseAddCartUrl}${EndPoints.addToCart}`,
     {variant_id: variantId},
     {

@@ -8,7 +8,7 @@ import WarningIcon from './warning.svg';
 import SuccessIcon from './success.svg';
 import BigBoxIcon from './big-box.svg';
 import AvatarIcon from './avatar.svg';
-import SafeGuardIcon from './success.svg';
+import SafeGuardIcon from './safe-guard.svg';
 
 export {
   MenuIcon,

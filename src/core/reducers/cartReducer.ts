@@ -1,9 +1,4 @@
-import {
-  addToCartTypes,
-  createCartTypes,
-  deleteCartTypes,
-  getCartTypes,
-} from '../actions/cart';
+import {addToCartTypes, getCartTypes} from '../actions/cart';
 import {Cart} from '../entities';
 
 export interface CartState {
@@ -24,25 +19,12 @@ const initialState: CartState = {
 
 export default function cartReducer(
   state: CartState = initialState,
-  action:
-    | addToCartTypes.AddToCartTypes
-    | createCartTypes.CreateCartTypes
-    | deleteCartTypes.DeleteCartTypes
-    | getCartTypes.GetCartTypes,
+  action: addToCartTypes.AddToCartTypes | getCartTypes.GetCartTypes,
 ): CartState {
   switch (action.type) {
-    case getCartTypes.GET_CART ||
-      addToCartTypes.ADD_TO_CART ||
-      deleteCartTypes.DELETE_CART:
+    case addToCartTypes.ADD_TO_CART || getCartTypes.GET_CART:
       return {...state, isLoading: true};
-    case createCartTypes.CREATE_CART:
-      return {...state, isLoading: true, isCartCreating: true};
-    case deleteCartTypes.DELETE_CART_SUCCESS: {
-      return initialState;
-    }
-    case addToCartTypes.ADD_TO_CART_SUCCESS ||
-      createCartTypes.CREATE_CART_SUCCESS ||
-      getCartTypes.GET_CART_SUCCESS:
+    case addToCartTypes.ADD_TO_CART_SUCCESS || getCartTypes.GET_CART_SUCCESS:
       return {
         data: action.cart,
         isLoading: false,
@@ -50,20 +32,13 @@ export default function cartReducer(
         error: null,
         deleteCartError: null,
       };
-    case addToCartTypes.ADD_TO_CART_FAILURE ||
-      createCartTypes.CREATE_CART_FAILURE ||
-      getCartTypes.GET_CART_FAILURE:
+    case addToCartTypes.ADD_TO_CART_FAILURE || getCartTypes.GET_CART_FAILURE:
       return {
         data: null,
         isLoading: false,
         isCartCreating: false,
         error: action.error,
         deleteCartError: null,
-      };
-    case deleteCartTypes.DELETE_CART_FAILURE:
-      return {
-        ...state,
-        deleteCartError: action.error,
       };
     default:
       return state;

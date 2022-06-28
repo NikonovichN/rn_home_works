@@ -1,9 +1,10 @@
-import axios from 'axios';
-
-import {EndPoints} from '../endpoints/EndPoints';
+import {axiosAPI} from './api';
+import {EndPoints} from '../endpoints';
 
 export async function fetchProductList(): Promise<object> {
-  let serverData = await axios.get(`${EndPoints.baseUrl}${EndPoints.products}`);
+  let serverData = await axiosAPI.get(
+    `${EndPoints.baseUrl}${EndPoints.products}`,
+  );
 
-  return serverData['data'];
+  return serverData.data;
 }

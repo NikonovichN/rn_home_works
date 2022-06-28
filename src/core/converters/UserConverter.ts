@@ -13,9 +13,9 @@ export class UserConverter {
 
   static userConvertor = (data: any): UserData => {
     return {
-      id: data.data.id,
-      type: data.data.type,
-      attributes: UserConverter.attributesConvertor(data.data.attributes),
+      id: data.id,
+      type: data.type,
+      attributes: UserConverter.attributesConvertor(data.attributes),
     };
   };
 

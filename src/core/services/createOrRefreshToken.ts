@@ -1,19 +1,17 @@
-import axios from 'axios';
-
-import {EndPoints} from '../endpoints/EndPoints';
-import {UserCredentials} from '../entities/UserCredentials';
+import {axiosAPI} from './api';
+import {EndPoints} from '../endpoints';
+import {UserCredentials} from '../entities';
 
 export async function createOrRefreshToken(
   credentials: UserCredentials,
 ): Promise<object> {
-  let tokenData = await axios.post(
+  let tokenData = await axiosAPI.post(
     `${EndPoints.mockBaseUrl}${EndPoints.token}`,
     {
       grant_type: 'password',
       username: credentials.userName,
       password: credentials.password,
     },
-    {headers: {'Content-Type': 'application/json'}},
   );
 
   return tokenData;

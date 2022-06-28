@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {Cart} from '../../entities/Cart';
+import {Cart} from '../../entities';
 import * as actions from './addToCartTypes';
 
 export function addToCart(

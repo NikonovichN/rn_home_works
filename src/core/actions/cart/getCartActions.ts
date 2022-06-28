@@ -1,4 +1,4 @@
-import {Cart} from '../../entities/Cart';
+import {Cart} from '../../entities';
 import * as actions from './getCartTypes';
 
 export function getCart(): actions.GetCart {

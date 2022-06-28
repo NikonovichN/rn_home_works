@@ -3,7 +3,7 @@ import React from 'react';
 import {FirstLogin} from '@components';
 
 import {PropsFromRedux} from './CartComponent';
-import {ContentCart, EmptyCart} from '@components';
+import {ContentCart, EmptyCart} from './components';
 
 const Cart: React.FC<PropsFromRedux> = props => {
   const {isLogged, navigation, cartData} = props;
