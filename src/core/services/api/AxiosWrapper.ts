@@ -15,7 +15,6 @@ class AxiosWrapper extends Axios {
     data?: D | undefined,
     config?: AxiosRequestConfig<D> | undefined,
   ): Promise<R> {
-    console.log('post');
     return axios.post(url, data, {
       ...config,
       headers: {
@@ -29,7 +28,6 @@ class AxiosWrapper extends Axios {
     url: string,
     config?: AxiosRequestConfig<D> | undefined,
   ): Promise<R> {
-    console.log('get');
     return axios.get(url, {
       ...config,
       headers: {

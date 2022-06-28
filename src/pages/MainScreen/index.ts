@@ -1,1 +1,1 @@
-export * from './MainScreenComponent';
+export * from './MainScreen';

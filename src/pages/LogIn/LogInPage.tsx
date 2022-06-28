@@ -1,25 +1,48 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+
+import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
+import {RouteProp} from '@react-navigation/native';
 
 import {Loading, PrimaryButton, TextInputStore} from '@components';
 import {Colors, TextStyles} from '@styles';
+import {RootStackParamList} from '@navigation/types';
+import {useShallowEqualSelector} from '@hooks';
+import {userSelector} from '@selectors';
+import {userActions} from '@actions';
 
-import {PropsFromRedux} from './LogInComponent';
+type Props = {
+  navigation: NativeStackNavigationProp<any, any>;
+  route: RouteProp<RootStackParamList, 'LogIn'>;
+};
 
-const LogIn: React.FC<PropsFromRedux> = props => {
-  const {logIn, isLogging, isLogged} = props;
-  const [email, setEmail] = useState<string>('');
+const LogInPage: React.FC<Props> = props => {
+  const {
+    navigation,
+    route: {
+      params: {action},
+    },
+  } = props;
+  const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const {isLogged, loading} = useShallowEqualSelector(userSelector);
+  const dispatch = useDispatch();
+
+  const logIn = useCallback(() => {
+    dispatch(userActions.userLogIn({userName, password}, action));
+  }, [dispatch, userName, password, action]);
 
   useEffect(() => {
     if (isLogged) {
-      props.navigation.goBack();
+      navigation.goBack();
     }
-  }, [isLogged, props.navigation]);
+  }, [isLogged, navigation]);
 
   return (
     <>
-      {isLogging ? (
+      {loading ? (
         <Loading />
       ) : (
         <View style={styles.container}>
@@ -30,8 +53,8 @@ const LogIn: React.FC<PropsFromRedux> = props => {
           <View style={styles.textInputContainer}>
             <TextInputStore
               label="Email Address"
-              onChangeText={setEmail}
-              value={email}
+              onChangeText={setUserName}
+              value={userName}
             />
             <TextInputStore
               label="Password"
@@ -40,10 +63,7 @@ const LogIn: React.FC<PropsFromRedux> = props => {
               secureTextEntry={true}
             />
           </View>
-          <PrimaryButton
-            onPress={() => logIn({userName: email, password})}
-            content="sign in"
-          />
+          <PrimaryButton onPress={logIn} content="sign in" />
         </View>
       )}
     </>
@@ -68,4 +88,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {LogIn};
+export {LogInPage};

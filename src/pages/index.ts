@@ -1,13 +1,7 @@
-import {MainScreenComponent} from './MainScreen';
+import {MainScreen} from './MainScreen';
 import {ProductDetailsPage} from './ProductDetails';
 import {DummyPage} from './DummyPage/DummyPage';
-import {LoginComponent} from './LogIn';
+import {LogInPage} from './LogIn';
 import {CartComponent} from './Cart';
 
-export {
-  MainScreenComponent,
-  ProductDetailsPage,
-  DummyPage,
-  LoginComponent,
-  CartComponent,
-};
+export {MainScreen, ProductDetailsPage, DummyPage, LogInPage, CartComponent};

@@ -1,16 +1,35 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {FlatList, RefreshControl, StyleSheet} from 'react-native';
-
+import {useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
+import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
 import {Loading, ProductCard, SearchBar} from '@components';
 import {Colors} from '@styles';
+import {productListActions} from '@actions';
+import {useShallowEqualSelector} from '@hooks';
+import {productListSelector} from '@selectors';
 
-import {PropsFromRedux} from './MainScreenComponent';
+type Props = {
+  navigation: NativeStackNavigationProp<any, any>;
+};
 
-const MainScreen: React.FC<PropsFromRedux> = props => {
-  const {isLoading, products, navigation, onRefresh} = props;
+const MainScreen: React.FC<Props> = props => {
+  const {navigation} = props;
+  const {isLoading, products} = useShallowEqualSelector(productListSelector);
+
+  const dispatch = useDispatch();
   const insets = useSafeAreaInsets();
+
+  const getProductList = useCallback(
+    () => dispatch(productListActions.getProducts()),
+    [dispatch],
+  );
+
+  useEffect(() => {
+    getProductList();
+  }, [getProductList]);
 
   return (
     <>
@@ -25,7 +44,7 @@ const MainScreen: React.FC<PropsFromRedux> = props => {
           refreshControl={
             <RefreshControl
               refreshing={false}
-              onRefresh={onRefresh}
+              onRefresh={getProductList}
               tintColor={Colors.primary}
             />
           }

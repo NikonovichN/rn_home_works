@@ -6,8 +6,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   CartComponent,
   DummyPage,
-  LoginComponent,
-  MainScreenComponent,
+  LogInPage,
+  MainScreen,
   ProductDetailsPage,
 } from '@pages';
 import {
@@ -29,7 +29,7 @@ const MainStackNavigator: React.FC = () => (
   <Stack.Navigator initialRouteName="MainScreen">
     <Stack.Screen
       name="MainScreen"
-      component={MainScreenComponent}
+      component={MainScreen}
       options={() => ({
         header: ({navigation}) =>
           headerWrapper({
@@ -53,7 +53,7 @@ const MainStackNavigator: React.FC = () => (
     />
     <Stack.Screen
       name="LogIn"
-      component={LoginComponent}
+      component={LogInPage}
       options={() => ({header: clearHeader})}
     />
     <Stack.Screen
