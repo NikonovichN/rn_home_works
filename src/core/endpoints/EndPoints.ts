@@ -22,6 +22,3 @@ export class EndPoints {
   static baseImagesUrl: string = 'https://api.thecatapi.com';
   static imagesUrl: string = '/v1/images/search';
 }
-export class Tokens {
-  static imageHostToken: string = '17d94b92-754f-46eb-99a0-65be65b5d18f';
-}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-import {EndPoints, Tokens} from '../endpoints/EndPoints';
+import {EndPoints} from '../endpoints/EndPoints';
+import {IMAGE_HOST_TOKEN} from '@env';
 
 export async function fetchImagesLink(limit: string): Promise<object> {
   let images = await axios.get(
@@ -8,7 +9,7 @@ export async function fetchImagesLink(limit: string): Promise<object> {
     {
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': Tokens.imageHostToken,
+        'x-api-key': IMAGE_HOST_TOKEN,
       },
       params: {
         format: 'json',
