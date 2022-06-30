@@ -16,6 +16,7 @@ export class Colors {
     secondary: Colors.grey,
     accent: '#00A8F3',
     accentGreen: '#A5DC86',
+    error: '#a52a2a',
   };
 
   static border = {
@@ -27,5 +28,9 @@ export class Colors {
     selectClear: '#F7F7F7',
     selectedClear: '#5C5346',
     primary: '#008ACE',
+    errorBackGround: '#ffb6c1',
+    success: '#A5DC86',
+    cornflowerBlue: '#6495ed',
+    accentError: '#cd5c5c',
   };
 }

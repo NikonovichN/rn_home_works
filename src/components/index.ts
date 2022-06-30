@@ -7,3 +7,4 @@ export * from './ModalWindow';
 export * from './PrimaryButton';
 export * from './TextInputStore';
 export * from './FirstLogin';
+export * from './AnimatedButton';

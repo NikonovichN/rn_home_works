@@ -63,6 +63,11 @@ const TextStyles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.text.accentGreen,
   },
+  error: {
+    fontSize: 16,
+    fontWeight: '400',
+    color: Colors.text.error,
+  },
 });
 
 const ButtonStyles = StyleSheet.create({
