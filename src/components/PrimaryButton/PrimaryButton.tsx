@@ -7,15 +7,20 @@ type Props = {
   width?: number;
   content: string;
   toUppercase?: boolean;
+  backgroundColor?: string;
   onPress(): void;
 };
 
 const PrimaryButton: React.FC<Props> = props => {
-  const {width, content, toUppercase = true, onPress} = props;
+  const {width, content, toUppercase = true, onPress, backgroundColor} = props;
 
   return (
     <TouchableOpacity
-      style={[ButtonStyles.primary, {width}]}
+      style={[
+        ButtonStyles.primary,
+        {width},
+        !!backgroundColor && {backgroundColor},
+      ]}
       activeOpacity={Opacity.regularButton}
       onPress={onPress}>
       <Text style={TextStyles.buttonRegular}>

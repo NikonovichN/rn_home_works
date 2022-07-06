@@ -39,4 +39,4 @@ const navigateToLogIn = ({navigation, action}: Params) => {
   });
 };
 
-export default navigateToLogIn;
+export {navigateToLogIn};

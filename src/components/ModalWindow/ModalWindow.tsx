@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import {RouteProp} from '@react-navigation/core/lib/typescript/src/types';
 
-import {RootStackParamList} from '../../pages/NavigationStack/types';
+import {RootStackParamList} from '@navigation/types';
 import {Colors} from '@styles';
 
 type Props = {

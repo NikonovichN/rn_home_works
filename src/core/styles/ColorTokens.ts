@@ -28,6 +28,7 @@ export class Colors {
     selectClear: '#F7F7F7',
     selectedClear: '#5C5346',
     primary: '#008ACE',
+    errorAccent: '#FF2E2E',
     errorBackGround: '#ffb6c1',
     success: '#A5DC86',
     cornflowerBlue: '#6495ed',

@@ -28,4 +28,4 @@ const navigateToSelectProperty = ({navigation}: Params) => {
   });
 };
 
-export default navigateToSelectProperty;
+export {navigateToSelectProperty};

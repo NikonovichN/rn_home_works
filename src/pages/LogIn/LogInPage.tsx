@@ -15,6 +15,8 @@ import {RootStackParamList} from '@navigation/types';
 import {useShallowEqualSelector} from '@hooks';
 import {userSelector} from '@selectors';
 import {userActions} from '@actions';
+import {checkInternetConnection} from '@network';
+import {navigateToNetworkIssue} from '../ModalWindows';
 
 type Props = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -34,8 +36,12 @@ const LogInPage: React.FC<Props> = props => {
   const dispatch = useDispatch();
 
   const logIn = useCallback(() => {
-    dispatch(userActions.userLogIn({userName, password}, params?.action));
-  }, [dispatch, userName, password, params]);
+    const action = () =>
+      dispatch(userActions.userLogIn({userName, password}, params?.action));
+    const failCallback = () => navigateToNetworkIssue({navigation, action});
+
+    checkInternetConnection({action, failCallback});
+  }, [dispatch, userName, password, params, navigation]);
 
   useEffect(() => {
     if (isLogged) {

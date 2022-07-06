@@ -23,7 +23,8 @@
           "@selectors": "./src/core/selectors",
           "@hooks": "./src/core/hooks",
           "@actions": "./src/core/actions",
-          "@navigation/types": "./src/core/navigation/types"
+          "@navigation/types": "./src/core/navigation/types",
+          "@network": "./src/core/network"
         }
       }
     ]

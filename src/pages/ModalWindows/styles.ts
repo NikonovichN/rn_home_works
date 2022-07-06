@@ -20,6 +20,7 @@ export default StyleSheet.create({
   },
   alignView: {
     flex: 1,
+    // flexDirection: 'row',
     alignItems: 'center',
   },
 });

@@ -24,4 +24,4 @@ const navigateToSuccessAddCart = ({navigation}: Params) => {
   });
 };
 
-export default navigateToSuccessAddCart;
+export {navigateToSuccessAddCart};
