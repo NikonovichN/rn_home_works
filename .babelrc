@@ -24,7 +24,8 @@
           "@hooks": "./src/core/hooks",
           "@actions": "./src/core/actions",
           "@navigation/types": "./src/core/navigation/types",
-          "@network": "./src/core/network"
+          "@network": "./src/core/network",
+          "@utils": ["./src/core/utils"]
         }
       }
     ]
