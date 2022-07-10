@@ -77,7 +77,7 @@ const ProductItem: React.FC<ProductItemProps> = props => {
     const failCallback = () => navigateToNetworkIssue({navigation, action});
 
     checkInternetConnection({action, failCallback});
-  }, [navigation]);
+  }, [navigation, product]);
 
   return <ProductCard product={product} onPress={chooseProduct} />;
 };
