@@ -5,9 +5,11 @@ export type RootStackParamList = {
   MainScreen: undefined;
   ProductDetails: {productId: string};
   DummyPage: undefined;
-  LogIn: {
-    action?: AnyActionTypes;
-  };
+  LogIn:
+    | {
+        action: AnyActionTypes;
+      }
+    | undefined;
   Cart: any;
   ModalWindow: {
     icon: ReactNode;

@@ -25,7 +25,8 @@
           "@actions": "./src/core/actions",
           "@navigation": ["./src/core/navigation"],
           "@network": "./src/core/network",
-          "@utils": ["./src/core/utils"]
+          "@utils": ["./src/core/utils"],
+          "@constants": ["./src/core/constants"]
         }
       }
     ]

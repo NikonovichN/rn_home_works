@@ -5,7 +5,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/type
 
 import {PrimaryButton} from '@components';
 import {DeclineIcon} from '@icons';
-import {Routes} from '@navigation';
+import {Routes} from '@constants';
 
 import styles from './styles';
 

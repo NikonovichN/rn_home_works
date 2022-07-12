@@ -24,6 +24,7 @@
       "@navigation": ["./src/core/navigation/index"],
       "@network": ["./src/core/network/index"],
       "@utils": ["./src/core/utils/index"],
+      "@constants": ["./src/core/constants/index"],
     }
   },
   "include": ["./src/**/*"],

@@ -11,7 +11,7 @@ import {
   ANIMATED_BUTTON_STATUS,
 } from '@components';
 import {Colors, TextStyles} from '@styles';
-import {RootStackParamList} from '@navigation/types';
+import {RootStackParamList} from '@navigation';
 import {useShallowEqualSelector} from '@hooks';
 import {userSelector} from '@selectors';
 import {userActions} from '@actions';

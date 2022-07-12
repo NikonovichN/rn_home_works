@@ -18,7 +18,7 @@ import {Loading, PrimaryButton, SelectProperty} from '@components';
 import {productDetailsSelector} from '@selectors';
 import {ButtonStyles, Colors, TextStyles} from '@styles';
 import {productDetailsActions, addToCartActions} from '@actions';
-import {RootStackParamList} from '@navigation/types';
+import {RootStackParamList} from '@navigation';
 
 import {navigateToSelectProperty} from '../ModalWindows';
 

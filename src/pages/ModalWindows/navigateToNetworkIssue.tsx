@@ -3,7 +3,7 @@ import {Text} from 'react-native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
-import {Routes} from '@navigation';
+import {Routes} from '@constants';
 import {PrimaryButton} from '@components';
 import {DeclineIcon} from '@icons';
 import {Colors} from '@styles';

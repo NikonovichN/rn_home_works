@@ -1,20 +1,25 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Text, TouchableWithoutFeedback, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {BasketIcon, ArrowBackIcon, HeartIcon} from '@icons';
-import {Routes} from '@navigation';
+import {Routes} from '@constants';
 
 import {styles} from './styles';
 import {HeaderProps} from './headerTypes';
 
 const ProductHeader: React.FC<HeaderProps> = props => {
   const navigation = useNavigation();
+  const goBack = useCallback(() => navigation.goBack(), [navigation]);
+  const navigateToCart = useCallback(
+    () => navigation.navigate(Routes.Cart),
+    [navigation],
+  );
 
   return (
     <View style={styles.container}>
       <View style={styles.endIcons}>
-        <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+        <TouchableWithoutFeedback onPress={goBack}>
           <View>
             <ArrowBackIcon />
           </View>
@@ -23,8 +28,7 @@ const ProductHeader: React.FC<HeaderProps> = props => {
       <Text style={styles.title}>{props.title}</Text>
       <View style={styles.endIcons}>
         <HeartIcon />
-        <TouchableWithoutFeedback
-          onPress={() => navigation.navigate(Routes.Cart)}>
+        <TouchableWithoutFeedback onPress={navigateToCart}>
           <View>
             <BasketIcon />
           </View>

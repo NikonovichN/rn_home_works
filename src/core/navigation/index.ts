@@ -1,3 +1,3 @@
 export * from './NavigationStack';
-export * from './routes';
-export * from './types';
+export * from './types.d';
+export * from './navigation.d';

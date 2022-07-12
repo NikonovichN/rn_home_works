@@ -4,7 +4,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
-  CartComponent,
+  Cart,
   DummyPage,
   LogInPage,
   MainScreen,
@@ -12,7 +12,7 @@ import {
 } from '@pages';
 import {ModalWindow, MainHeader, ProductHeader, CartHeader} from '@components';
 import {RootStackParamList} from './types';
-import {Routes} from './routes';
+import {Routes} from '@constants';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -43,7 +43,7 @@ const MainStackNavigator: React.FC = () => (
     />
     <Stack.Screen
       name={Routes.Cart}
-      component={CartComponent}
+      component={Cart}
       options={() => ({
         header: () => <CartHeader title="My Cart" />,
       })}
