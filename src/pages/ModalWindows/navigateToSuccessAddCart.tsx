@@ -3,16 +3,18 @@ import {Text, View} from 'react-native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
-import styles from './styles';
 import {PrimaryButton} from '@components';
 import {SuccessIcon} from '@icons';
+import {Routes} from '@navigation';
+
+import styles from './styles';
 
 type Params = {
   navigation: NativeStackNavigationProp<any, any>;
 };
 
 const navigateToSuccessAddCart = ({navigation}: Params) => {
-  navigation.navigate('ModalWindow', {
+  navigation.navigate(Routes.ModalWindow, {
     icon: <SuccessIcon />,
     title: <Text style={styles.modalTitle}>Product added to your cart</Text>,
     description: null,

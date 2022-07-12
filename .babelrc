@@ -23,7 +23,7 @@
           "@selectors": "./src/core/selectors",
           "@hooks": "./src/core/hooks",
           "@actions": "./src/core/actions",
-          "@navigation/types": "./src/core/navigation/types",
+          "@navigation": ["./src/core/navigation"],
           "@network": "./src/core/network",
           "@utils": ["./src/core/utils"]
         }

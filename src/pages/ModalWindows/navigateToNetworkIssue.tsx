@@ -3,10 +3,12 @@ import {Text} from 'react-native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
-import styles from './styles';
+import {Routes} from '@navigation';
 import {PrimaryButton} from '@components';
 import {DeclineIcon} from '@icons';
 import {Colors} from '@styles';
+
+import styles from './styles';
 
 type Params = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -14,7 +16,7 @@ type Params = {
 };
 
 const navigateToNetworkIssue = ({navigation, action}: Params) => {
-  navigation.navigate('ModalWindow', {
+  navigation.navigate(Routes.ModalWindow, {
     icon: <DeclineIcon />,
     title: <Text style={styles.modalTitle}>No Internet</Text>,
     description: (

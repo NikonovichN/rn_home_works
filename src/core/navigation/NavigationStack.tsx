@@ -10,14 +10,9 @@ import {
   MainScreen,
   ProductDetailsPage,
 } from '@pages';
-import {
-  headerWrapper,
-  ModalWindow,
-  MainHeader,
-  ProductHeader,
-  CartHeader,
-} from '@components';
+import {ModalWindow, MainHeader, ProductHeader, CartHeader} from '@components';
 import {RootStackParamList} from './types';
+import {Routes} from './routes';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,28 +21,28 @@ const Drawer = createDrawerNavigator();
 const clearHeader = () => null;
 
 const MainStackNavigator: React.FC = () => (
-  <Stack.Navigator initialRouteName="MainScreen">
+  <Stack.Navigator initialRouteName={Routes.MainScreen}>
     <Stack.Screen
-      name="MainScreen"
+      name={Routes.MainScreen}
       component={MainScreen}
       options={() => ({
         header: () => <MainHeader title="Ecommerce Store" />,
       })}
     />
     <Stack.Screen
-      name="ProductDetails"
+      name={Routes.ProductDetails}
       component={ProductDetailsPage}
       options={() => ({
         header: () => <ProductHeader title="Product Details" />,
       })}
     />
     <Stack.Screen
-      name="LogIn"
+      name={Routes.LogIn}
       component={LogInPage}
       options={() => ({header: clearHeader})}
     />
     <Stack.Screen
-      name="Cart"
+      name={Routes.Cart}
       component={CartComponent}
       options={() => ({
         header: () => <CartHeader title="My Cart" />,
@@ -55,15 +50,15 @@ const MainStackNavigator: React.FC = () => (
     />
     <Stack.Group
       screenOptions={{presentation: 'transparentModal', header: clearHeader}}>
-      <Stack.Screen name="ModalWindow" component={ModalWindow} />
+      <Stack.Screen name={Routes.ModalWindow} component={ModalWindow} />
     </Stack.Group>
   </Stack.Navigator>
 );
 
 const DummyStackNavigatorOne: React.FC = () => (
-  <Stack.Navigator initialRouteName="DummyPage">
+  <Stack.Navigator initialRouteName={Routes.DummyPage}>
     <Stack.Screen
-      name="DummyPage"
+      name={Routes.DummyPage}
       component={DummyPage}
       options={() => ({
         header: () => <MainHeader title="Dummy Page Stack 1" />,
@@ -73,9 +68,9 @@ const DummyStackNavigatorOne: React.FC = () => (
 );
 
 const DummyStackNavigatorTwo: React.FC = () => (
-  <Stack.Navigator initialRouteName="DummyPage">
+  <Stack.Navigator initialRouteName={Routes.DummyPage}>
     <Stack.Screen
-      name="DummyPage"
+      name={Routes.DummyPage}
       component={DummyPage}
       options={() => ({
         header: () => <MainHeader title="Dummy Page Stack 2" />,

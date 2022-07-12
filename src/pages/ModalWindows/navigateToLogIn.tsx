@@ -3,9 +3,11 @@ import {Text} from 'react-native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
-import styles from './styles';
+import {Routes} from '@navigation';
 import {PrimaryButton} from '@components';
 import {WarningIcon} from '@icons';
+
+import styles from './styles';
 import {AnyActionTypes} from '../../core/actions/AnyActionTypes';
 
 type Params = {
@@ -14,7 +16,7 @@ type Params = {
 };
 
 const navigateToLogIn = ({navigation, action}: Params) => {
-  navigation.navigate('ModalWindow', {
+  navigation.navigate(Routes.ModalWindow, {
     icon: <WarningIcon />,
     title: <Text style={styles.modalTitle}>Login To Continue</Text>,
     description: (

@@ -3,6 +3,7 @@ import {Text, TouchableWithoutFeedback, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {BasketIcon, ArrowBackIcon, HeartIcon} from '@icons';
+import {Routes} from '@navigation';
 
 import {styles} from './styles';
 import {HeaderProps} from './headerTypes';
@@ -22,7 +23,8 @@ const ProductHeader: React.FC<HeaderProps> = props => {
       <Text style={styles.title}>{props.title}</Text>
       <View style={styles.endIcons}>
         <HeartIcon />
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Cart')}>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate(Routes.Cart)}>
           <View>
             <BasketIcon />
           </View>

@@ -3,12 +3,12 @@ import {Text, TouchableWithoutFeedback, View} from 'react-native';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 import {MenuIcon, BasketIcon} from '@icons';
+import {Routes} from '@navigation';
 
 import {styles} from './styles';
 import {HeaderProps} from './headerTypes';
 
 const MainHeader: React.FC<HeaderProps> = props => {
-  console.log('hhhh', props);
   const navigation = useNavigation();
 
   return (
@@ -21,7 +21,8 @@ const MainHeader: React.FC<HeaderProps> = props => {
         </View>
       </TouchableWithoutFeedback>
       <Text style={styles.title}>{props.title}</Text>
-      <TouchableWithoutFeedback onPress={() => navigation.navigate('Cart')}>
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate(Routes.Cart)}>
         <View>
           <BasketIcon />
         </View>
