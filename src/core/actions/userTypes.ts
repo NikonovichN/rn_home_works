@@ -6,7 +6,6 @@ export const USER_LOGIN = 'user/USER_LOGIN';
 export interface UserLogin {
   type: typeof USER_LOGIN;
   credentials: UserCredentials;
-  proceedActions?: AnyActionTypes;
 }
 
 export const GET_TOKEN = 'user/GET_TOKEN';

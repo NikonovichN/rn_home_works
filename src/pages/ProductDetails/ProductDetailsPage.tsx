@@ -44,7 +44,7 @@ const ProductDetailsPage: React.FC = () => {
     if (activeProperty == null) {
       navigateToSelectProperty({navigation});
     } else {
-      dispatch(addToCartActions.addToCart(activeProperty, navigation));
+      dispatch(addToCartActions.addToCart(activeProperty));
     }
   }, [activeProperty, dispatch, navigation]);
 

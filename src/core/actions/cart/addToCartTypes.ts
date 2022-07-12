@@ -5,7 +5,6 @@ export const ADD_TO_CART = 'cart/ADD_TO_CART';
 export interface AddToCart {
   type: typeof ADD_TO_CART;
   variantId: string;
-  navigation: NativeStackNavigationProp<any, any>;
 }
 
 export const ADD_TO_CART_REQUEST = 'cart/ADD_TO_CART_REQUEST';

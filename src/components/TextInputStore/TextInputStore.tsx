@@ -1,13 +1,13 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {StyleSheet, TextInputProps, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
-
-import {Colors, TextStyles} from '@styles';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+
+import {Colors, TextStyles} from '@styles';
 
 const ANIMATION_DURATION = {
   duration: 300,
@@ -29,20 +29,22 @@ const TextInputStore: React.FC<TextInputProps & Props> = props => {
   const onFocus = useCallback(() => setFocus(true), [setFocus]);
   const onBlur = useCallback(() => setFocus(false), [setFocus]);
 
+  const isActive = isFocused || props.value;
+
   useEffect(() => {
-    marginTopLabel.value = withTiming(isFocused ? -8 : 12, ANIMATION_DURATION);
-  }, [isFocused]);
+    marginTopLabel.value = withTiming(isActive ? -8 : 12, ANIMATION_DURATION);
+  }, [isActive]);
 
   const animatedInputStyle = useMemo(
     () => [
       styles.label,
       labelAnimatedTransform,
       {
-        color: isFocused ? Colors.text.primary : Colors.text.secondary,
-        zIndex: isFocused ? 1 : 0,
+        color: isActive ? Colors.text.primary : Colors.text.secondary,
+        zIndex: isActive ? 1 : 0,
       },
     ],
-    [labelAnimatedTransform, isFocused],
+    [labelAnimatedTransform, isActive, props.value],
   );
   const propsStyles = useMemo(
     () => [styles.inputStyles, props.style],
@@ -53,11 +55,11 @@ const TextInputStore: React.FC<TextInputProps & Props> = props => {
     <View>
       <Animated.Text style={animatedInputStyle}>{props.label}</Animated.Text>
       <TextInput
+        {...props}
         maxLength={30}
         onFocus={onFocus}
         onBlur={onBlur}
         focusable
-        {...props}
         style={propsStyles}
       />
     </View>

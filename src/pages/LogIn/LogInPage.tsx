@@ -30,8 +30,7 @@ const LogInPage: React.FC = () => {
   const dispatch = useDispatch();
 
   const logIn = useCallback(() => {
-    const action = () =>
-      dispatch(userActions.userLogIn({userName, password}, params?.action));
+    const action = () => dispatch(userActions.userLogIn({userName, password}));
     const failCallback = () => navigateToNetworkIssue({navigation, action});
 
     checkInternetConnection({action, failCallback});
