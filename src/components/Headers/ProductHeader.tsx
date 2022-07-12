@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, TouchableWithoutFeedback, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import {BasketIcon, ArrowBackIcon, HeartIcon} from '@icons';
 
@@ -7,7 +8,7 @@ import {styles} from './styles';
 import {HeaderProps} from './headerTypes';
 
 const ProductHeader: React.FC<HeaderProps> = props => {
-  const {title, navigation} = props;
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -18,7 +19,7 @@ const ProductHeader: React.FC<HeaderProps> = props => {
           </View>
         </TouchableWithoutFeedback>
       </View>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title}>{props.title}</Text>
       <View style={styles.endIcons}>
         <HeartIcon />
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Cart')}>

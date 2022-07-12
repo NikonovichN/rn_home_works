@@ -1,3 +1,1 @@
-import {FirstLogin} from './FirstLogin';
-
-export {FirstLogin};
+export * from './FirstLogin';

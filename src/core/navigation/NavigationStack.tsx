@@ -31,24 +31,14 @@ const MainStackNavigator: React.FC = () => (
       name="MainScreen"
       component={MainScreen}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: MainHeader,
-            navigation,
-            title: 'Ecommerce Store',
-          }),
+        header: () => <MainHeader title="Ecommerce Store" />,
       })}
     />
     <Stack.Screen
       name="ProductDetails"
       component={ProductDetailsPage}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: ProductHeader,
-            navigation,
-            title: 'Product Details',
-          }),
+        header: () => <ProductHeader title="Product Details" />,
       })}
     />
     <Stack.Screen
@@ -60,12 +50,7 @@ const MainStackNavigator: React.FC = () => (
       name="Cart"
       component={CartComponent}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: CartHeader,
-            navigation,
-            title: 'My Cart',
-          }),
+        header: () => <CartHeader title="My Cart" />,
       })}
     />
     <Stack.Group
@@ -81,12 +66,7 @@ const DummyStackNavigatorOne: React.FC = () => (
       name="DummyPage"
       component={DummyPage}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: MainHeader,
-            navigation,
-            title: 'Dummy Page Stack 2',
-          }),
+        header: () => <MainHeader title="Dummy Page Stack 1" />,
       })}
     />
   </Stack.Navigator>
@@ -98,12 +78,7 @@ const DummyStackNavigatorTwo: React.FC = () => (
       name="DummyPage"
       component={DummyPage}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: MainHeader,
-            navigation,
-            title: 'Dummy Page Stack 2',
-          }),
+        header: () => <MainHeader title="Dummy Page Stack 2" />,
       })}
     />
   </Stack.Navigator>
