@@ -84,6 +84,7 @@ const ButtonStyles = StyleSheet.create({
 
 class Opacity {
   static regularButton = 0.9;
+  static cardOpacity = 0.9;
 }
 
 export {CommonStyles, TextStyles, ButtonStyles, Opacity};

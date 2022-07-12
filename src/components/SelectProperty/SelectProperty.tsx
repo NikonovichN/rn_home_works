@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
@@ -11,31 +11,50 @@ type Props = {
 };
 
 const SelectProperty: React.FC<Props> = props => {
-  const {properties, activeProperty, onPress} = props;
-
   return (
     <View style={styles.container}>
-      {properties.map(property => (
-        <TouchableOpacity
-          key={property}
-          style={[
-            styles.property,
-            activeProperty === property && styles.activeProperty,
-          ]}
-          activeOpacity={Opacity.regularButton}
-          onPress={() => onPress(property)}>
-          <Text
-            style={[
-              TextStyles.regular,
-              activeProperty === property && {
-                color: Colors.text.onSurfacePrimary,
-              },
-            ]}>
-            {property}
-          </Text>
-        </TouchableOpacity>
+      {props.properties.map(property => (
+        <Property key={property} property={property} {...props} />
       ))}
     </View>
+  );
+};
+
+type PropertyProps = {
+  property: string;
+  activeProperty: string | null;
+  onPress(selectedProperty: string): void;
+};
+
+const Property: React.FC<PropertyProps> = ({
+  property,
+  activeProperty,
+  onPress,
+}) => {
+  const containerStyle = useMemo(
+    () => [
+      styles.property,
+      activeProperty === property && styles.activeProperty,
+    ],
+    [property, activeProperty],
+  );
+  const textStyle = useMemo(
+    () => [
+      TextStyles.regular,
+      activeProperty === property && {
+        color: Colors.text.onSurfacePrimary,
+      },
+    ],
+    [property, activeProperty],
+  );
+
+  return (
+    <TouchableOpacity
+      style={containerStyle}
+      activeOpacity={Opacity.regularButton}
+      onPress={() => onPress(property)}>
+      <Text style={textStyle}>{property}</Text>
+    </TouchableOpacity>
   );
 };
 
