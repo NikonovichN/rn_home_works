@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {StyleSheet, Dimensions, View} from 'react-native';
 import Animated, {
   FadeOut,
@@ -51,8 +51,13 @@ const FireWork: React.FC<Props> = props => {
     return () => clearInterval(intervalPosition);
   }, [props.delay]);
 
+  const containerStyle = useMemo(
+    () => [styles.container, position, opacityAnimatedStyle],
+    [position, opacityAnimatedStyle],
+  );
+
   return (
-    <Animated.View style={[styles.container, position, opacityAnimatedStyle]}>
+    <Animated.View style={containerStyle}>
       {Array.from({length: 11}).map((_, index) => (
         <Circle
           key={`key_${index * CORNER_STEP}`}

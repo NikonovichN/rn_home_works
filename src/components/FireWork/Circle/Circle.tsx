@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {StyleSheet, ViewStyle} from 'react-native';
 import Animated, {
   Layout,
@@ -42,11 +42,12 @@ const Circle: React.FC<Props> = props => {
     );
   }, []);
 
-  return (
-    <Animated.View
-      style={[styles.container, backgroundColor, transformStyles]}
-    />
+  const styleCircle = useMemo(
+    () => [styles.container, backgroundColor, transformStyles],
+    [backgroundColor, transformStyles],
   );
+
+  return <Animated.View style={styleCircle} />;
 };
 
 const styles = StyleSheet.create({

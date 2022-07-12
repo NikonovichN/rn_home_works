@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import Animated, {
   Easing,
@@ -93,22 +93,39 @@ const ErrorBox: React.FC = () => {
     }
   }, [showText, textOpacity, containerPadding]);
 
+  const textStyle = useMemo(
+    () => [styles.textStyles, animatedTextOpacity],
+    [animatedTextOpacity],
+  );
+  const crossContainerStyle = useMemo(
+    () => [styles.crossContainer, animatedBoxStyle],
+    [animatedBoxStyle],
+  );
+  const leftLineStyle = useMemo(
+    () => [styles.dotLeft, animatedLeftLine],
+    [animatedLeftLine],
+  );
+  const rightLineStyle = useMemo(
+    () => [styles.dotRight, animatedRightLine],
+    [animatedRightLine],
+  );
+
   return (
     <>
       {showText ? (
         <Animated.Text
-          style={[styles.textStyles, animatedTextOpacity]}
+          style={textStyle}
           exiting={FadeOut.duration(LAYOUT_TIME_ANIMATION / 2)}>
           OOOPS! Try again!
         </Animated.Text>
       ) : null}
       <Animated.View
-        style={[styles.crossContainer, animatedBoxStyle]}
+        style={crossContainerStyle}
         layout={Layout.duration(LAYOUT_TIME_ANIMATION)}
         entering={FadeIn.duration(LAYOUT_TIME_ANIMATION)}
         exiting={FadeOut.duration(LAYOUT_TIME_ANIMATION / 2)}>
-        <Animated.View style={[styles.dotLeft, animatedLeftLine]} />
-        <Animated.View style={[styles.dotRight, animatedRightLine]} />
+        <Animated.View style={leftLineStyle} />
+        <Animated.View style={rightLineStyle} />
       </Animated.View>
     </>
   );

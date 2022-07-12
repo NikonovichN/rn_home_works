@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Animated, {
   Layout,
@@ -57,13 +57,18 @@ const AnimatedButton: React.FC<Props> = props => {
     }
   }, [props.status, colorContainer]);
 
+  const contentStyles = useMemo(
+    () => [styles.contentContainer, animatedTextOpacity],
+    [animatedTextOpacity],
+  );
+
   return (
     <TouchableOpacity
       activeOpacity={isReady ? Opacity.regularButton : 1}
       onPress={isReady ? props.onPress : noop}
       style={styles.touchableContainer}>
       <Animated.View
-        style={[styles.contentCOntainer, animatedTextOpacity]}
+        style={contentStyles}
         layout={Layout.duration(LAYOUT_TIME_ANIMATION)}>
         <ActualBox status={currentStatus} />
       </Animated.View>
@@ -92,7 +97,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  contentCOntainer: {
+  contentContainer: {
     borderRadius: 4,
     height: 40,
     justifyContent: 'center',
