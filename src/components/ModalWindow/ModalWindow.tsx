@@ -1,20 +1,15 @@
 import React from 'react';
 import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import {RouteProp} from '@react-navigation/core/lib/typescript/src/types';
+import {useRoute} from '@react-navigation/native';
 
 import {RootStackParamList} from '@navigation';
 import {Colors} from '@styles';
 
-type Props = {
-  route: RouteProp<RootStackParamList, 'ModalWindow'>;
-};
-
-const ModalWindow: React.FC<Props> = props => {
+const ModalWindow: React.FC = () => {
   const {
-    route: {
-      params: {icon, title, description, actions},
-    },
-  } = props;
+    params: {icon, title, description, actions},
+  } = useRoute<RouteProp<RootStackParamList, 'ModalWindow'>>();
 
   return (
     <View style={styles.modalContainer}>

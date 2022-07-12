@@ -11,7 +11,7 @@ import {useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {RouteProp} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 
 import {useShallowEqualSelector} from '@hooks';
 import {Loading, PrimaryButton, SelectProperty} from '@components';
@@ -22,22 +22,15 @@ import {RootStackParamList} from '@navigation';
 
 import {navigateToSelectProperty} from '../ModalWindows';
 
-type Props = {
-  navigation: NativeStackNavigationProp<any, any>;
-  route: RouteProp<RootStackParamList, 'ProductDetails'>;
-};
-
-const ProductDetailsPage: React.FC<Props> = props => {
+const ProductDetailsPage: React.FC = () => {
   const {
     isLoading,
     productDetails: {imageUrl, name, displayPrice, properties, description},
   } = useShallowEqualSelector(productDetailsSelector);
+  const navigation = useNavigation<NativeStackNavigationProp<any, any>>();
   const {
-    navigation,
-    route: {
-      params: {productId},
-    },
-  } = props;
+    params: {productId},
+  } = useRoute<RouteProp<RootStackParamList, 'ProductDetails'>>();
 
   const dispatch = useDispatch();
   const insets = useSafeAreaInsets();

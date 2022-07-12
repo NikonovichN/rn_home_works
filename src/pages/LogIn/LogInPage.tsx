@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {RouteProp} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 
 import {
   AnimatedButton,
@@ -18,16 +18,10 @@ import {userActions} from '@actions';
 import {checkInternetConnection} from '@network';
 import {navigateToNetworkIssue} from '../ModalWindows';
 
-type Props = {
-  navigation: NativeStackNavigationProp<any, any>;
-  route: RouteProp<RootStackParamList, 'LogIn'>;
-};
+const LogInPage: React.FC = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<any, any>>();
+  const {params} = useRoute<RouteProp<RootStackParamList, 'LogIn'>>();
 
-const LogInPage: React.FC<Props> = props => {
-  const {
-    navigation,
-    route: {params},
-  } = props;
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [status, setStatus] = useState(ANIMATED_BUTTON_STATUS.ready);
