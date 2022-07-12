@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
-
-import Colors from './ColorTokens';
+import {Colors} from './ColorTokens';
 
 const CommonStyles = StyleSheet.create({
   shadow: {
@@ -16,10 +15,20 @@ const CommonStyles = StyleSheet.create({
 });
 
 const TextStyles = StyleSheet.create({
+  small: {
+    fontSize: 12,
+    fontWeight: '400',
+    color: Colors.text.primary,
+  },
   regular: {
     fontSize: 15,
     fontWeight: '400',
     color: Colors.text.primary,
+  },
+  regularSecondary: {
+    fontSize: 15,
+    fontWeight: '400',
+    color: Colors.text.secondary,
   },
   regularBold: {
     fontSize: 15,
@@ -31,11 +40,28 @@ const TextStyles = StyleSheet.create({
     fontWeight: '700',
     color: Colors.text.primary,
   },
+  secondaryTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: Colors.grey,
+  },
   buttonRegular: {
     fontSize: 15,
     fontWeight: '500',
     letterSpacing: 1.25,
     color: Colors.text.onSurfacePrimary,
+  },
+  heading: {
+    fontSize: 40,
+    fontWeight: '700',
+    lineHeight: 50,
+    color: Colors.text.accent,
+  },
+  smallSuccess: {
+    fontSize: 12,
+    lineHeight: 12,
+    fontWeight: '400',
+    color: Colors.text.accentGreen,
   },
 });
 
@@ -51,4 +77,8 @@ const ButtonStyles = StyleSheet.create({
   },
 });
 
-export {CommonStyles, TextStyles, ButtonStyles};
+class Opacity {
+  static regularButton = 0.9;
+}
+
+export {CommonStyles, TextStyles, ButtonStyles, Opacity};

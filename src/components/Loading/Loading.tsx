@@ -1,9 +1,7 @@
 import React from 'react';
-import {ActivityIndicator, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
-import styles from './styles';
-
-import Colors from '../../core/styles/ColorTokens';
+import {Colors} from '@styles';
 
 const Loading: React.FC = () => {
   return (
@@ -13,4 +11,12 @@ const Loading: React.FC = () => {
   );
 };
 
-export default Loading;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: Colors.white,
+  },
+});
+
+export {Loading};

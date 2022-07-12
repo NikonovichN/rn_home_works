@@ -12,11 +12,23 @@
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "paths": {
+      "@styles": ["./src/core/styles/index"],
+      "@components": ["./src/components/index"],
+      "@icons": ["./src/assets/icons/index"],
+      "@pages": ["./src/pages/index"],
+      "@selectors": ["./src/core/selectors/index"],
+      "@hooks": ["./src/core/hooks/index"],
+      "@actions": ["./src/core/actions/index"],
+      "@navigation/types": ["./src/core/navigation/types"],
+    }
   },
+  "include": ["./src/**/*"],
   "exclude": [
     "node_modules",
     "babel.config.js",
     "metro.config.js"
-  ]
+  ],
+  "typeRoots": ["./src/core/types"],
 }

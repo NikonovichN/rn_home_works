@@ -1,6 +1,6 @@
-import * as actions from '../actions/productDetailsTypes';
-import {emptyProduct} from '../convertor/Convertor';
-import {Product} from '../entities/ProductList';
+import {productDetailsTypes} from '../actions';
+import {emptyProduct} from '../converters';
+import {Product} from '../entities';
 
 export interface ProductDetailsState {
   productDetails: Product;
@@ -16,23 +16,23 @@ const initialState: ProductDetailsState = {
 
 export default function productDetailsReducer(
   state: ProductDetailsState = initialState,
-  action: actions.ProductDetails,
+  action: productDetailsTypes.ProductDetails,
 ): ProductDetailsState {
   switch (action.type) {
-    case actions.GET_PRODUCT: {
+    case productDetailsTypes.GET_PRODUCT: {
       return {
         ...state,
         isLoading: true,
       };
     }
-    case actions.GET_PRODUCT_SUCCESS: {
+    case productDetailsTypes.GET_PRODUCT_SUCCESS: {
       return {
         ...state,
         productDetails: action.product,
         isLoading: false,
       };
     }
-    case actions.GET_PRODUCT_FAILURE: {
+    case productDetailsTypes.GET_PRODUCT_FAILURE: {
       return {
         ...state,
         error: action.error,
