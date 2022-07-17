@@ -1,0 +1,3 @@
+export const TOTAL_POSSIBLE_COLOR_COMBINATIONS = 16777215;
+export const HEX_BASE_NUMBER = 16;
+export const HEX_COLOR_LENGTH = 6;

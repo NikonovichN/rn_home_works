@@ -6,7 +6,7 @@ import {BigBoxIcon} from '@icons';
 import {Colors, TextStyles} from '@styles';
 
 type Props = {
-  shopNow(): void;
+  onButtonPress(): void;
 };
 
 const EmptyCart: React.FC<Props> = props => {
@@ -18,7 +18,7 @@ const EmptyCart: React.FC<Props> = props => {
         Add product in your cart now
       </Text>
       <View style={styles.buttonContainer}>
-        <PrimaryButton onPress={props.shopNow} content="shop now" />
+        <PrimaryButton onPress={props.onButtonPress} content="shop now" />
       </View>
     </View>
   );

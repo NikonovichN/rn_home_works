@@ -25,6 +25,8 @@ const AnimatedButton: React.FC<Props> = props => {
   const [currentStatus, setStatus] = useState(ANIMATED_BUTTON_STATUS.ready);
   const colorContainer = useSharedValue(Colors.buttons.primary);
 
+  const timeOutIds: NodeJS.Timeout[] = [];
+
   const isReady = useMemo(
     () => currentStatus === ANIMATED_BUTTON_STATUS.ready,
     [currentStatus],
@@ -46,13 +48,15 @@ const AnimatedButton: React.FC<Props> = props => {
       case ANIMATED_BUTTON_STATUS.error:
         setStatus(props.status);
         colorContainer.value = Colors.buttons.errorBackGround;
-        setTimeout(() => {
-          setStatus(ANIMATED_BUTTON_STATUS.ready);
-          colorContainer.value = withTiming(
-            Colors.buttons.primary,
-            DURATION_CONFIG,
-          );
-        }, 3000);
+        timeOutIds.push(
+          setTimeout(() => {
+            setStatus(ANIMATED_BUTTON_STATUS.ready);
+            colorContainer.value = withTiming(
+              Colors.buttons.primary,
+              DURATION_CONFIG,
+            );
+          }, 3000),
+        );
         return;
       case ANIMATED_BUTTON_STATUS.success:
         setStatus(props.status);
@@ -62,9 +66,12 @@ const AnimatedButton: React.FC<Props> = props => {
         );
         return;
     }
-  }, [props.status, colorContainer.value]);
+  }, [props.status, colorContainer.value, timeOutIds]);
 
-  useEffect(() => animationOnProps(), [animationOnProps]);
+  useEffect(() => {
+    animationOnProps();
+    return () => timeOutIds.forEach(timeOutId => clearTimeout(timeOutId));
+  }, [animationOnProps, timeOutIds]);
 
   const contentStyles = useMemo(
     () => [styles.contentContainer, animatedTextOpacity],

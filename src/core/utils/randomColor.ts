@@ -1,6 +1,15 @@
+import {
+  HEX_BASE_NUMBER,
+  HEX_COLOR_LENGTH,
+  TOTAL_POSSIBLE_COLOR_COMBINATIONS,
+} from '@constants';
+
 export const generateRandomColor = () => {
-  const randomColor = Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, '0');
+  const randomColor = Math.floor(
+    Math.random() * TOTAL_POSSIBLE_COLOR_COMBINATIONS,
+  )
+    .toString(HEX_BASE_NUMBER)
+    .padStart(HEX_COLOR_LENGTH, '0');
+
   return `#${randomColor}`;
 };

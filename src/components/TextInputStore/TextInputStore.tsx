@@ -29,7 +29,10 @@ const TextInputStore: React.FC<TextInputProps & Props> = props => {
   const onFocus = useCallback(() => setFocus(true), [setFocus]);
   const onBlur = useCallback(() => setFocus(false), [setFocus]);
 
-  const isActive = isFocused || props.value;
+  const isActive = useMemo(
+    () => isFocused || props.value,
+    [isFocused, props.value],
+  );
 
   useEffect(() => {
     marginTopLabel.value = withTiming(isActive ? -8 : 12, ANIMATION_DURATION);

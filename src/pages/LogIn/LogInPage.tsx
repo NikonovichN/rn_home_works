@@ -37,14 +37,18 @@ const LogInPage: React.FC = () => {
   }, [dispatch, userName, password, params, navigation]);
 
   useEffect(() => {
+    let timerId: NodeJS.Timeout;
+
     if (isLogged) {
       setStatus(ANIMATED_BUTTON_STATUS.success);
-      setTimeout(navigation.goBack, 1000);
+      timerId = setTimeout(navigation.goBack, 1000);
     } else if (loading) {
       setStatus(ANIMATED_BUTTON_STATUS.loading);
     } else if (error) {
       setStatus(ANIMATED_BUTTON_STATUS.error);
     }
+
+    return () => clearTimeout(timerId);
   }, [isLogged, loading, error, navigation]);
 
   return (

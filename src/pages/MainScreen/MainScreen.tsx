@@ -14,6 +14,7 @@ import {checkInternetConnection} from '@network';
 
 import {navigateToNetworkIssue} from '../ModalWindows';
 import {Product} from '../../core/entities';
+import {Routes} from '@constants';
 
 type Props = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -73,7 +74,7 @@ const ProductItem: React.FC<ProductItemProps> = props => {
 
   const chooseProduct = useCallback(() => {
     const action = () =>
-      navigation.push('ProductDetails', {productId: product.id});
+      navigation.push(Routes.ProductDetails, {productId: product.id});
     const failCallback = () => navigateToNetworkIssue({navigation, action});
 
     checkInternetConnection({action, failCallback});

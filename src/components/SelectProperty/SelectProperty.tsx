@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
@@ -47,12 +47,16 @@ const Property: React.FC<PropertyProps> = ({
     ],
     [property, activeProperty],
   );
+  const onPressProperty = useCallback(
+    () => onPress(property),
+    [onPress, property],
+  );
 
   return (
     <TouchableOpacity
       style={containerStyle}
       activeOpacity={Opacity.regularButton}
-      onPress={() => onPress(property)}>
+      onPress={onPressProperty}>
       <Text style={textStyle}>{property}</Text>
     </TouchableOpacity>
   );

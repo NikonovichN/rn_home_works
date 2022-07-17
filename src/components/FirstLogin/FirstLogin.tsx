@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-import {PrimaryButton} from '../PrimaryButton';
 import {Colors, TextStyles} from '@styles';
 import {AvatarIcon} from '@icons';
+import {Routes} from '@constants';
 
-type Props = {
-  onPressLogIn(): void;
-};
+import {PrimaryButton} from '../PrimaryButton';
 
-const FirstLogin: React.FC<Props> = props => {
+const FirstLogin: React.FC = () => {
+  const navigation = useNavigation();
+  const navigateToLogin = useCallback(
+    () => navigation.navigate(Routes.LogIn),
+    [navigation],
+  );
+
   return (
     <View style={styles.container}>
       <AvatarIcon />
@@ -18,7 +23,7 @@ const FirstLogin: React.FC<Props> = props => {
         Login first to view your cart
       </Text>
       <View style={styles.buttonContainer}>
-        <PrimaryButton onPress={props.onPressLogIn} content="LogIn now" />
+        <PrimaryButton onPress={navigateToLogin} content="LogIn now" />
       </View>
     </View>
   );

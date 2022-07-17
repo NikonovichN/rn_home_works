@@ -7,7 +7,9 @@ const dotDelays = [0, 550, 1100];
 
 const DotsBox: React.FC = () => (
   <View style={styles.dotsContainer}>
-    {dotDelays.map(delay => <Dot delay={delay} />)}
+    {dotDelays.map((delay, index) => (
+      <Dot key={`${index}:${delay}`} delay={delay} />
+    ))}
   </View>
 );
 
