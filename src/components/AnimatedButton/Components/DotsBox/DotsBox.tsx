@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
-import {Dot} from './Dot/Dot';
+import {Dot} from './Dot';
+
+const dotDelays = [0, 550, 1100];
 
 const DotsBox: React.FC = () => (
   <View style={styles.dotsContainer}>
-    <Dot delay={0} />
-    <Dot delay={550} />
-    <Dot delay={1100} />
+    {dotDelays.map(delay => <Dot delay={delay} />)}
   </View>
 );
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Animated, {
   Layout,
@@ -6,8 +6,8 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {DotsBox} from './Components/DotsBox/DotsBox';
-import {ErrorBox} from './Components/ErrorBox/ErrorBox';
+import {DotsBox} from './Components/DotsBox';
+import {ErrorBox} from './Components/ErrorBox';
 import {
   ANIMATED_BUTTON_STATUS,
   DURATION_CONFIG,
@@ -15,7 +15,6 @@ import {
 } from './constants';
 
 import {TextStyles, Colors, Opacity} from '@styles';
-import {noop} from 'lodash';
 
 type Props = {
   status: ANIMATED_BUTTON_STATUS;
@@ -24,38 +23,48 @@ type Props = {
 
 const AnimatedButton: React.FC<Props> = props => {
   const [currentStatus, setStatus] = useState(ANIMATED_BUTTON_STATUS.ready);
-  const isReady = currentStatus === ANIMATED_BUTTON_STATUS.ready;
   const colorContainer = useSharedValue(Colors.buttons.primary);
+
+  const isReady = useMemo(
+    () => currentStatus === ANIMATED_BUTTON_STATUS.ready,
+    [currentStatus],
+  );
 
   const animatedTextOpacity = useAnimatedStyle(() => ({
     backgroundColor: colorContainer.value,
   }));
 
-  useEffect(() => {
-    if (props.status === ANIMATED_BUTTON_STATUS.loading) {
-      setStatus(props.status);
-      colorContainer.value = withTiming(
-        Colors.buttons.cornflowerBlue,
-        DURATION_CONFIG,
-      );
-    } else if (props.status === ANIMATED_BUTTON_STATUS.error) {
-      setStatus(props.status);
-      colorContainer.value = Colors.buttons.errorBackGround;
-      setTimeout(() => {
-        setStatus(ANIMATED_BUTTON_STATUS.ready);
+  const animationOnProps = useCallback(() => {
+    switch (props.status) {
+      case ANIMATED_BUTTON_STATUS.loading:
+        setStatus(props.status);
         colorContainer.value = withTiming(
-          Colors.buttons.primary,
+          Colors.buttons.cornflowerBlue,
           DURATION_CONFIG,
         );
-      }, 3000);
-    } else if (props.status === ANIMATED_BUTTON_STATUS.success) {
-      setStatus(props.status);
-      colorContainer.value = withTiming(
-        Colors.buttons.success,
-        DURATION_CONFIG,
-      );
+        return;
+      case ANIMATED_BUTTON_STATUS.error:
+        setStatus(props.status);
+        colorContainer.value = Colors.buttons.errorBackGround;
+        setTimeout(() => {
+          setStatus(ANIMATED_BUTTON_STATUS.ready);
+          colorContainer.value = withTiming(
+            Colors.buttons.primary,
+            DURATION_CONFIG,
+          );
+        }, 3000);
+        return;
+      case ANIMATED_BUTTON_STATUS.success:
+        setStatus(props.status);
+        colorContainer.value = withTiming(
+          Colors.buttons.success,
+          DURATION_CONFIG,
+        );
+        return;
     }
-  }, [props.status, colorContainer]);
+  }, [props.status, colorContainer.value]);
+
+  useEffect(() => animationOnProps(), [animationOnProps]);
 
   const contentStyles = useMemo(
     () => [styles.contentContainer, animatedTextOpacity],
@@ -65,7 +74,8 @@ const AnimatedButton: React.FC<Props> = props => {
   return (
     <TouchableOpacity
       activeOpacity={isReady ? Opacity.regularButton : 1}
-      onPress={isReady ? props.onPress : noop}
+      onPress={props.onPress}
+      disabled={!isReady}
       style={styles.touchableContainer}>
       <Animated.View
         style={contentStyles}
