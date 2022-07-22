@@ -1,15 +1,10 @@
 import {NetworkInfo} from './NetworkInfo';
 
-type Params = {
-  action(): void;
-  failCallback(): void;
-};
-
-function checkInternetConnection(params: Params) {
+function checkInternetConnection(action: () => void, failCallback: () => void) {
   if (NetworkInfo.hasInternetConnection) {
-    params.action();
+    action();
   } else {
-    params.failCallback();
+    failCallback();
   }
 }
 

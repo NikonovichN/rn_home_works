@@ -3,6 +3,5 @@ export const enum Routes {
   ProductDetails = 'ProductDetails',
   LogIn = 'LogIn',
   Cart = 'Cart',
-  ModalWindow = 'ModalWindow',
   DummyPage = 'DummyPage',
 }

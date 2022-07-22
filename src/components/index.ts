@@ -3,7 +3,7 @@ export * from './Loading';
 export * from './SearchBar';
 export * from './ProductCard';
 export * from './SelectProperty';
-export * from './ModalWindow';
+export * from './ModalWindows';
 export * from './PrimaryButton';
 export * from './TextInputStore';
 export * from './FirstLogin';

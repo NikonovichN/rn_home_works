@@ -10,43 +10,77 @@ import {
 import {useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 
-import {useShallowEqualSelector} from '@hooks';
-import {Loading, PrimaryButton, SelectProperty} from '@components';
-import {productDetailsSelector} from '@selectors';
+import {useShallowEqualSelector, useModalWindowState} from '@hooks';
+import {
+  Loading,
+  ModalWindow,
+  ModalWindowType,
+  PrimaryButton,
+  SelectProperty,
+} from '@components';
+import {isLoggedSelector, productDetailsSelector} from '@selectors';
 import {ButtonStyles, Colors, TextStyles} from '@styles';
 import {productDetailsActions, addToCartActions} from '@actions';
 import {RootStackParamList} from '@navigation';
-
-import {navigateToSelectProperty} from '../ModalWindows';
+import {checkInternetConnection} from '../../core/network/checkInternetConnection';
 
 const ProductDetailsPage: React.FC = () => {
   const {
     isLoading,
     productDetails: {imageUrl, name, displayPrice, properties, description},
   } = useShallowEqualSelector(productDetailsSelector);
-  const navigation = useNavigation<NativeStackNavigationProp<any, any>>();
+  const isLogged = useShallowEqualSelector(isLoggedSelector);
+
   const {
     params: {productId},
   } = useRoute<RouteProp<RootStackParamList, 'ProductDetails'>>();
+
+  const [modalWindowState, setModalWindowState] = useModalWindowState();
 
   const dispatch = useDispatch();
   const insets = useSafeAreaInsets();
 
   const [activeProperty, setActiveProperty] = useState<string | null>(null);
+
   const getProduct = useCallback(
     () => dispatch(productDetailsActions.getProductDetails(productId)),
     [productId, dispatch],
   );
+
   const onPressButton = useCallback(() => {
     if (activeProperty == null) {
-      navigateToSelectProperty({navigation});
+      setModalWindowState({
+        typeModal: ModalWindowType.ChooseProperty,
+        isVisible: true,
+      });
+    } else if (!isLogged) {
+      setModalWindowState({
+        typeModal: ModalWindowType.NavigateToLogIn,
+        isVisible: true,
+      });
     } else {
-      dispatch(addToCartActions.addToCart(activeProperty));
+      const addToCartAction = () =>
+        dispatch(addToCartActions.addToCart(activeProperty));
+      const failCallback = () =>
+        setModalWindowState({
+          typeModal: ModalWindowType.NavigateToLogIn,
+          isVisible: true,
+        });
+
+      checkInternetConnection(addToCartAction, failCallback);
     }
-  }, [activeProperty, dispatch, navigation]);
+  }, [activeProperty, dispatch, setModalWindowState, isLogged]);
+
+  const disableModalWindow = useCallback(
+    () =>
+      setModalWindowState({
+        ...modalWindowState,
+        isVisible: false,
+      }),
+    [modalWindowState, setModalWindowState],
+  );
 
   useEffect(() => {
     getProduct();
@@ -93,6 +127,7 @@ const ProductDetailsPage: React.FC = () => {
             </View>
             <View style={{height: insets.bottom}} />
           </ScrollView>
+          <ModalWindow {...modalWindowState} onClose={disableModalWindow} />
         </>
       )}
     </>

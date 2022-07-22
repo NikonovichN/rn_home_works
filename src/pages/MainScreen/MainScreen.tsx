@@ -12,7 +12,6 @@ import {useShallowEqualSelector} from '@hooks';
 import {productListSelector} from '@selectors';
 import {checkInternetConnection} from '@network';
 
-import {navigateToNetworkIssue} from '../ModalWindows';
 import {Product} from '../../core/entities';
 import {Routes} from '@constants';
 
@@ -75,12 +74,16 @@ const ProductItem: React.FC<ProductItemProps> = props => {
   const chooseProduct = useCallback(() => {
     const action = () =>
       navigation.push(Routes.ProductDetails, {productId: product.id});
-    const failCallback = () => navigateToNetworkIssue({navigation, action});
+    // const failCallback = () => navigateToNetworkIssue({navigation, action});
 
-    checkInternetConnection({action, failCallback});
+    checkInternetConnection(action, () => {});
   }, [navigation, product]);
 
-  return <ProductCard product={product} onPress={chooseProduct} />;
+  return (
+    <>
+      <ProductCard product={product} onPress={chooseProduct} />
+    </>
+  );
 };
 
 const styles = StyleSheet.create({

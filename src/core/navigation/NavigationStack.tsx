@@ -10,7 +10,7 @@ import {
   MainScreen,
   ProductDetailsPage,
 } from '@pages';
-import {ModalWindow, MainHeader, ProductHeader, CartHeader} from '@components';
+import {MainHeader, ProductHeader, CartHeader} from '@components';
 import {RootStackParamList} from './types';
 import {Routes} from '@constants';
 
@@ -48,10 +48,6 @@ const MainStackNavigator: React.FC = () => (
         header: () => <CartHeader title="My Cart" />,
       })}
     />
-    <Stack.Group
-      screenOptions={{presentation: 'transparentModal', header: clearHeader}}>
-      <Stack.Screen name={Routes.ModalWindow} component={ModalWindow} />
-    </Stack.Group>
   </Stack.Navigator>
 );
 

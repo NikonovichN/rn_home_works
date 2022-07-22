@@ -16,7 +16,6 @@ import {useShallowEqualSelector} from '@hooks';
 import {userSelector} from '@selectors';
 import {userActions} from '@actions';
 import {checkInternetConnection} from '@network';
-import {navigateToNetworkIssue} from '../ModalWindows';
 
 const LogInPage: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any, any>>();
@@ -31,9 +30,9 @@ const LogInPage: React.FC = () => {
 
   const logIn = useCallback(() => {
     const action = () => dispatch(userActions.userLogIn({userName, password}));
-    const failCallback = () => navigateToNetworkIssue({navigation, action});
+    // const failCallback = () => navigateToNetworkIssue({navigation, action});
 
-    checkInternetConnection({action, failCallback});
+    checkInternetConnection(action, () => {});
   }, [dispatch, userName, password, params, navigation]);
 
   useEffect(() => {
