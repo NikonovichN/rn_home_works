@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import {PrimaryButton} from '@components';
+import {PrimaryButton} from '../../PrimaryButton';
 import {SuccessIcon} from '@icons';
 import {Colors, TextStyles} from '@styles';
 

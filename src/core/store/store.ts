@@ -20,4 +20,4 @@ const createStore = () => {
   return store;
 };
 
-export default createStore;
+export {createStore};

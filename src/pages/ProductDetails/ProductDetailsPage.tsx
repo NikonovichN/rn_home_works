@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {
   ScrollView,
   Image,
@@ -6,21 +6,27 @@ import {
   View,
   RefreshControl,
   StyleSheet,
+  Platform,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {RouteProp, useRoute} from '@react-navigation/native';
 
-import {useShallowEqualSelector, useModalWindowState} from '@hooks';
+import {useShallowEqualSelector} from '@hooks';
 import {
   Loading,
   ModalWindow,
   ModalWindowType,
   PrimaryButton,
   SelectProperty,
+  useModalWindowState,
 } from '@components';
-import {isLoggedSelector, productDetailsSelector} from '@selectors';
+import {
+  cartSelector,
+  isLoggedSelector,
+  productDetailsSelector,
+} from '@selectors';
 import {ButtonStyles, Colors, TextStyles} from '@styles';
 import {
   productDetailsActions,
@@ -36,6 +42,7 @@ const ProductDetailsPage: React.FC = () => {
     productDetails: {imageUrl, name, displayPrice, properties, description},
   } = useShallowEqualSelector(productDetailsSelector);
   const isLogged = useShallowEqualSelector(isLoggedSelector);
+  const {data} = useShallowEqualSelector(cartSelector);
 
   const {
     params: {productId},
@@ -45,17 +52,16 @@ const ProductDetailsPage: React.FC = () => {
 
   const dispatch = useDispatch();
   const insets = useSafeAreaInsets();
+  const bottomInsets = useMemo(
+    () => ({height: Platform.OS == 'ios' ? insets.bottom : 40}),
+    [insets.bottom],
+  );
 
   const [activeProperty, setActiveProperty] = useState<string | null>(null);
 
   const getProduct = useCallback(
     () => dispatch(productDetailsActions.getProductDetails(productId)),
     [productId, dispatch],
-  );
-
-  const addToCartAction = useCallback(
-    () => dispatch(addToCartActions.addToCart(activeProperty!)),
-    [dispatch, activeProperty],
   );
 
   const onPressButton = useCallback(() => {
@@ -70,10 +76,12 @@ const ProductDetailsPage: React.FC = () => {
         isVisible: true,
       });
     } else {
+      const addToCart = () =>
+        dispatch(addToCartActions.addToCart(activeProperty!));
       const failCallback = () =>
-        dispatch(networkIssueActions.addNetworkIssue(addToCartAction));
+        dispatch(networkIssueActions.addNetworkIssue(addToCart));
 
-      checkInternetConnection(addToCartAction, failCallback);
+      checkInternetConnection(addToCart, failCallback);
     }
   }, [activeProperty, dispatch, setModalWindowState, isLogged]);
 
@@ -89,6 +97,15 @@ const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     getProduct();
   }, [getProduct]);
+
+  useEffect(() => {
+    if (data) {
+      setModalWindowState({
+        typeModal: ModalWindowType.SuccessAddToCart,
+        isVisible: true,
+      });
+    }
+  }, [data]);
 
   return (
     <>
@@ -129,7 +146,7 @@ const ProductDetailsPage: React.FC = () => {
             <View style={styles.marginTop15}>
               <PrimaryButton content="Add to cart" onPress={onPressButton} />
             </View>
-            <View style={{height: insets.bottom}} />
+            <View style={bottomInsets} />
           </ScrollView>
           <ModalWindow {...modalWindowState} onClose={disableModalWindow} />
         </>

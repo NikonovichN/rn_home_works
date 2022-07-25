@@ -1,11 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import {PrimaryButton} from '@components';
 import {DeclineIcon} from '@icons';
 import {Colors, TextStyles} from '@styles';
 
 import {ModalProps} from './types';
+import {PrimaryButton} from '../../PrimaryButton';
 
 const ChooseProperty: React.FC<ModalProps> = props => {
   return (

@@ -1,6 +1,10 @@
-import React, {useMemo} from 'react';
+import React, {Dispatch, SetStateAction, useMemo, useState} from 'react';
 
-import {ModalWindowType, UseModalWindowReturnType} from './types';
+import {
+  ModalWindowType,
+  UseModalWindowReturnType,
+  ModalWindowState,
+} from './types';
 import {ChooseProperty, NavigateToLogIn, SuccessAddToCart} from './windows';
 
 export const useModalWindow = (
@@ -20,4 +24,20 @@ export const useModalWindow = (
   }, [typeModalWindow]);
 
   return {ModalWindowComponent};
+};
+
+export const defaultModalWindowState: ModalWindowState = {
+  isVisible: false,
+  typeModal: ModalWindowType.undefined,
+};
+
+export const useModalWindowState = (): [
+  ModalWindowState,
+  Dispatch<SetStateAction<ModalWindowState>>,
+] => {
+  const [modalWindowState, setModalWindowState] = useState<ModalWindowState>(
+    defaultModalWindowState,
+  );
+
+  return [modalWindowState, setModalWindowState];
 };

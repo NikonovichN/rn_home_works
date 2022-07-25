@@ -6,6 +6,7 @@ import {networkIssueSelector} from '@selectors';
 import {networkIssueActions} from '@actions';
 
 import {NetworkIssueModal} from './NetworkIssueModal';
+import {checkInternetConnection} from '@network';
 
 type Props = {
   children: JSX.Element;
@@ -21,20 +22,23 @@ const NetworkIssueModalWrapper: React.FC<Props> = props => {
     [dispatch],
   );
   const onTryAgain = useCallback(() => {
-    tryAgainAction();
+    const failCallback = () =>
+      dispatch(networkIssueActions.addNetworkIssue(tryAgainAction));
+
     removeIssue();
+    setTimeout(() => checkInternetConnection(tryAgainAction, failCallback), 0);
   }, [removeIssue]);
-  const onClose = useCallback(() => {
-    removeIssue();
-  }, [removeIssue]);
+  const onClose = useCallback(() => removeIssue(), [removeIssue]);
 
   return (
-    <NetworkIssueModal
-      isVisible={isConnectionError}
-      onTryAgain={onTryAgain}
-      onClose={onClose}>
+    <>
       {props.children}
-    </NetworkIssueModal>
+      <NetworkIssueModal
+        isVisible={isConnectionError}
+        onTryAgain={onTryAgain}
+        onClose={onClose}
+      />
+    </>
   );
 };
 

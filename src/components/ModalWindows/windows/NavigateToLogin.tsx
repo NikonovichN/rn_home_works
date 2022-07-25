@@ -2,12 +2,12 @@ import React, {useCallback} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {PrimaryButton} from '@components';
 import {WarningIcon} from '@icons';
 import {Colors, TextStyles} from '@styles';
+import {Routes} from '@constants';
 
 import {ModalProps} from './types';
-import {Routes} from '../../../core/constants/routes';
+import {PrimaryButton} from '../../PrimaryButton';
 
 const NavigateToLogIn: React.FC<ModalProps> = props => {
   const navigation = useNavigation();
@@ -26,8 +26,8 @@ const NavigateToLogIn: React.FC<ModalProps> = props => {
         Please login to add product in your cart
       </Text>
       <View style={styles.actions}>
-        <PrimaryButton width={125} content="log in" onPress={goToLogIn} />
-        <PrimaryButton width={125} content="close" onPress={props.onClose} />
+        <PrimaryButton width={100} content="log in" onPress={goToLogIn} />
+        <PrimaryButton width={100} content="close" onPress={props.onClose} />
       </View>
     </>
   );
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   },
   actions: {
     marginTop: 25,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },

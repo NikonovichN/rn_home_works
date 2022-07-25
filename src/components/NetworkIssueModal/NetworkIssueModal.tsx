@@ -4,7 +4,8 @@ import ReactNativeModal from 'react-native-modal';
 
 import {Colors, TextStyles} from '@styles';
 import {DeclineIcon} from '@icons';
-import {PrimaryButton} from '@components';
+
+import {PrimaryButton} from '../PrimaryButton';
 
 type Props = {
   isVisible: boolean;
@@ -27,12 +28,12 @@ const NetworkIssueModal: React.FC<Props> = props => {
           </Text>
           <View style={styles.actions}>
             <PrimaryButton
-              width={125}
+              width={100}
               content="try again"
               onPress={props.onTryAgain}
             />
             <PrimaryButton
-              width={125}
+              width={100}
               content="close"
               onPress={props.onClose}
             />
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
   },
   actions: {
     marginTop: 25,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
