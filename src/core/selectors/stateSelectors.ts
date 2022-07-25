@@ -1,4 +1,5 @@
 import {CartState} from '../reducers/cartReducer';
+import {NetworkIssueState} from '../reducers/networkIssueReducer';
 import {ProductDetailsState} from '../reducers/productDetailsReducer';
 import {ProductsListState} from '../reducers/productListReducer';
 import {AppState} from '../reducers/rootReducer';
@@ -16,10 +17,14 @@ const productListSelector = (state: AppState): ProductsListState =>
 
 const cartSelector = (state: AppState): CartState => state.cart;
 
+const networkIssueSelector = (state: AppState): NetworkIssueState =>
+  state.networkIssue;
+
 export {
   isLoggedSelector,
   productDetailsSelector,
   productListSelector,
   userSelector,
   cartSelector,
+  networkIssueSelector,
 };

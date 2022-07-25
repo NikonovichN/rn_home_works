@@ -1,1 +1,1 @@
-export * from './NetworkIssueModal';
+export * from './NetworkIssueModalWrapper';

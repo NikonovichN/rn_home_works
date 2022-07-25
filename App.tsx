@@ -8,6 +8,7 @@ import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import createStore from './src/core/store/store';
 import {Colors} from './src/core/styles';
 import {DrawerNavigator} from './src/core/navigation';
+import {NetworkIssueModalWrapper} from './src/components';
 
 const store = createStore();
 
@@ -16,7 +17,10 @@ const App: React.FC = () => (
     <Provider store={store}>
       <SafeAreaProvider>
         <SafeAreaView style={styles.safeAreaContainer}>
+          {/* <NetworkIssueModalWrapper> */}
           <DrawerNavigator />
+
+          {/* </NetworkIssueModalWrapper> */}
         </SafeAreaView>
       </SafeAreaProvider>
     </Provider>

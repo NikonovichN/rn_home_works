@@ -22,7 +22,11 @@ import {
 } from '@components';
 import {isLoggedSelector, productDetailsSelector} from '@selectors';
 import {ButtonStyles, Colors, TextStyles} from '@styles';
-import {productDetailsActions, addToCartActions} from '@actions';
+import {
+  productDetailsActions,
+  addToCartActions,
+  networkIssueActions,
+} from '@actions';
 import {RootStackParamList} from '@navigation';
 import {checkInternetConnection} from '../../core/network/checkInternetConnection';
 
@@ -49,6 +53,11 @@ const ProductDetailsPage: React.FC = () => {
     [productId, dispatch],
   );
 
+  const addToCartAction = useCallback(
+    () => dispatch(addToCartActions.addToCart(activeProperty!)),
+    [dispatch, activeProperty],
+  );
+
   const onPressButton = useCallback(() => {
     if (activeProperty == null) {
       setModalWindowState({
@@ -61,13 +70,8 @@ const ProductDetailsPage: React.FC = () => {
         isVisible: true,
       });
     } else {
-      const addToCartAction = () =>
-        dispatch(addToCartActions.addToCart(activeProperty));
       const failCallback = () =>
-        setModalWindowState({
-          typeModal: ModalWindowType.NavigateToLogIn,
-          isVisible: true,
-        });
+        dispatch(networkIssueActions.addNetworkIssue(addToCartAction));
 
       checkInternetConnection(addToCartAction, failCallback);
     }
