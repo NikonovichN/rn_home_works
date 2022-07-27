@@ -1,7 +1,8 @@
 export const enum Routes {
-  MainScreen = 'MainScreen',
-  ProductDetails = 'ProductDetails',
+  HomePage = 'Home Page',
+  MainScreen = 'Main Screen',
+  ProductDetails = 'Product Details',
   LogIn = 'LogIn',
   Cart = 'Cart',
-  DummyPage = 'DummyPage',
+  DummyPage = 'Dummy Page',
 }
