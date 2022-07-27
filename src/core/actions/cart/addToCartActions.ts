@@ -2,11 +2,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/type
 import {Cart} from '../../entities';
 import * as actions from './addToCartTypes';
 
-export function addToCart(
-  variantId: string,
-  navigation: NativeStackNavigationProp<any, any>,
-): actions.AddToCart {
-  return {type: actions.ADD_TO_CART, variantId, navigation};
+export function addToCart(variantId: string): actions.AddToCart {
+  return {type: actions.ADD_TO_CART, variantId};
 }
 
 export function addToCartRequest(): actions.AddToCartRequest {

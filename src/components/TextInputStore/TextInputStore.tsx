@@ -1,22 +1,69 @@
-import React from 'react';
-import {StyleSheet, Text, TextInputProps, View} from 'react-native';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import {StyleSheet, TextInputProps, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import {Colors, TextStyles} from '@styles';
+
+const ANIMATION_DURATION = {
+  duration: 300,
+};
 
 type Props = {
   label: string;
 };
 
 const TextInputStore: React.FC<TextInputProps & Props> = props => {
+  const [isFocused, setFocus] = useState(false);
+
+  const marginTopLabel = useSharedValue(12);
+
+  const labelAnimatedTransform = useAnimatedStyle(() => ({
+    marginTop: marginTopLabel.value,
+  }));
+
+  const onFocus = useCallback(() => setFocus(true), [setFocus]);
+  const onBlur = useCallback(() => setFocus(false), [setFocus]);
+
+  const isActive = useMemo(
+    () => isFocused || props.value,
+    [isFocused, props.value],
+  );
+
+  useEffect(() => {
+    marginTopLabel.value = withTiming(isActive ? -8 : 12, ANIMATION_DURATION);
+  }, [isActive]);
+
+  const animatedInputStyle = useMemo(
+    () => [
+      styles.label,
+      labelAnimatedTransform,
+      {
+        color: isActive ? Colors.text.primary : Colors.text.secondary,
+        zIndex: isActive ? 1 : 0,
+      },
+    ],
+    [labelAnimatedTransform, isActive, props.value],
+  );
+  const propsStyles = useMemo(
+    () => [styles.inputStyles, props.style],
+    [props.style],
+  );
+
   return (
     <View>
-      <Text style={styles.label}>{props.label}</Text>
+      <Animated.Text style={animatedInputStyle}>{props.label}</Animated.Text>
       <TextInput
-        placeholder="Text"
-        maxLength={30}
         {...props}
-        style={[styles.inputStyles, props.style]}
+        maxLength={30}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        focusable
+        style={propsStyles}
       />
     </View>
   );
@@ -27,9 +74,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: Colors.white,
     paddingHorizontal: 4,
-    marginTop: -8,
-    marginLeft: 20,
-    zIndex: 1,
+    marginLeft: 14,
     ...TextStyles.small,
   },
   inputStyles: {

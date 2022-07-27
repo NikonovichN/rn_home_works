@@ -1,10 +1,13 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+
+import {FireWork} from '@components';
 
 const DummyPage: React.FC = () => (
-  <View>
-    <Text>Dummy page</Text>
-  </View>
+  <>
+    {Array.from({length: 7}).map((_, index) => (
+      <FireWork key={index} delay={index * 200} />
+    ))}
+  </>
 );
 
 export {DummyPage};

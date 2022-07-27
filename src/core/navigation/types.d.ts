@@ -1,18 +1,7 @@
-import {ReactNode} from 'react';
-import {AnyActionTypes} from '../../core/actions/AnyActionTypes';
-
 export type RootStackParamList = {
   MainScreen: undefined;
   ProductDetails: {productId: string};
   DummyPage: undefined;
-  LogIn: {
-    action?: AnyActionTypes;
-  };
+  LogIn: undefined;
   Cart: any;
-  ModalWindow: {
-    icon: ReactNode;
-    title: ReactNode;
-    description?: ReactNode;
-    actions: ReactNode;
-  };
 };

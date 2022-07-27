@@ -1,13 +1,9 @@
 import {UserData, Authentication} from '../entities/User';
 import {UserCredentials} from '../entities/UserCredentials';
-import {AnyActionTypes} from './AnyActionTypes';
 import * as actions from './userTypes';
 
-export function userLogIn(
-  credentials: UserCredentials,
-  proceedActions?: AnyActionTypes,
-): actions.UserLogin {
-  return {type: actions.USER_LOGIN, credentials, proceedActions};
+export function userLogIn(credentials: UserCredentials): actions.UserLogin {
+  return {type: actions.USER_LOGIN, credentials};
 }
 
 export function getToken(): actions.GetToken {

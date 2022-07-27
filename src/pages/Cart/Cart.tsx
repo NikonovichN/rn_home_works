@@ -1,22 +1,36 @@
-import React from 'react';
+import React, {ReactElement, ReactNode, useCallback, useMemo} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 import {FirstLogin} from '@components';
+import {Routes} from '@constants';
+import {useShallowEqualSelector} from '@hooks';
+import {cartSelector, userSelector} from '@selectors';
 
-import {PropsFromRedux} from './CartComponent';
 import {ContentCart, EmptyCart} from './components';
 
-const Cart: React.FC<PropsFromRedux> = props => {
-  const {isLogged, navigation, cartData} = props;
+const Cart: React.FC = () => {
+  const navigation = useNavigation();
+  const {data} = useShallowEqualSelector(cartSelector);
+  const {isLogged} = useShallowEqualSelector(userSelector);
 
-  if (!isLogged) {
-    return <FirstLogin onPressLogIn={() => navigation.navigate('LogIn')} />;
-  }
-
-  return cartData ? (
-    <ContentCart data={cartData.attributes} />
-  ) : (
-    <EmptyCart shopNow={() => navigation.navigate('MainScreen')} />
+  const navigateToMainScreen = useCallback(
+    () => navigation.navigate(Routes.MainScreen),
+    [navigation],
   );
+
+  const Component = useMemo(() => {
+    if (!isLogged) {
+      return <FirstLogin />;
+    }
+
+    return data ? (
+      <ContentCart data={data.attributes} />
+    ) : (
+      <EmptyCart onButtonPress={navigateToMainScreen} />
+    );
+  }, [isLogged, data, navigateToMainScreen]);
+
+  return Component;
 };
 
 export {Cart};

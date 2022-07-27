@@ -63,6 +63,11 @@ const TextStyles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.text.accentGreen,
   },
+  error: {
+    fontSize: 16,
+    fontWeight: '400',
+    color: Colors.text.error,
+  },
 });
 
 const ButtonStyles = StyleSheet.create({
@@ -79,6 +84,7 @@ const ButtonStyles = StyleSheet.create({
 
 class Opacity {
   static regularButton = 0.9;
+  static cardOpacity = 0.9;
 }
 
 export {CommonStyles, TextStyles, ButtonStyles, Opacity};

@@ -1,23 +1,18 @@
-import * as React from 'react';
+import React from 'react';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
-  CartComponent,
+  Cart,
   DummyPage,
   LogInPage,
   MainScreen,
   ProductDetailsPage,
 } from '@pages';
-import {
-  headerWrapper,
-  ModalWindow,
-  MainHeader,
-  ProductHeader,
-  CartHeader,
-} from '@components';
+import {MainHeader, ProductHeader, CartHeader} from '@components';
 import {RootStackParamList} from './types';
+import {Routes} from '@constants';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,84 +21,55 @@ const Drawer = createDrawerNavigator();
 const clearHeader = () => null;
 
 const MainStackNavigator: React.FC = () => (
-  <Stack.Navigator initialRouteName="MainScreen">
+  <Stack.Navigator initialRouteName={Routes.MainScreen}>
     <Stack.Screen
-      name="MainScreen"
+      name={Routes.MainScreen}
       component={MainScreen}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: MainHeader,
-            navigation,
-            title: 'Ecommerce Store',
-          }),
+        header: () => <MainHeader title="Ecommerce Store" />,
       })}
     />
     <Stack.Screen
-      name="ProductDetails"
+      name={Routes.ProductDetails}
       component={ProductDetailsPage}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: ProductHeader,
-            navigation,
-            title: 'Product Details',
-          }),
+        header: () => <ProductHeader title="Product Details" />,
       })}
     />
     <Stack.Screen
-      name="LogIn"
+      name={Routes.LogIn}
       component={LogInPage}
       options={() => ({header: clearHeader})}
     />
     <Stack.Screen
-      name="Cart"
-      component={CartComponent}
+      name={Routes.Cart}
+      component={Cart}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: CartHeader,
-            navigation,
-            title: 'My Cart',
-          }),
+        header: () => <CartHeader title="My Cart" />,
       })}
     />
-    <Stack.Group
-      screenOptions={{presentation: 'transparentModal', header: clearHeader}}>
-      <Stack.Screen name="ModalWindow" component={ModalWindow} />
-    </Stack.Group>
   </Stack.Navigator>
 );
 
 const DummyStackNavigatorOne: React.FC = () => (
-  <Stack.Navigator initialRouteName="DummyPage">
+  <Stack.Navigator initialRouteName={Routes.DummyPage}>
     <Stack.Screen
-      name="DummyPage"
+      name={Routes.DummyPage}
       component={DummyPage}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: MainHeader,
-            navigation,
-            title: 'Dummy Page Stack 2',
-          }),
+        header: () => <MainHeader title="Dummy Page Stack 1" />,
       })}
     />
   </Stack.Navigator>
 );
 
 const DummyStackNavigatorTwo: React.FC = () => (
-  <Stack.Navigator initialRouteName="DummyPage">
+  <Stack.Navigator initialRouteName={Routes.DummyPage}>
     <Stack.Screen
-      name="DummyPage"
+      name={Routes.DummyPage}
       component={DummyPage}
       options={() => ({
-        header: ({navigation}) =>
-          headerWrapper({
-            Component: MainHeader,
-            navigation,
-            title: 'Dummy Page Stack 2',
-          }),
+        header: () => <MainHeader title="Dummy Page Stack 2" />,
       })}
     />
   </Stack.Navigator>

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {
   ScrollView,
   Image,
@@ -6,58 +6,106 @@ import {
   View,
   RefreshControl,
   StyleSheet,
+  Platform,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {RouteProp} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 
 import {useShallowEqualSelector} from '@hooks';
-import {Loading, PrimaryButton, SelectProperty} from '@components';
-import {productDetailsSelector} from '@selectors';
+import {
+  Loading,
+  ModalWindow,
+  ModalWindowType,
+  PrimaryButton,
+  SelectProperty,
+  useModalWindowState,
+} from '@components';
+import {
+  cartSelector,
+  isLoggedSelector,
+  productDetailsSelector,
+} from '@selectors';
 import {ButtonStyles, Colors, TextStyles} from '@styles';
-import {productDetailsActions, addToCartActions} from '@actions';
-import {RootStackParamList} from '@navigation/types';
+import {
+  productDetailsActions,
+  addToCartActions,
+  networkIssueActions,
+} from '@actions';
+import {RootStackParamList} from '@navigation';
+import {checkInternetConnection} from '../../core/network/checkInternetConnection';
 
-import {navigateToSelectProperty} from '../ModalWindows';
-
-type Props = {
-  navigation: NativeStackNavigationProp<any, any>;
-  route: RouteProp<RootStackParamList, 'ProductDetails'>;
-};
-
-const ProductDetailsPage: React.FC<Props> = props => {
+const ProductDetailsPage: React.FC = () => {
   const {
     isLoading,
     productDetails: {imageUrl, name, displayPrice, properties, description},
   } = useShallowEqualSelector(productDetailsSelector);
+  const isLogged = useShallowEqualSelector(isLoggedSelector);
+  const {data} = useShallowEqualSelector(cartSelector);
+
   const {
-    navigation,
-    route: {
-      params: {productId},
-    },
-  } = props;
+    params: {productId},
+  } = useRoute<RouteProp<RootStackParamList, 'ProductDetails'>>();
+
+  const [modalWindowState, setModalWindowState] = useModalWindowState();
 
   const dispatch = useDispatch();
   const insets = useSafeAreaInsets();
+  const bottomInsets = useMemo(
+    () => ({height: Platform.OS == 'ios' ? insets.bottom : 40}),
+    [insets.bottom],
+  );
 
   const [activeProperty, setActiveProperty] = useState<string | null>(null);
+
   const getProduct = useCallback(
     () => dispatch(productDetailsActions.getProductDetails(productId)),
     [productId, dispatch],
   );
+
   const onPressButton = useCallback(() => {
     if (activeProperty == null) {
-      navigateToSelectProperty({navigation});
+      setModalWindowState({
+        typeModal: ModalWindowType.ChooseProperty,
+        isVisible: true,
+      });
+    } else if (!isLogged) {
+      setModalWindowState({
+        typeModal: ModalWindowType.NavigateToLogIn,
+        isVisible: true,
+      });
     } else {
-      dispatch(addToCartActions.addToCart(activeProperty, navigation));
+      const addToCart = () =>
+        dispatch(addToCartActions.addToCart(activeProperty!));
+      const failCallback = () =>
+        dispatch(networkIssueActions.addNetworkIssue(addToCart));
+
+      checkInternetConnection(addToCart, failCallback);
     }
-  }, [activeProperty, dispatch, navigation]);
+  }, [activeProperty, dispatch, setModalWindowState, isLogged]);
+
+  const disableModalWindow = useCallback(
+    () =>
+      setModalWindowState({
+        ...modalWindowState,
+        isVisible: false,
+      }),
+    [modalWindowState, setModalWindowState],
+  );
 
   useEffect(() => {
     getProduct();
   }, [getProduct]);
+
+  useEffect(() => {
+    if (data) {
+      setModalWindowState({
+        typeModal: ModalWindowType.SuccessAddToCart,
+        isVisible: true,
+      });
+    }
+  }, [data]);
 
   return (
     <>
@@ -98,8 +146,9 @@ const ProductDetailsPage: React.FC<Props> = props => {
             <View style={styles.marginTop15}>
               <PrimaryButton content="Add to cart" onPress={onPressButton} />
             </View>
-            <View style={{height: insets.bottom}} />
+            <View style={bottomInsets} />
           </ScrollView>
+          <ModalWindow {...modalWindowState} onClose={disableModalWindow} />
         </>
       )}
     </>

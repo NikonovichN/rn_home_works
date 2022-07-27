@@ -2,7 +2,7 @@ import {call, put, takeEvery} from 'redux-saga/effects';
 
 import {Product} from '../entities/ProductList';
 
-import {productDetailsActions, productDetailsTypes} from '../actions';
+import {productDetailsActions, productDetailsTypes} from '@actions';
 import {fetchImagesLink, fetchProductDetails} from '../services';
 import {ProductListConverter} from '../converters';
 

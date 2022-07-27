@@ -25,10 +25,6 @@ function* onLoadUserData(action: actionTypes.UserLogin) {
     const user = UserConverter.userConvertor(userData.data);
 
     yield put(actions.userLogInSuccess(user, tokens));
-
-    if (action.proceedActions) {
-      yield put(action.proceedActions);
-    }
   } catch (error) {
     yield put(actions.userLogInFailure(`${error}`));
   }

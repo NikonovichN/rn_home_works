@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import {Product} from '../../core/entities/ProductList';
-import {CommonStyles, Colors} from '@styles';
+import {CommonStyles, Colors, Opacity} from '@styles';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const NUMBER_OF_COLUMN = 2;
@@ -30,7 +30,7 @@ const ProductCard: React.FC<Props> = props => {
   }
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+    <TouchableOpacity onPress={onPress} activeOpacity={Opacity.cardOpacity}>
       <View style={[styles.commonContainerStyles, styles.container]}>
         <Image
           resizeMode="cover"

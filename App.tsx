@@ -1,26 +1,37 @@
-import * as React from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
-import type {ReactElement} from 'react';
+import {StyleSheet, Text} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
-import shopStore from './src/core/store/store';
-import {Colors} from './src/core/styles';
-import {DrawerNavigator} from './src/core/navigation';
+import {createStore} from './src/core/store';
 
-const store = shopStore();
+import {Colors} from '@styles';
+import {DrawerNavigator} from '@navigation';
+import {NetworkIssueModalWrapper} from '@components';
 
-const App: () => ReactElement = () => (
+const store = createStore();
+
+const App: React.FC = () => (
   <NavigationContainer>
     <Provider store={store}>
       <SafeAreaProvider>
-        <SafeAreaView style={{flex: 1, backgroundColor: Colors.primary}}>
-          <DrawerNavigator />
+        <SafeAreaView style={styles.safeAreaContainer}>
+          <NetworkIssueModalWrapper>
+            <DrawerNavigator />
+          </NetworkIssueModalWrapper>
         </SafeAreaView>
       </SafeAreaProvider>
     </Provider>
   </NavigationContainer>
 );
+
+const styles = StyleSheet.create({
+  safeAreaContainer: {
+    flex: 1,
+    backgroundColor: Colors.primary,
+  },
+});
 
 export default App;

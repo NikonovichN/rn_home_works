@@ -21,7 +21,10 @@
       "@selectors": ["./src/core/selectors/index"],
       "@hooks": ["./src/core/hooks/index"],
       "@actions": ["./src/core/actions/index"],
-      "@navigation/types": ["./src/core/navigation/types"],
+      "@navigation": ["./src/core/navigation/index"],
+      "@network": ["./src/core/network/index"],
+      "@utils": ["./src/core/utils/index"],
+      "@constants": ["./src/core/constants/index"],
     }
   },
   "include": ["./src/**/*"],

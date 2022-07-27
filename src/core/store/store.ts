@@ -10,7 +10,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = [createDebugger(), sagaMiddleware];
 
-const shopStore = () => {
+const createStore = () => {
   const store = configureStore({
     reducer: rootReducer,
     middleware: middlewares,
@@ -20,4 +20,4 @@ const shopStore = () => {
   return store;
 };
 
-export default shopStore;
+export {createStore};

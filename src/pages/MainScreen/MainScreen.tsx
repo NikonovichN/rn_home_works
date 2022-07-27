@@ -10,13 +10,16 @@ import {Colors} from '@styles';
 import {productListActions} from '@actions';
 import {useShallowEqualSelector} from '@hooks';
 import {productListSelector} from '@selectors';
+import {checkInternetConnection} from '@network';
+
+import {Product} from '../../core/entities';
+import {Routes} from '@constants';
 
 type Props = {
   navigation: NativeStackNavigationProp<any, any>;
 };
 
 const MainScreen: React.FC<Props> = props => {
-  const {navigation} = props;
   const {isLoading, products} = useShallowEqualSelector(productListSelector);
 
   const dispatch = useDispatch();
@@ -52,15 +55,33 @@ const MainScreen: React.FC<Props> = props => {
             paddingBottom: insets.bottom,
           }}
           renderItem={({item}) => (
-            <ProductCard
-              product={item}
-              onPress={() =>
-                navigation.push('ProductDetails', {productId: item.id})
-              }
-            />
+            <ProductItem navigation={props.navigation} product={item} />
           )}
         />
       )}
+    </>
+  );
+};
+
+type ProductItemProps = {
+  navigation: NativeStackNavigationProp<any, any>;
+  product: Product;
+};
+
+const ProductItem: React.FC<ProductItemProps> = props => {
+  const {navigation, product} = props;
+
+  const chooseProduct = useCallback(() => {
+    const action = () =>
+      navigation.push(Routes.ProductDetails, {productId: product.id});
+    // const failCallback = () => navigateToNetworkIssue({navigation, action});
+
+    checkInternetConnection(action, () => {});
+  }, [navigation, product]);
+
+  return (
+    <>
+      <ProductCard product={product} onPress={chooseProduct} />
     </>
   );
 };
