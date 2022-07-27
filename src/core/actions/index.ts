@@ -6,6 +6,8 @@ import * as userActions from './userActions';
 import * as userTypes from './userTypes';
 import * as networkIssueActions from './networkIssueActions';
 import * as networkIssueTypes from './networkIssueTypes';
+import * as profileActions from './profileActions';
+import * as profileTypes from './profileTypes';
 export * from './cart';
 
 export {
@@ -17,4 +19,6 @@ export {
   userTypes,
   networkIssueActions,
   networkIssueTypes,
+  profileActions,
+  profileTypes,
 };

@@ -12,6 +12,8 @@ import SafeGuardIcon from './safe-guard.svg';
 import AccentCart from './accent-cart.svg';
 import AccentHeart from './accent-heart.svg';
 import AccentShare from './accent-share.svg';
+import AccentProfile from './accent-profile.svg';
+import ChooseAvatar from './choose-avatar.svg';
 
 export {
   MenuIcon,
@@ -28,4 +30,6 @@ export {
   AccentCart,
   AccentHeart,
   AccentShare,
+  AccentProfile,
+  ChooseAvatar,
 };

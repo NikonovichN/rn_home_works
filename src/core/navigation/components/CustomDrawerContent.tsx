@@ -29,7 +29,6 @@ const CustomDrawerContent: React.FC<DrawerContentComponentProps> = props => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
   header: {
     ...TextStyles.heading,
     padding: 16,

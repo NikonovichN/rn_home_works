@@ -5,4 +5,5 @@ export const enum Routes {
   LogIn = 'LogIn',
   Cart = 'Cart',
   DummyPage = 'Dummy Page',
+  Profile = 'Profile',
 }

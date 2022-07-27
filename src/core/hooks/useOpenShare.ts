@@ -1,9 +1,9 @@
 import {useCallback} from 'react';
 import Share, {ShareOptions} from 'react-native-share';
 
-export const useOpenShare = (options?: ShareOptions) => {
+export const useOpenShare = (options: ShareOptions = {}) => {
   const openShare = useCallback(() => {
-    Share.open({})
+    Share.open(options)
       .then(res => {
         console.log(res);
       })

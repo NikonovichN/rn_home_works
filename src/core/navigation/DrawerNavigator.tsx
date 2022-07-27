@@ -7,10 +7,10 @@ import {
   MainStackNavigator,
 } from './NavigationStack';
 import {CustomDrawerContent} from './components';
-import {CartHeader} from '@components';
-import {Cart} from '@pages';
+import {CartHeader, MainHeader} from '@components';
+import {Cart, ProfileScreen} from '@pages';
 import {Routes} from '@constants';
-import {AccentCart, AccentHeart} from '@icons';
+import {AccentCart, AccentHeart, AccentProfile} from '@icons';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,6 +28,14 @@ const DrawerNavigator: React.FC = () => (
         options={() => ({
           header: () => <CartHeader title="My Cart" />,
           drawerIcon: AccentCart,
+        })}
+      />
+      <Drawer.Screen
+        name={Routes.Profile}
+        component={ProfileScreen}
+        options={() => ({
+          header: () => <MainHeader title="My Profile" />,
+          drawerIcon: AccentProfile,
         })}
       />
     </Drawer.Group>

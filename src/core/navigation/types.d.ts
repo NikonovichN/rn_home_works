@@ -3,5 +3,6 @@ export type RootStackParamList = {
   'Product Details': {productId: string};
   'Dummy Page': undefined;
   LogIn: undefined;
-  Cart: any;
+  Cart: undefined;
+  Profile: undefined;
 };
