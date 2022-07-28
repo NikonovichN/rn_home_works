@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
@@ -8,10 +7,12 @@ import {
   LogInPage,
   MainScreen,
   ProductDetailsPage,
+  SearchProducts,
 } from '@pages';
 import {MainHeader, ProductHeader, CartHeader} from '@components';
-import {RootStackParamList} from './types';
 import {Routes} from '@constants';
+
+import {RootStackParamList} from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -43,6 +44,13 @@ export const MainStackNavigator: React.FC = () => (
       component={Cart}
       options={() => ({
         header: () => <CartHeader title="My Cart" />,
+      })}
+    />
+    <Stack.Screen
+      name={Routes.Search}
+      component={SearchProducts}
+      options={() => ({
+        header: () => <ProductHeader title="Search" />,
       })}
     />
   </Stack.Navigator>

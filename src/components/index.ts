@@ -10,3 +10,4 @@ export * from './FirstLogin';
 export * from './AnimatedButton';
 export * from './FireWork';
 export * from './NetworkIssueModal';
+export * from './SearchProductCard';

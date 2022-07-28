@@ -4,6 +4,7 @@ import {ProductDetailsState} from '../reducers/productDetailsReducer';
 import {ProductsListState} from '../reducers/productListReducer';
 import {ProfileState} from '../reducers/profileReducer';
 import {AppState} from '../reducers/rootReducer';
+import {SearchProductsState} from '../reducers/searchProductsReducer';
 import {UserState} from '../reducers/userReducer';
 
 const isLoggedSelector = (state: AppState): boolean => state.user.isLogged;
@@ -23,6 +24,9 @@ const networkIssueSelector = (state: AppState): NetworkIssueState =>
 
 const profileSelector = (state: AppState): ProfileState => state.profile;
 
+const searchProductsSelector = (state: AppState): SearchProductsState =>
+  state.searchProducts;
+
 export {
   isLoggedSelector,
   productDetailsSelector,
@@ -31,4 +35,5 @@ export {
   cartSelector,
   networkIssueSelector,
   profileSelector,
+  searchProductsSelector,
 };

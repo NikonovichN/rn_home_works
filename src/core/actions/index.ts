@@ -8,6 +8,8 @@ import * as networkIssueActions from './networkIssueActions';
 import * as networkIssueTypes from './networkIssueTypes';
 import * as profileActions from './profileActions';
 import * as profileTypes from './profileTypes';
+import * as searchProductsActions from './searchProductListActions';
+import * as searchProductsTypes from './searchProductListTypes';
 export * from './cart';
 
 export {
@@ -21,4 +23,6 @@ export {
   networkIssueTypes,
   profileActions,
   profileTypes,
+  searchProductsActions,
+  searchProductsTypes,
 };

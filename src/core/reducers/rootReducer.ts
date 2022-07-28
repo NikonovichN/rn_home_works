@@ -6,6 +6,7 @@ import userReducer from './userReducer';
 import cartReducer from './cartReducer';
 import networkIssueReducer from './networkIssueReducer';
 import profileReducer from './profileReducer';
+import searchProductsReducer from './searchProductsReducer';
 
 const rootReducer = combineReducers({
   productList: productListReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   networkIssue: networkIssueReducer,
   profile: profileReducer,
+  searchProducts: searchProductsReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
