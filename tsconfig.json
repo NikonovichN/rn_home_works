@@ -25,6 +25,7 @@
       "@network": ["./src/core/network/index"],
       "@utils": ["./src/core/utils/index"],
       "@constants": ["./src/core/constants/index"],
+      "@entities": ["./src/core/entities/index"],
     }
   },
   "include": ["./src/**/*"],

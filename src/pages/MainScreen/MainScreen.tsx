@@ -12,7 +12,7 @@ import {useShallowEqualSelector} from '@hooks';
 import {productListSelector} from '@selectors';
 import {checkInternetConnection} from '@network';
 
-import {Product} from '../../core/entities';
+import {Product} from '@entities';
 import {Routes} from '@constants';
 
 type Props = {

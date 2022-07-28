@@ -2,18 +2,19 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {StyleSheet, View, ScrollView, Platform} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {noop} from 'lodash';
 
 import {profileSelector} from '@selectors';
 import {Loading, PrimaryButton, TextInputStore} from '@components';
 import {profileActions} from '@actions';
 import {Colors} from '@styles';
-import {ChooseAvatar} from '@icons';
-import {noop} from 'lodash';
-import {ProfileUpdate} from '../../core/entities';
+import {ProfileUpdate} from '@entities';
+
+import {ProfilePicture} from './components';
 
 const ProfileScreen: React.FC = () => {
   const dispatch = useDispatch();
-  const {loading, data} = useSelector(profileSelector);
+  const {loading, data: profile} = useSelector(profileSelector);
 
   const [fullName, setFullName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -46,26 +47,28 @@ const ProfileScreen: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (data) {
-      setFullName(data.attributes.first_name + ' ' + data.attributes.last_name);
-      setEmail(data.attributes.email);
-      setAddress(data.relationships.default_billing_address.data.type);
+    if (profile) {
+      setFullName(
+        profile.attributes.first_name + ' ' + profile.attributes.last_name,
+      );
+      setEmail(profile.attributes.email);
+      setAddress(profile.relationships.default_billing_address.data.type);
     }
-  }, [data]);
+  }, [profile]);
 
   useEffect(() => {
     const [firstName, lastName] = fullName.split(' ');
     if (
-      firstName !== data?.attributes.first_name ||
-      lastName !== data?.attributes.last_name ||
-      email !== data?.attributes.email ||
-      address !== data?.relationships.default_billing_address.data.type
+      firstName !== profile?.attributes.first_name ||
+      lastName !== profile?.attributes.last_name ||
+      email !== profile?.attributes.email ||
+      address !== profile?.relationships.default_billing_address.data.type
     ) {
       setShowUpdateButton(true);
     } else {
       setShowUpdateButton(false);
     }
-  }, [data, fullName, email, address, setShowUpdateButton]);
+  }, [profile, fullName, email, address, setShowUpdateButton]);
 
   const Component = useMemo(
     () =>
@@ -81,7 +84,7 @@ const ProfileScreen: React.FC = () => {
             />
           </View>
           <View style={styles.elementContainer}>
-            <ChooseAvatar style={styles.avatarIcon} />
+            <ProfilePicture />
           </View>
           <View style={styles.elementContainer}>
             <TextInputStore
@@ -129,9 +132,6 @@ const styles = StyleSheet.create({
   elementContainer: {
     marginVertical: 15,
     justifyContent: 'center',
-  },
-  avatarIcon: {
-    alignSelf: 'center',
   },
   emptySpace: {
     marginBottom: 52,

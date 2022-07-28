@@ -7,5 +7,5 @@ export async function fetchProfile(token: string): Promise<Profile> {
     headers: {Authorization: `Bearer ${token}`},
   });
 
-  return serverData.data;
+  return serverData.data.data;
 }
