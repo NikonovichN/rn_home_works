@@ -13,6 +13,7 @@
 #import <React/RCTSurfacePresenter.h>
 #import <React/RCTSurfacePresenterBridgeAdapter.h>
 #import <ReactCommon/RCTTurboModuleManager.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 #import <react/config/ReactNativeConfig.h>
 
@@ -32,6 +33,8 @@
   RCTAppSetupPrepareApp(application);
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+
+  [GMSServices provideAPIKey:@"AIzaSyAdvEna2P6ktmJNfrgyCpwSBCzZV17OLPk"];
 
 #if RCT_NEW_ARCH_ENABLED
   _contextContainer = std::make_shared<facebook::react::ContextContainer const>();

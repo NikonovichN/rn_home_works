@@ -7,4 +7,5 @@ export const enum Routes {
   DummyPage = 'Dummy Page',
   Profile = 'Profile',
   Search = 'Search',
+  Orders = 'Orders',
 }

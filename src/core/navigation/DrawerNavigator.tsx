@@ -7,10 +7,10 @@ import {
   MainStackNavigator,
 } from './NavigationStack';
 import {CustomDrawerContent} from './components';
-import {CartHeader, MainHeader} from '@components';
-import {Cart, ProfileScreen} from '@pages';
+import {CartHeader, MainHeader, PageHeader} from '@components';
+import {Cart, MapScreen, ProfileScreen} from '@pages';
 import {Routes} from '@constants';
-import {AccentCart, AccentHeart, AccentProfile} from '@icons';
+import {AccentCart, AccentHeart, AccentOrders, AccentProfile} from '@icons';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,6 +23,19 @@ const DrawerNavigator: React.FC = () => (
         options={() => ({header: clearHeader})}
       />
       <Drawer.Screen
+        name={Routes.Profile}
+        component={ProfileScreen}
+        options={() => ({
+          header: () => <MainHeader title="My Profile" />,
+          drawerIcon: AccentProfile,
+        })}
+      />
+      <Drawer.Screen
+        name="Fire work"
+        component={DummyStackNavigator}
+        options={() => ({header: clearHeader, drawerIcon: AccentHeart})}
+      />
+      <Drawer.Screen
         name={Routes.Cart}
         component={Cart}
         options={() => ({
@@ -31,19 +44,12 @@ const DrawerNavigator: React.FC = () => (
         })}
       />
       <Drawer.Screen
-        name={Routes.Profile}
-        component={ProfileScreen}
+        name={Routes.Orders}
+        component={MapScreen}
         options={() => ({
-          header: () => <MainHeader title="My Profile" />,
-          drawerIcon: AccentProfile,
+          header: () => <PageHeader title="" />,
+          drawerIcon: AccentOrders,
         })}
-      />
-    </Drawer.Group>
-    <Drawer.Group>
-      <Drawer.Screen
-        name="Fire work"
-        component={DummyStackNavigator}
-        options={() => ({header: clearHeader, drawerIcon: AccentHeart})}
       />
     </Drawer.Group>
   </Drawer.Navigator>

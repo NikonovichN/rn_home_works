@@ -13,6 +13,7 @@ import AccentCart from './accent-cart.svg';
 import AccentHeart from './accent-heart.svg';
 import AccentShare from './accent-share.svg';
 import AccentProfile from './accent-profile.svg';
+import AccentOrders from './accent-orders.svg';
 import ChooseAvatar from './choose-avatar.svg';
 
 export {
@@ -31,5 +32,6 @@ export {
   AccentHeart,
   AccentShare,
   AccentProfile,
+  AccentOrders,
   ChooseAvatar,
 };

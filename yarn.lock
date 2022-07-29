@@ -1608,6 +1608,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/geojson@^7946.0.8":
+  version "7946.0.10"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.10.tgz#6dfbf5ea17142f7f9a043809f1cd4c448cb68249"
+  integrity sha512-Nmh0K3iWQJzniTuPRcJn5hxXkfB1T1pgB89SBig5PlJQU5yocazeu4jATJlaA0GYFKWMqDdvYemoSnF2pXgLVA==
+
 "@types/graceful-fs@^4.1.2", "@types/graceful-fs@^4.1.3":
   version "4.1.5"
   resolved "https://registry.npmjs.org/@types/graceful-fs/-/graceful-fs-4.1.5.tgz"
@@ -6037,6 +6042,13 @@ react-native-image-picker@^4.8.4:
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-4.8.4.tgz#ac52f1e265458e944664adf1dcd0a9ee408fe083"
   integrity sha512-Mjh2j/sddyolb16EpmprWzbtyeFvW8Xgzr/8WNi9d6bR2FC/kL78cY/a+7Yzujg5ZDtT1MWys+eWw/qtfwgGiw==
+
+react-native-maps@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-1.1.0.tgz#374dd1bcae1ef6702ff262e9f6f1967a65df00a2"
+  integrity sha512-PmdEVCisYkbvS5qKn/N5jiAP/zoUau0PBOc4CAil3lSMzLLwIqiLUzK1VNKQnbxwOaJalTZFxBoRUyPGgVAvmQ==
+  dependencies:
+    "@types/geojson" "^7946.0.8"
 
 react-native-modal@^13.0.1:
   version "13.0.1"

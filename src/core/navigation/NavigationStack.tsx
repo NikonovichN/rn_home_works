@@ -9,7 +9,7 @@ import {
   ProductDetailsPage,
   SearchProducts,
 } from '@pages';
-import {MainHeader, ProductHeader, CartHeader} from '@components';
+import {MainHeader, ProductHeader, CartHeader, PageHeader} from '@components';
 import {Routes} from '@constants';
 
 import {RootStackParamList} from './types';
@@ -62,7 +62,7 @@ export const DummyStackNavigator: React.FC = () => (
       name={Routes.DummyPage}
       component={DummyPage}
       options={() => ({
-        header: () => <MainHeader title="Dummy Page Stack" />,
+        header: () => <PageHeader title="Dummy Page Stack" />,
       })}
     />
   </Stack.Navigator>
