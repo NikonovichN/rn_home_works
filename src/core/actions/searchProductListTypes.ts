@@ -1,4 +1,4 @@
-import {ProductList} from '@entities';
+import {Product, ProductList} from '@entities';
 
 export const SEARCH_PRODUCTS = 'search_product_list/SEARCH_PRODUCTS';
 export interface SearchProducts {
@@ -26,8 +26,31 @@ export interface SearchProductsFailure {
   error: Error | string;
 }
 
-export type ListProducts =
+export const SEARCH_PRODUCTS_READ_STORAGE =
+  'search_product_list/SEARCH_PRODUCTS_READ_STORAGE';
+export interface SearchProductsReadStorage {
+  type: typeof SEARCH_PRODUCTS_READ_STORAGE;
+}
+
+export const SEARCH_PRODUCTS_READ_STORAGE_SUCCESS =
+  'search_product_list/SEARCH_PRODUCTS_READ_STORAGE_SUCCESS';
+export interface SearchProductsReadStorageSuccess {
+  type: typeof SEARCH_PRODUCTS_READ_STORAGE_SUCCESS;
+  products: Product[] | null;
+  filters: string[];
+}
+
+export const SEARCH_PRODUCTS_SAVE_STORAGE =
+  'search_product_list/SEARCH_PRODUCTS_SAVE_STORAGE';
+export interface SearchProductsSaveStorage {
+  type: typeof SEARCH_PRODUCTS_SAVE_STORAGE;
+}
+
+export type SearchListProducts =
   | SearchProducts
   | SearchProductsRequest
   | SearchProductsSuccess
-  | SearchProductsFailure;
+  | SearchProductsFailure
+  | SearchProductsReadStorage
+  | SearchProductsReadStorageSuccess
+  | SearchProductsSaveStorage;

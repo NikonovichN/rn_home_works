@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 
 import {Colors, CommonStyles, Opacity} from '@styles';
@@ -9,16 +9,22 @@ type Props = {
   onTapIcon?(): void;
   onPressSearchBar?(): void;
   onChangeText?(value: string): void;
+  lastValue?: string;
   ref?: React.Ref<TextInput>;
 };
 
 const SearchBar: React.FC<Props> = React.forwardRef<TextInput, Props>(
   (props, ref) => {
+    const hasOnPressSearchBarProp = useMemo(
+      () => isFunction(props.onPressSearchBar),
+      [props.onPressSearchBar],
+    );
+
     return (
       <TouchableOpacity
         style={styles.container}
         activeOpacity={Opacity.regularButton}
-        disabled={!isFunction(props.onPressSearchBar)}
+        disabled={!hasOnPressSearchBarProp}
         onPress={props.onPressSearchBar}>
         <View style={styles.containerBar}>
           <View style={styles.icon}>
@@ -33,8 +39,9 @@ const SearchBar: React.FC<Props> = React.forwardRef<TextInput, Props>(
             style={styles.input}
             placeholder="Search"
             textAlignVertical="center"
+            defaultValue={props.lastValue}
             onChangeText={props.onChangeText}
-            editable={!isFunction(props.onPressSearchBar)}
+            editable={!hasOnPressSearchBarProp}
           />
         </View>
       </TouchableOpacity>
@@ -63,8 +70,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border.primary,
     borderRadius: 4,
-    lineHeight: 0,
     fontSize: 15,
+    color: Colors.text.primary,
   },
 });
 

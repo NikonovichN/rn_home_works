@@ -33,13 +33,11 @@ function* updateProfileSaga(action: profileTypes.UpdateProfile) {
     yield put(profileActions.updateProfileRequest());
     const profile: Profile = yield call(updateProfile, 'token', action.body);
 
-    console.log('update pr', profile);
     yield put(profileActions.UpdateProfileSuccess(profile));
     // } else {
     //   throw Error('No token');
     // }
   } catch (error) {
-    console.log('error update pr', error);
     yield put(profileActions.errorProfile(`${error}`));
   }
 }

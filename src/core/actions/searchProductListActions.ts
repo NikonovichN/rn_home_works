@@ -1,5 +1,5 @@
 import * as actions from './searchProductListTypes';
-import {ProductList} from '@entities';
+import {Product, ProductList} from '@entities';
 
 export function searchProducts(filter: string): actions.SearchProducts {
   return {
@@ -28,4 +28,23 @@ export function searchProductsFailure(
     type: actions.SEARCH_PRODUCTS_FAILURE,
     error,
   };
+}
+
+export function searchProductsReadStorage(): actions.SearchProductsReadStorage {
+  return {type: actions.SEARCH_PRODUCTS_READ_STORAGE};
+}
+
+export function searchProductsReadStorageSuccess(
+  products: Product[] | null,
+  filters: string[],
+): actions.SearchProductsReadStorageSuccess {
+  return {
+    type: actions.SEARCH_PRODUCTS_READ_STORAGE_SUCCESS,
+    products,
+    filters,
+  };
+}
+
+export function searchProductsSaveStorage(): actions.SearchProductsSaveStorage {
+  return {type: actions.SEARCH_PRODUCTS_SAVE_STORAGE};
 }

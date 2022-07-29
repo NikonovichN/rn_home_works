@@ -15,7 +15,11 @@ import {checkInternetConnection} from '@network';
 const SearchProducts: React.FC = () => {
   const [filter, setFilter] = useState('');
   const dispatch = useDispatch();
-  const {loading, products} = useSelector(searchProductsSelector);
+  const {
+    loading,
+    products,
+    filters: storageFilters,
+  } = useSelector(searchProductsSelector);
   const textInputRef = React.createRef<TextInput>();
   const insets = useSafeAreaInsets();
 
@@ -50,12 +54,23 @@ const SearchProducts: React.FC = () => {
     }
   }, [textInputRef.current]);
 
+  useEffect(() => {
+    dispatch(searchProductsActions.searchProductsReadStorage());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (storageFilters.length > 0) {
+      setFilter(storageFilters[0]);
+    }
+  }, [storageFilters]);
+
   return (
     <>
       <SearchBar
         onChangeText={onChangeText}
         onTapIcon={startSearch}
         ref={textInputRef}
+        lastValue={filter}
       />
       <View style={styles.container}>{ResultComponent}</View>
     </>
@@ -66,7 +81,7 @@ type ProductItemProps = {
   product: Product;
 };
 
-const ProductItem: React.FC<ProductItemProps> = props => {
+const ProductItem: React.FC<ProductItemProps> = props => { 
   const navigation = useNavigation();
   const {product} = props;
 
