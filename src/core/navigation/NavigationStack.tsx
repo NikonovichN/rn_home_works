@@ -9,7 +9,7 @@ import {
   ProductDetailsPage,
   SearchProducts,
 } from '@pages';
-import {MainHeader, ProductHeader, CartHeader, PageHeader} from '@components';
+import {Header} from '@components';
 import {Routes} from '@constants';
 
 import {RootStackParamList} from './types';
@@ -24,14 +24,14 @@ export const MainStackNavigator: React.FC = () => (
       name={Routes.MainScreen}
       component={MainScreen}
       options={() => ({
-        header: () => <MainHeader title="Ecommerce Store" />,
+        header: () => <Header.Main title="Ecommerce Store" />,
       })}
     />
     <Stack.Screen
       name={Routes.ProductDetails}
       component={ProductDetailsPage}
       options={() => ({
-        header: () => <ProductHeader title="Product Details" />,
+        header: () => <Header.Product title="Product Details" />,
       })}
     />
     <Stack.Screen
@@ -43,14 +43,14 @@ export const MainStackNavigator: React.FC = () => (
       name={Routes.Cart}
       component={Cart}
       options={() => ({
-        header: () => <CartHeader title="My Cart" />,
+        header: () => <Header.Cart title="My Cart" />,
       })}
     />
     <Stack.Screen
       name={Routes.Search}
       component={SearchProducts}
       options={() => ({
-        header: () => <ProductHeader title="Search" />,
+        header: () => <Header.Product title="Search" />,
       })}
     />
   </Stack.Navigator>
@@ -62,7 +62,7 @@ export const DummyStackNavigator: React.FC = () => (
       name={Routes.DummyPage}
       component={DummyPage}
       options={() => ({
-        header: () => <PageHeader title="Dummy Page Stack" />,
+        header: () => <Header.Page title="Dummy Page Stack" />,
       })}
     />
   </Stack.Navigator>

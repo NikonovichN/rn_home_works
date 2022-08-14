@@ -7,7 +7,7 @@ import {
   MainStackNavigator,
 } from './NavigationStack';
 import {CustomDrawerContent} from './components';
-import {CartHeader, MainHeader, PageHeader} from '@components';
+import {Header} from '@components';
 import {Cart, MapScreen, ProfileScreen} from '@pages';
 import {Routes} from '@constants';
 import {AccentCart, AccentHeart, AccentOrders, AccentProfile} from '@icons';
@@ -26,7 +26,7 @@ const DrawerNavigator: React.FC = () => (
         name={Routes.Profile}
         component={ProfileScreen}
         options={() => ({
-          header: () => <MainHeader title="My Profile" />,
+          header: () => <Header.Main title="My Profile" />,
           drawerIcon: AccentProfile,
         })}
       />
@@ -39,7 +39,7 @@ const DrawerNavigator: React.FC = () => (
         name={Routes.Cart}
         component={Cart}
         options={() => ({
-          header: () => <CartHeader title="My Cart" />,
+          header: () => <Header.Cart title="My Cart" />,
           drawerIcon: AccentCart,
         })}
       />
@@ -47,7 +47,7 @@ const DrawerNavigator: React.FC = () => (
         name={Routes.Orders}
         component={MapScreen}
         options={() => ({
-          header: () => <PageHeader title="" />,
+          header: () => <Header.Page title="" />,
           drawerIcon: AccentOrders,
         })}
       />
