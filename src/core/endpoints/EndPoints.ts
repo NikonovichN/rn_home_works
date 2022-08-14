@@ -19,6 +19,9 @@ export class EndPoints {
     'https://stoplight.io/mocks/spark-solutions/api-v2/3124960';
   static addToCart: string = '/api/v2/storefront/cart/add_item';
 
+  static mockAccount: string =
+    'https://stoplight.io/mocks/spark-solutions/api-v2/3124960/api/v2/storefront/account';
+
   static baseImagesUrl: string = 'https://api.thecatapi.com';
   static imagesUrl: string = '/v1/images/search';
 }

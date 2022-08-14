@@ -1,7 +1,10 @@
 export type RootStackParamList = {
-  MainScreen: undefined;
-  ProductDetails: {productId: string};
-  DummyPage: undefined;
+  'Main Screen': undefined;
+  'Product Details': {productId: string};
+  'Dummy Page': undefined;
   LogIn: undefined;
-  Cart: any;
+  Cart: undefined;
+  Profile: undefined;
+  Search: undefined;
+  Map: undefined;
 };

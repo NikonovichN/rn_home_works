@@ -9,6 +9,12 @@ import SuccessIcon from './success.svg';
 import BigBoxIcon from './big-box.svg';
 import AvatarIcon from './avatar.svg';
 import SafeGuardIcon from './safe-guard.svg';
+import AccentCart from './accent-cart.svg';
+import AccentHeart from './accent-heart.svg';
+import AccentShare from './accent-share.svg';
+import AccentProfile from './accent-profile.svg';
+import AccentOrders from './accent-orders.svg';
+import ChooseAvatar from './choose-avatar.svg';
 
 export {
   MenuIcon,
@@ -22,4 +28,10 @@ export {
   BigBoxIcon,
   AvatarIcon,
   SafeGuardIcon,
+  AccentCart,
+  AccentHeart,
+  AccentShare,
+  AccentProfile,
+  AccentOrders,
+  ChooseAvatar,
 };

@@ -1,11 +1,12 @@
-import {all, call, fork, put, takeEvery} from 'redux-saga/effects';
+import {all, call, fork, put, takeLeading} from 'redux-saga/effects';
 
-import {productListActions, productListTypes} from '../actions';
-import {ProductListConverter} from '../converters';
-import {ProductList} from '../entities';
-import {fetchImagesLink, fetchProductList} from '../services';
+import {productListActions, productListTypes} from '@actions';
+import {ProductList} from '@entities';
 
-interface Data extends Object {
+import {fetchProductList} from '../services';
+import getProductImagesSaga from './productImages';
+
+interface Data {
   data: [];
 }
 
@@ -13,22 +14,8 @@ function* onLoadProductList() {
   try {
     yield put(productListActions.getProductsRequest());
 
-    let products: ProductList;
-
     const serverData: Data = yield call(fetchProductList);
-
-    if (serverData?.data) {
-      let images: Data = yield call(
-        fetchImagesLink,
-        serverData.data.length.toString(),
-      );
-      products = ProductListConverter.toProductList(
-        serverData.data,
-        images.data,
-      );
-    } else {
-      throw new Error('Something went wrong!');
-    }
+    const products: ProductList = yield call(getProductImagesSaga, serverData);
 
     yield put(productListActions.getProductsSuccess(products!));
   } catch (error) {
@@ -40,7 +27,7 @@ function* watchOnLoadProductList() {
   // fetch data on first load
   yield call(onLoadProductList);
 
-  yield takeEvery(productListTypes.GET_PRODUCTS, onLoadProductList);
+  yield takeLeading(productListTypes.GET_PRODUCTS, onLoadProductList);
 }
 
 export default function* productListSaga() {

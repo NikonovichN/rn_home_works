@@ -1,4 +1,4 @@
-import {put, takeEvery} from 'redux-saga/effects';
+import {put, takeLeading} from 'redux-saga/effects';
 
 import {networkIssueActions, networkIssueTypes} from '@actions';
 
@@ -11,6 +11,9 @@ function* onRemoveNetworkIssue() {
 }
 
 export default function* networkIssueSaga() {
-  yield takeEvery(networkIssueActions.addNetworkIssue, onAddNetworkIssue);
-  yield takeEvery(networkIssueActions.removeNetworkIssue, onRemoveNetworkIssue);
+  yield takeLeading(networkIssueActions.addNetworkIssue, onAddNetworkIssue);
+  yield takeLeading(
+    networkIssueActions.removeNetworkIssue,
+    onRemoveNetworkIssue,
+  );
 }

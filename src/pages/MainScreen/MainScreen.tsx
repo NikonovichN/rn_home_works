@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
+import {useNavigation} from '@react-navigation/native';
 
 import {Loading, ProductCard, SearchBar} from '@components';
 import {Colors} from '@styles';
@@ -11,23 +12,28 @@ import {productListActions} from '@actions';
 import {useShallowEqualSelector} from '@hooks';
 import {productListSelector} from '@selectors';
 import {checkInternetConnection} from '@network';
-
-import {Product} from '../../core/entities';
+import {Product} from '@entities';
 import {Routes} from '@constants';
 
-type Props = {
-  navigation: NativeStackNavigationProp<any, any>;
-};
-
-const MainScreen: React.FC<Props> = props => {
+const MainScreen: React.FC = () => {
   const {isLoading, products} = useShallowEqualSelector(productListSelector);
 
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const insets = useSafeAreaInsets();
+
+  const navigateToSearch = useCallback(() => {
+    navigation.navigate(Routes.Search);
+  }, [navigation]);
 
   const getProductList = useCallback(
     () => dispatch(productListActions.getProducts()),
     [dispatch],
+  );
+
+  const renderItem = useCallback(
+    ({item}: {item: Product}) => <ProductItem product={item} />,
+    [],
   );
 
   useEffect(() => {
@@ -36,7 +42,7 @@ const MainScreen: React.FC<Props> = props => {
 
   return (
     <>
-      <SearchBar />
+      <SearchBar onPress={navigateToSearch} />
       {isLoading ? (
         <Loading />
       ) : (
@@ -54,9 +60,7 @@ const MainScreen: React.FC<Props> = props => {
           contentContainerStyle={{
             paddingBottom: insets.bottom,
           }}
-          renderItem={({item}) => (
-            <ProductItem navigation={props.navigation} product={item} />
-          )}
+          renderItem={renderItem}
         />
       )}
     </>
@@ -64,26 +68,23 @@ const MainScreen: React.FC<Props> = props => {
 };
 
 type ProductItemProps = {
-  navigation: NativeStackNavigationProp<any, any>;
   product: Product;
 };
 
 const ProductItem: React.FC<ProductItemProps> = props => {
-  const {navigation, product} = props;
+  const navigation = useNavigation();
+  const {product} = props;
 
   const chooseProduct = useCallback(() => {
     const action = () =>
-      navigation.push(Routes.ProductDetails, {productId: product.id});
-    // const failCallback = () => navigateToNetworkIssue({navigation, action});
+      navigation.navigate(Routes.ProductDetails, {
+        productId: product.id.toString(),
+      });
 
     checkInternetConnection(action, () => {});
   }, [navigation, product]);
 
-  return (
-    <>
-      <ProductCard product={product} onPress={chooseProduct} />
-    </>
-  );
+  return <ProductCard product={product} onPress={chooseProduct} />;
 };
 
 const styles = StyleSheet.create({

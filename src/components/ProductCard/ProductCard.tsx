@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-import {Product} from '../../core/entities/ProductList';
+import {Product} from '@entities';
 import {CommonStyles, Colors, Opacity} from '@styles';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;

@@ -1,6 +1,4 @@
 import React from 'react';
-
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
@@ -9,31 +7,31 @@ import {
   LogInPage,
   MainScreen,
   ProductDetailsPage,
+  SearchProducts,
 } from '@pages';
-import {MainHeader, ProductHeader, CartHeader} from '@components';
-import {RootStackParamList} from './types';
+import {Header} from '@components';
 import {Routes} from '@constants';
+
+import {RootStackParamList} from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const Drawer = createDrawerNavigator();
+export const clearHeader = () => null;
 
-const clearHeader = () => null;
-
-const MainStackNavigator: React.FC = () => (
+export const MainStackNavigator: React.FC = () => (
   <Stack.Navigator initialRouteName={Routes.MainScreen}>
     <Stack.Screen
       name={Routes.MainScreen}
       component={MainScreen}
       options={() => ({
-        header: () => <MainHeader title="Ecommerce Store" />,
+        header: () => <Header.Main title="Ecommerce Store" />,
       })}
     />
     <Stack.Screen
       name={Routes.ProductDetails}
       component={ProductDetailsPage}
       options={() => ({
-        header: () => <ProductHeader title="Product Details" />,
+        header: () => <Header.Product title="Product Details" />,
       })}
     />
     <Stack.Screen
@@ -45,54 +43,27 @@ const MainStackNavigator: React.FC = () => (
       name={Routes.Cart}
       component={Cart}
       options={() => ({
-        header: () => <CartHeader title="My Cart" />,
+        header: () => <Header.Cart title="My Cart" />,
+      })}
+    />
+    <Stack.Screen
+      name={Routes.Search}
+      component={SearchProducts}
+      options={() => ({
+        header: () => <Header.Product title="Search" />,
       })}
     />
   </Stack.Navigator>
 );
 
-const DummyStackNavigatorOne: React.FC = () => (
+export const DummyStackNavigator: React.FC = () => (
   <Stack.Navigator initialRouteName={Routes.DummyPage}>
     <Stack.Screen
       name={Routes.DummyPage}
       component={DummyPage}
       options={() => ({
-        header: () => <MainHeader title="Dummy Page Stack 1" />,
+        header: () => <Header.Page title="Dummy Page Stack" />,
       })}
     />
   </Stack.Navigator>
 );
-
-const DummyStackNavigatorTwo: React.FC = () => (
-  <Stack.Navigator initialRouteName={Routes.DummyPage}>
-    <Stack.Screen
-      name={Routes.DummyPage}
-      component={DummyPage}
-      options={() => ({
-        header: () => <MainHeader title="Dummy Page Stack 2" />,
-      })}
-    />
-  </Stack.Navigator>
-);
-
-const DrawerNavigator: React.FC = () => (
-  <Drawer.Navigator>
-    <Drawer.Screen
-      name="MainStack"
-      component={MainStackNavigator}
-      options={() => ({header: clearHeader})}
-    />
-    <Drawer.Screen
-      name="DummyStack1"
-      component={DummyStackNavigatorOne}
-      options={() => ({header: clearHeader})}
-    />
-    <Drawer.Screen
-      name="DummyStack2"
-      component={DummyStackNavigatorTwo}
-      options={() => ({header: clearHeader})}
-    />
-  </Drawer.Navigator>
-);
-
-export {DrawerNavigator};

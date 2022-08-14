@@ -1,5 +1,5 @@
-import React from 'react';
-import {Text, TouchableWithoutFeedback, View} from 'react-native';
+import React, {useCallback} from 'react';
+import {Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {ArrowBackIcon} from '@icons';
@@ -9,15 +9,12 @@ import {HeaderProps} from './headerTypes';
 
 const CartHeader: React.FC<HeaderProps> = props => {
   const navigation = useNavigation();
+  const goBack = useCallback(() => navigation.goBack(), [navigation]);
 
   return (
     <View style={styles.container}>
       <View style={styles.endIcons}>
-        <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
-          <View>
-            <ArrowBackIcon />
-          </View>
-        </TouchableWithoutFeedback>
+        <ArrowBackIcon onPress={goBack} />
       </View>
       <Text style={styles.title}>{props.title}</Text>
       <View style={styles.endIcons} />

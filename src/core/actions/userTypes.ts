@@ -1,6 +1,5 @@
 import {UserCredentials} from '../entities/UserCredentials';
-import {UserData, Authentication} from './../../core/entities/User';
-import {AnyActionTypes} from './AnyActionTypes';
+import {UserData, Authentication} from '@entities';
 
 export const USER_LOGIN = 'user/USER_LOGIN';
 export interface UserLogin {

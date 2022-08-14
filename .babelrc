@@ -26,7 +26,8 @@
           "@navigation": ["./src/core/navigation"],
           "@network": "./src/core/network",
           "@utils": ["./src/core/utils"],
-          "@constants": ["./src/core/constants"]
+          "@constants": ["./src/core/constants"],
+          "@entities": ["./src/core/entities"]
         }
       }
     ]

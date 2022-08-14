@@ -4,7 +4,7 @@ import {noop} from 'lodash';
 
 import {PrimaryButton} from '@components';
 import {SafeGuardIcon} from '@icons';
-import {CartAttributes} from '../../../../core/entities';
+import {CartAttributes} from '@entities';
 import {CommonStyles, TextStyles, Colors} from '@styles';
 
 interface ContentCartProps {
