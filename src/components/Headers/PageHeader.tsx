@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react';
-import {Text, TouchableWithoutFeedback, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {BasketIcon, ArrowBackIcon, HeartIcon} from '@icons';
+import {BasketIcon, ArrowBackIcon} from '@icons';
 import {Routes} from '@constants';
 
 import {styles} from './styles';
@@ -19,18 +19,10 @@ const PageHeader: React.FC<HeaderProps> = props => {
   return (
     <View style={styles.container}>
       <View style={styles.endIcons}>
-        <TouchableWithoutFeedback onPress={goBack}>
-          <View>
-            <ArrowBackIcon />
-          </View>
-        </TouchableWithoutFeedback>
+        <ArrowBackIcon onPress={goBack} />
       </View>
       <Text style={styles.title}>{props.title}</Text>
-      <TouchableWithoutFeedback onPress={navigateToCart}>
-        <View>
-          <BasketIcon />
-        </View>
-      </TouchableWithoutFeedback>
+      <BasketIcon onPress={navigateToCart} />
     </View>
   );
 };

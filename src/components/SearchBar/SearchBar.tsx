@@ -7,7 +7,7 @@ import {isFunction} from 'lodash';
 
 type Props = {
   onTapIcon?(): void;
-  onPressSearchBar?(): void;
+  onPress?(): void;
   onChangeText?(value: string): void;
   lastValue?: string;
   ref?: React.Ref<TextInput>;
@@ -16,8 +16,8 @@ type Props = {
 const SearchBar: React.FC<Props> = React.forwardRef<TextInput, Props>(
   (props, ref) => {
     const hasOnPressSearchBarProp = useMemo(
-      () => isFunction(props.onPressSearchBar),
-      [props.onPressSearchBar],
+      () => isFunction(props.onPress),
+      [props.onPress],
     );
 
     return (
@@ -25,7 +25,7 @@ const SearchBar: React.FC<Props> = React.forwardRef<TextInput, Props>(
         style={styles.container}
         activeOpacity={Opacity.regularButton}
         disabled={!hasOnPressSearchBarProp}
-        onPress={props.onPressSearchBar}>
+        onPress={props.onPress}>
         <View style={styles.containerBar}>
           <View style={styles.icon}>
             <TouchableOpacity

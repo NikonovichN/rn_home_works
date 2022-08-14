@@ -20,8 +20,6 @@ const ProfileScreen: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [address, setAddress] = useState<string>('');
 
-  const [showUpdateButton, setShowUpdateButton] = useState(false);
-
   const insets = useSafeAreaInsets();
   const insetsContainer = useMemo(
     () => ({
@@ -30,6 +28,19 @@ const ProfileScreen: React.FC = () => {
     [insets],
   );
 
+  const isUpdateButtonVisible = useMemo(() => {
+    const [firstName, lastName] = fullName.split(' ');
+    if (
+      firstName !== profile?.attributes.first_name ||
+      lastName !== profile?.attributes.last_name ||
+      email !== profile?.attributes.email ||
+      address !== profile?.relationships.default_billing_address.data.type
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }, [profile, fullName, email, address]);
   const updateButton = useCallback(() => {
     const [firstName, lastName] = fullName.split(' ');
     const body: ProfileUpdate = {
@@ -56,71 +67,39 @@ const ProfileScreen: React.FC = () => {
     }
   }, [profile]);
 
-  useEffect(() => {
-    const [firstName, lastName] = fullName.split(' ');
-    if (
-      firstName !== profile?.attributes.first_name ||
-      lastName !== profile?.attributes.last_name ||
-      email !== profile?.attributes.email ||
-      address !== profile?.relationships.default_billing_address.data.type
-    ) {
-      setShowUpdateButton(true);
-    } else {
-      setShowUpdateButton(false);
-    }
-  }, [profile, fullName, email, address, setShowUpdateButton]);
-
-  const Component = useMemo(
-    () =>
-      loading ? (
-        <Loading />
-      ) : (
-        <ScrollView style={[styles.container, insetsContainer]}>
-          <View style={styles.elementContainer}>
-            <TextInputStore
-              label="Full Name"
-              value={fullName}
-              onChangeText={setFullName}
-            />
-          </View>
-          <View style={styles.elementContainer}>
-            <ProfilePicture />
-          </View>
-          <View style={styles.elementContainer}>
-            <TextInputStore
-              label="Email"
-              value={email}
-              onChangeText={setEmail}
-            />
-          </View>
-          <View style={styles.elementContainer}>
-            <TextInputStore
-              label="Address"
-              value={address}
-              onChangeText={setAddress}
-            />
-          </View>
-          <View style={styles.emptySpace} />
-          {showUpdateButton && (
-            <View style={styles.updateButtonContainer}>
-              <PrimaryButton content="update" onPress={updateButton} />
-            </View>
-          )}
-          <PrimaryButton content="log out" onPress={noop} />
-        </ScrollView>
-      ),
-    [
-      loading,
-      fullName,
-      email,
-      address,
-      showUpdateButton,
-      insetsContainer,
-      updateButton,
-    ],
+  return loading ? (
+    <Loading />
+  ) : (
+    <ScrollView style={[styles.container, insetsContainer]}>
+      <View style={styles.elementContainer}>
+        <TextInputStore
+          label="Full Name"
+          value={fullName}
+          onChangeText={setFullName}
+        />
+      </View>
+      <View style={styles.elementContainer}>
+        <ProfilePicture />
+      </View>
+      <View style={styles.elementContainer}>
+        <TextInputStore label="Email" value={email} onChangeText={setEmail} />
+      </View>
+      <View style={styles.elementContainer}>
+        <TextInputStore
+          label="Address"
+          value={address}
+          onChangeText={setAddress}
+        />
+      </View>
+      <View style={styles.emptySpace} />
+      {isUpdateButtonVisible && (
+        <View style={styles.updateButtonContainer}>
+          <PrimaryButton content="update" onPress={updateButton} />
+        </View>
+      )}
+      <PrimaryButton content="log out" onPress={noop} />
+    </ScrollView>
   );
-
-  return Component;
 };
 
 const styles = StyleSheet.create({

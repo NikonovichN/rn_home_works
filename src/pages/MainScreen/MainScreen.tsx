@@ -31,13 +31,18 @@ const MainScreen: React.FC = () => {
     [dispatch],
   );
 
+  const renderItem = useCallback(
+    ({item}: {item: Product}) => <ProductItem product={item} />,
+    [],
+  );
+
   useEffect(() => {
     getProductList();
   }, [getProductList]);
 
   return (
     <>
-      <SearchBar onPressSearchBar={navigateToSearch} />
+      <SearchBar onPress={navigateToSearch} />
       {isLoading ? (
         <Loading />
       ) : (
@@ -55,7 +60,7 @@ const MainScreen: React.FC = () => {
           contentContainerStyle={{
             paddingBottom: insets.bottom,
           }}
-          renderItem={({item}) => <ProductItem product={item} />}
+          renderItem={renderItem}
         />
       )}
     </>

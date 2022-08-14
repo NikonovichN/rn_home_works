@@ -1,4 +1,4 @@
-import {call, put, takeEvery} from 'redux-saga/effects';
+import {call, put, takeLeading} from 'redux-saga/effects';
 
 import * as actions from '../actions/userActions';
 import * as actionTypes from '../actions/userTypes';
@@ -31,5 +31,5 @@ function* onLoadUserData(action: actionTypes.UserLogin) {
 }
 
 export default function* userSaga() {
-  yield takeEvery(actionTypes.USER_LOGIN, onLoadUserData);
+  yield takeLeading(actionTypes.USER_LOGIN, onLoadUserData);
 }

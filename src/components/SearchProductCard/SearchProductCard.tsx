@@ -13,7 +13,7 @@ const SearchProductCard: React.FC<Props> = props => {
   const {product, onPress} = props;
 
   if (isNaN(product.id)) {
-    return <></>;
+    return null;
   }
 
   return (

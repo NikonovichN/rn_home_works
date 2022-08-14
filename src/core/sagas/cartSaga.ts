@@ -1,4 +1,4 @@
-import {call, put, takeEvery} from 'redux-saga/effects';
+import {call, put, takeLeading} from 'redux-saga/effects';
 
 import {addToCartTypes, addToCartActions} from '../actions';
 import {CartConverter} from '../converters';
@@ -23,5 +23,5 @@ function* addToCart(action: addToCartTypes.AddToCart) {
 }
 
 export default function* cartSaga() {
-  yield takeEvery(addToCartTypes.ADD_TO_CART, addToCart);
+  yield takeLeading(addToCartTypes.ADD_TO_CART, addToCart);
 }

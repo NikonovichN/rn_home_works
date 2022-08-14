@@ -1,9 +1,9 @@
-import React, {useCallback, useMemo, useState} from 'react';
-import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useCallback, useState} from 'react';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 
-import {ChooseAvatar} from '@icons';
 import {Opacity} from '@styles';
 import {usePickImage} from '@hooks';
+import {UserAvatar} from '@components';
 
 const ProfilePicture: React.FC = () => {
   const pickImage = usePickImage();
@@ -17,22 +17,12 @@ const ProfilePicture: React.FC = () => {
     }
   }, [pickImage]);
 
-  const PictureComponent = useMemo(
-    () =>
-      profileURI ? (
-        <Image source={{uri: profileURI}} style={styles.image} />
-      ) : (
-        <ChooseAvatar />
-      ),
-    [profileURI],
-  );
-
   return (
     <TouchableOpacity
       activeOpacity={Opacity.cardOpacity}
       onPress={onPress}
       style={styles.container}>
-      {PictureComponent}
+      <UserAvatar pictureURI={profileURI} />
     </TouchableOpacity>
   );
 };
@@ -40,11 +30,6 @@ const ProfilePicture: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
-  },
-  image: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
   },
 });
 

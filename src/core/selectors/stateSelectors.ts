@@ -7,33 +7,23 @@ import {AppState} from '../reducers/rootReducer';
 import {SearchProductsState} from '../reducers/searchProductsReducer';
 import {UserState} from '../reducers/userReducer';
 
-const isLoggedSelector = (state: AppState): boolean => state.user.isLogged;
+export const isLoggedSelector = (state: AppState): boolean =>
+  state.user.isLogged;
 
-const userSelector = (state: AppState): UserState => state.user;
+export const userSelector = (state: AppState): UserState => state.user;
 
-const productDetailsSelector = (state: AppState): ProductDetailsState =>
+export const productDetailsSelector = (state: AppState): ProductDetailsState =>
   state.productDetails;
 
-const productListSelector = (state: AppState): ProductsListState =>
+export const productListSelector = (state: AppState): ProductsListState =>
   state.productList;
 
-const cartSelector = (state: AppState): CartState => state.cart;
+export const cartSelector = (state: AppState): CartState => state.cart;
 
-const networkIssueSelector = (state: AppState): NetworkIssueState =>
+export const networkIssueSelector = (state: AppState): NetworkIssueState =>
   state.networkIssue;
 
-const profileSelector = (state: AppState): ProfileState => state.profile;
+export const profileSelector = (state: AppState): ProfileState => state.profile;
 
-const searchProductsSelector = (state: AppState): SearchProductsState =>
+export const searchProductsSelector = (state: AppState): SearchProductsState =>
   state.searchProducts;
-
-export {
-  isLoggedSelector,
-  productDetailsSelector,
-  productListSelector,
-  userSelector,
-  cartSelector,
-  networkIssueSelector,
-  profileSelector,
-  searchProductsSelector,
-};

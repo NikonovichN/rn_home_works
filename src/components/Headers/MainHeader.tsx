@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Text, TouchableWithoutFeedback, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 import {MenuIcon, BasketIcon} from '@icons';
@@ -21,18 +21,9 @@ const MainHeader: React.FC<HeaderProps> = props => {
 
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={openDrawer}>
-        {/* Here and below View Around of an icon is needed for correct work of <TouchableWithoutFeedback /> */}
-        <View>
-          <MenuIcon />
-        </View>
-      </TouchableWithoutFeedback>
+      <MenuIcon onPress={openDrawer} />
       <Text style={styles.title}>{props.title}</Text>
-      <TouchableWithoutFeedback onPress={navigateToCart}>
-        <View>
-          <BasketIcon />
-        </View>
-      </TouchableWithoutFeedback>
+      <BasketIcon onPress={navigateToCart} />
     </View>
   );
 };
