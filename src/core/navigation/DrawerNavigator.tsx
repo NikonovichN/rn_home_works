@@ -8,7 +8,7 @@ import {
 } from './NavigationStack';
 import {CustomDrawerContent} from './components';
 import {Header} from '@components';
-import {Cart, MapScreen, ProfileScreen} from '@pages';
+import {AnalyticsPage, Cart, MapScreen, ProfileScreen} from '@pages';
 import {Routes} from '@constants';
 import {AccentCart, AccentHeart, AccentOrders, AccentProfile} from '@icons';
 
@@ -47,8 +47,15 @@ const DrawerNavigator: React.FC = () => (
         name={Routes.Orders}
         component={MapScreen}
         options={() => ({
-          header: () => <Header.Page title="" />,
+          header: () => <Header.Page title="Map" />,
           drawerIcon: AccentOrders,
+        })}
+      />
+      <Drawer.Screen
+        name={Routes.AnalyticsPage}
+        component={AnalyticsPage}
+        options={() => ({
+          header: () => <Header.Page title="AnalyticsPage" />,
         })}
       />
     </Drawer.Group>

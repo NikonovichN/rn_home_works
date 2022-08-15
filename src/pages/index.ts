@@ -6,6 +6,7 @@ import {Cart} from './Cart';
 import {ProfileScreen} from './Profile';
 import {SearchProducts} from './SearchProducts';
 import {MapScreen} from './MapScreen';
+import {AnalyticsPage} from './AnalyticsPage';
 
 export {
   MainScreen,
@@ -16,4 +17,5 @@ export {
   ProfileScreen,
   SearchProducts,
   MapScreen,
+  AnalyticsPage,
 };

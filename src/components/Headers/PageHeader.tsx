@@ -18,9 +18,7 @@ const PageHeader: React.FC<HeaderProps> = props => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.endIcons}>
-        <ArrowBackIcon onPress={goBack} />
-      </View>
+      <ArrowBackIcon onPress={goBack} />
       <Text style={styles.title}>{props.title}</Text>
       <BasketIcon onPress={navigateToCart} />
     </View>
