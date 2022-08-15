@@ -4,6 +4,7 @@ import AnalyticsTracker from 'appcenter-analytics';
 import Crashes from 'appcenter-crashes';
 
 import {PrimaryButton} from '@components';
+import {trackScreen} from '@analytics';
 
 export const AnalyticsPage: React.FC = () => {
   const onCrashApp = useCallback(() => {
@@ -16,6 +17,9 @@ export const AnalyticsPage: React.FC = () => {
     const enabled = await AnalyticsTracker.isEnabled();
     console.log('Analytics is enabled:', enabled);
   }, []);
+  const onTrackScreen = useCallback(async () => {
+    await trackScreen({name: 'Test Screen'});
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -27,6 +31,8 @@ export const AnalyticsPage: React.FC = () => {
         onPress={checkEnabledAnalytics}
         content="AnalyticsPage enabled"
       />
+      <View style={styles.divider} />
+      <PrimaryButton onPress={onTrackScreen} content="Test Screen" />
     </View>
   );
 };

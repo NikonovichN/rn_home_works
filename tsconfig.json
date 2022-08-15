@@ -26,6 +26,7 @@
       "@utils": ["./src/core/utils"],
       "@constants": ["./src/core/constants"],
       "@entities": ["./src/core/entities"],
+      "@analytics": ["./src/core/analytics"],
     }
   },
   "include": ["./src/**/*"],
