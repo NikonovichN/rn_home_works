@@ -25,12 +25,16 @@ const SearchBar: React.FC<Props> = React.forwardRef<TextInput, Props>(
         style={styles.container}
         activeOpacity={Opacity.regularButton}
         disabled={!hasOnPressSearchBarProp}
-        onPress={props.onPress}>
+        onPress={props.onPress}
+      >
         <View style={styles.containerBar}>
           <View style={styles.icon}>
             <TouchableOpacity
+              testID="tap-icon"
               activeOpacity={Opacity.regularButton}
-              onPress={props.onTapIcon}>
+              onPress={props.onTapIcon}
+              disabled={hasOnPressSearchBarProp}
+            >
               <SearchIcon />
             </TouchableOpacity>
           </View>

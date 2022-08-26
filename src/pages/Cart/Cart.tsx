@@ -1,4 +1,4 @@
-import React, {ReactElement, ReactNode, useCallback, useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 import {FirstLogin} from '@components';
