@@ -217,9 +217,9 @@ android {
     }
 
     productFlavors {
-        dev {
+        devDebug {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.rn_home_works.dev"
+            applicationId "com.rn_home_works.devDebug"
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.rn_home_works"
         }
@@ -229,9 +229,9 @@ android {
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.rn_home_works"
         }
-        qa {
+        qaDebug {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.rn_home_works.qa"
+            applicationId "com.rn_home_works.qaDebug"
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.rn_home_works"
         }
