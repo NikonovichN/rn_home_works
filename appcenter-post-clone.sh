@@ -1,5 +1,5 @@
 echo "Installing yarn dependencies..."
-npm install
+yarn install
 
 echo "Generating config files..."
-npm run rnuc configs/.env.dev
+yarn rnuc configs/.env.dev
