@@ -1,1 +1,0 @@
-npm run rnuc configs/.env.dev
