@@ -1,15 +1,18 @@
-echo "Installing yarn dependencies..."
+#!/usr/bin/env bash
+
 yarn install
 
-echo "Generating config files.. ENVIRONMENT_VARIABLE $ENVIRONMENT_VARIABLE"
-if ["$ENVIRONMENT_VARIABLE" == 'stories'];
-  then yarn rnuc configs/.stories.dev
+if [ "$APPCENTER_ANDROID_VARIANT" != "qaDebug" ];
+then
+   yarn rnuc configs/.env.qa
 fi
 
-if ["$ENVIRONMENT_VARIABLE" == 'qa'] 
-  then yarn rnuc configs/.dev.dev
+if [ "$APPCENTER_ANDROID_VARIANT" != "devDebug" ];
+then
+   yarn rnuc configs/.env.dev
 fi
 
-if ["$ENVIRONMENT_VARIABLE" == 'dev'] 
-  then yarn rnuc configs/.dev.dev
+if [ "$APPCENTER_ANDROID_VARIANT" != "prodDebug" ];
+then
+   yarn rnuc configs/.env.dev
 fi
