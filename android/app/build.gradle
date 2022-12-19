@@ -135,6 +135,8 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    flavorDimensions "default"
+
     defaultConfig {
         applicationId "com.rn_home_works"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -213,6 +215,28 @@ android {
             }
         }
     }
+
+    productFlavors {
+        dev {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.rn_home_works.dev"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.rn_home_works"
+        }
+        prod {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.rn_home_works"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.rn_home_works"
+        }
+        qa {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.rn_home_works.qa"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.rn_home_works"
+        }
+    }
+    
 
     splits {
         abi {

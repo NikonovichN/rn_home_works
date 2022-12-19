@@ -4,6 +4,15 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '13.0'
 install! 'cocoapods', :deterministic_uuids => false
 
+project 'rn_home_works', {
+  'Debug' => :debug,
+  'DebugProd' => :debug,
+  'DebugQa' => :debug,
+  'Release' => :release,
+  'ReleaseProd' => :release,
+  'ReleaseQa' => :release,
+}
+
 # React Native Maps dependencies
 rn_maps_path = '../node_modules/react-native-maps'
 pod 'react-native-google-maps', :path => rn_maps_path
@@ -32,7 +41,7 @@ target 'rn_home_works' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable the next line.
-  use_flipper!({'Flipper' => '0.147.1'})
+  use_flipper!({'Flipper' => '0.147.1', configurations: ['Debug','DebugProd','DebugQa','Release','ReleaseProd','ReleaseQa']})
 
   post_install do |installer|
     react_native_post_install(installer)
