@@ -8,4 +8,5 @@ export const enum Routes {
   Profile = 'Profile',
   Search = 'Search',
   Orders = 'Orders',
+  AnalyticsPage = 'Analytics',
 }

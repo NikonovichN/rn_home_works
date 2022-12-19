@@ -12,3 +12,4 @@ export * from './FireWork';
 export * from './NetworkIssueModal';
 export * from './SearchProductCard';
 export * from './UserAvatar';
+export * from './CenterView';

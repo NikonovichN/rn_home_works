@@ -26,7 +26,9 @@ const PrimaryButton: React.FC<Props> = props => {
     <TouchableOpacity
       style={styleContainer}
       activeOpacity={Opacity.regularButton}
-      onPress={onPress}>
+      onPress={onPress}
+      testID="test-primary-button"
+    >
       <Text style={TextStyles.buttonRegular}>
         {toUppercase ? content.toUpperCase() : content}
       </Text>

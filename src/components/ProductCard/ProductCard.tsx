@@ -30,7 +30,11 @@ const ProductCard: React.FC<Props> = props => {
   }
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={Opacity.cardOpacity}>
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={Opacity.cardOpacity}
+      testID="test-card"
+    >
       <View style={[styles.commonContainerStyles, styles.container]}>
         <Image
           resizeMode="cover"

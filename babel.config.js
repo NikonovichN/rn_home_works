@@ -1,15 +1,11 @@
-{
-  "presets": ["module:metro-react-native-babel-preset"],
-  "plugins": [
+module.exports = {
+  presets: [
+    "module:metro-react-native-babel-preset", 
+    ["@babel/preset-env", {"targets": {"node": "current"}}],
+    "@babel/preset-typescript",
+  ],
+  plugins: [
     "react-native-reanimated/plugin",
-    ["module:react-native-dotenv", {
-      "moduleName": "@env", 
-      "path": ".env",
-      "blacklist": null,
-      "whitelist": null,
-      "safe": true,
-      "allowUndefined": true
-    }],
     [
       "module-resolver",
       {
@@ -27,7 +23,8 @@
           "@network": "./src/core/network",
           "@utils": ["./src/core/utils"],
           "@constants": ["./src/core/constants"],
-          "@entities": ["./src/core/entities"]
+          "@entities": ["./src/core/entities"],
+          "@analytics": ["./src/core/analytics"]
         }
       }
     ]

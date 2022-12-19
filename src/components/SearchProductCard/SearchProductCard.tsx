@@ -20,7 +20,9 @@ const SearchProductCard: React.FC<Props> = props => {
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={Opacity.cardOpacity}
-      style={styles.container}>
+      style={styles.container}
+      testID="test-card"
+    >
       <Image
         resizeMode="cover"
         style={styles.image}
